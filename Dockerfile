@@ -30,7 +30,7 @@ RUN apk add --no-cache nodejs npm
 COPY --from=builder /app/composeApp/build/dist/wasmJs/productionExecutable/ /usr/share/nginx/html/
 
 # Create nginx configuration for WASM and proper routing
-RUN cat > /etc/nginx/conf.d/default.conf << 'EOF'
+COPY <<EOF /etc/nginx/conf.d/default.conf
 server {
     listen 8080;
     server_name localhost;
@@ -52,7 +52,7 @@ server {
 
     # Serve static files
     location / {
-        try_files $uri $uri/ /index.html;
+        try_files \$uri \$uri/ /index.html;
         add_header Cross-Origin-Embedder-Policy require-corp;
         add_header Cross-Origin-Opener-Policy same-origin;
     }
