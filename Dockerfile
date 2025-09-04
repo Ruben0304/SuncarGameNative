@@ -1,7 +1,7 @@
 # Multi-stage Docker build for Kotlin Multiplatform Compose Web app
 
 # Build stage
-FROM gradle:8.10.2-jdk17 AS builder
+FROM gradle:8.5-jdk17 AS builder
 
 # Set working directory
 WORKDIR /app
@@ -18,10 +18,13 @@ COPY composeApp/ composeApp/
 RUN chmod +x ./gradlew
 
 # Set gradle daemon properties for container environment
-ENV GRADLE_OPTS="-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=4 -Xmx2g"
+ENV GRADLE_OPTS="-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=4 -Xmx2g -Dorg.gradle.warning.mode=all"
 
-# Build the WASM JS application
-RUN ./gradlew :composeApp:wasmJsBrowserProductionWebpack --no-daemon --stacktrace
+# Download dependencies first for better caching
+RUN ./gradlew dependencies --no-daemon || true
+
+# Build the WASM JS application with more verbose output
+RUN ./gradlew :composeApp:wasmJsBrowserProductionWebpack --no-daemon --stacktrace --info --warning-mode all
 
 # Production stage - nginx for serving static files
 FROM nginx:alpine
