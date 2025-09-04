@@ -14,6 +14,9 @@ COPY build.gradle.kts ./
 # Copy source code
 COPY composeApp/ composeApp/
 
+# Make gradlew executable
+RUN chmod +x ./gradlew
+
 # Set gradle daemon properties for container environment
 ENV GRADLE_OPTS="-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=4 -Xmx2g"
 
