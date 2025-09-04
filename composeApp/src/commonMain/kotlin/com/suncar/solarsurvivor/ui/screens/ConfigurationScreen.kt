@@ -2,6 +2,7 @@ package com.suncar.solarsurvivor.ui.screens
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,7 +12,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Battery1Bar
 import androidx.compose.material.icons.filled.Check
@@ -53,6 +56,7 @@ fun ConfigurationScreen(onApply: (Int, Int) -> Unit) {
     var panels by remember { mutableStateOf(4) }
     var batteries by remember { mutableStateOf(2) }
     var showHelper by remember { mutableStateOf(true) }
+    val scrollState = rememberScrollState()
 
     val investment = panels * 800 + batteries * 1200
     val monthlyGeneration = panels * 505 * 5 * 30 / 1000
@@ -60,8 +64,8 @@ fun ConfigurationScreen(onApply: (Int, Int) -> Unit) {
     val roi = investment / (monthlySavings * 12)
 
     Column(
-        modifier = Modifier.fillMaxSize().padding(32.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+        modifier = Modifier.fillMaxSize().background(Color.Black).padding(32.dp).verticalScroll(state = scrollState,enabled = true),
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
             text = "Configura Tu Sistema Solar",
@@ -299,51 +303,51 @@ fun ConfigurationScreen(onApply: (Int, Int) -> Unit) {
         Spacer(modifier = Modifier.height(24.dp))
 
         // Investment Summary
-        Card(
-            colors = CardDefaults.cardColors(containerColor = Color(0x33FFD700)),
-            border = BorderStroke(1.dp, Color(0xFFFFD700))
-        ) {
-            Column(modifier = Modifier.padding(20.dp)) {
-                Text(
-                    text = "Resumen de Inversión",
-                    style = MaterialTheme.typography.titleLarge,
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFFFFD700)
-                )
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceEvenly
-                ) {
-                    SummaryItem("Inversión Total:", "$${investment}")
-                    SummaryItem("Ahorro Mensual:", "$${monthlySavings.toInt()}")
-                    SummaryItem("Retorno (ROI):", "${roi.toInt()} años")
-                }
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                Surface(
-                    color = Color(0x334CAF50),
-                    shape = RoundedCornerShape(8.dp)
-                ) {
-                    Row(
-                        modifier = Modifier.padding(12.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        IconWithColor(imageVector = Icons.Default.CreditCard, tint = Color(0xFF4CAF50), size = 20.dp)
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            text =
-                                "Financiamiento disponible: Desde $200/mes con planes flexibles",
-                            fontWeight = FontWeight.Bold,
-                            color = Color.White
-                        )
-                    }
-                }
-            }
-        }
+//        Card(
+//            colors = CardDefaults.cardColors(containerColor = Color(0x33FFD700)),
+//            border = BorderStroke(1.dp, Color(0xFFFFD700))
+//        ) {
+//            Column(modifier = Modifier.padding(20.dp)) {
+//                Text(
+//                    text = "Resumen de Inversión",
+//                    style = MaterialTheme.typography.titleLarge,
+//                    fontWeight = FontWeight.Bold,
+//                    color = Color(0xFFFFD700)
+//                )
+//
+//                Spacer(modifier = Modifier.height(16.dp))
+//
+//                Row(
+//                    modifier = Modifier.fillMaxWidth(),
+//                    horizontalArrangement = Arrangement.SpaceEvenly
+//                ) {
+//                    SummaryItem("Inversión Total:", "$${investment}")
+//                    SummaryItem("Ahorro Mensual:", "$${monthlySavings.toInt()}")
+//                    SummaryItem("Retorno (ROI):", "${roi.toInt()} años")
+//                }
+//
+//                Spacer(modifier = Modifier.height(16.dp))
+//
+//                Surface(
+//                    color = Color(0x334CAF50),
+//                    shape = RoundedCornerShape(8.dp)
+//                ) {
+//                    Row(
+//                        modifier = Modifier.padding(12.dp),
+//                        verticalAlignment = Alignment.CenterVertically
+//                    ) {
+//                        IconWithColor(imageVector = Icons.Default.CreditCard, tint = Color(0xFF4CAF50), size = 20.dp)
+//                        Spacer(modifier = Modifier.width(8.dp))
+//                        Text(
+//                            text =
+//                                "Financiamiento disponible: Desde $200/mes con planes flexibles",
+//                            fontWeight = FontWeight.Bold,
+//                            color = Color.White
+//                        )
+//                    }
+//                }
+//            }
+//        }
 
         Spacer(modifier = Modifier.weight(1f))
 

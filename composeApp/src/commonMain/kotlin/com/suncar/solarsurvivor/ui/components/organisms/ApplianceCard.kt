@@ -33,16 +33,16 @@ fun ApplianceCard(appliance: Appliance, onClick: () -> Unit) {
                 containerColor =
                     when {
                         appliance.on -> Color(0x334CAF50)
-                        appliance.essential && !appliance.on ->
-                            Color(0x33FF6B6B)
+//                        appliance.essential && !appliance.on ->
+//                            Color(0x33FF6B6B)
                         else -> Color(0xFF1A1A2E)
                     }
             ),
         border =
             when {
                 appliance.on -> BorderStroke(2.dp, Color(0xFF4CAF50))
-                appliance.essential && !appliance.on ->
-                    BorderStroke(2.dp, Color(0xFFFF6B6B))
+//                appliance.essential && !appliance.on ->
+//                    BorderStroke(2.dp, Color(0xFFFF6B6B))
                 else -> null
             }
     ) {
@@ -63,19 +63,21 @@ fun ApplianceCard(appliance: Appliance, onClick: () -> Unit) {
                 )
             }
 
-            Surface(
-                modifier = Modifier.align(Alignment.TopEnd),
-                color = if (appliance.on) Color(0xFF4CAF50) else Color(0x33FFFFFF),
-                shape = CircleShape
-            ) {
-                Text(
-                    text = if (appliance.on) "✓" else "✗",
-                    modifier = Modifier.padding(4.dp),
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White
-                )
-            }
+//            if (appliance.on) {
+//                Surface(
+//                    modifier = Modifier.align(Alignment.TopEnd),
+//                    color = Color(0xFF4CAF50),
+//                    shape = CircleShape
+//                ) {
+//                    Text(
+//                        text = "✓",
+//                        modifier = Modifier.padding(4.dp),
+//                        fontSize = 12.sp,
+//                        fontWeight = FontWeight.Bold,
+//                        color = Color.White
+//                    )
+//                }
+//            }
         }
     }
 }

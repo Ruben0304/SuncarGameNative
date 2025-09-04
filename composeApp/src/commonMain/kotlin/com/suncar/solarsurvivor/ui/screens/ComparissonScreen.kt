@@ -1,6 +1,7 @@
 package com.suncar.solarsurvivor.ui.screens
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -46,7 +47,7 @@ fun ComparisonScreen(
     val withSolar = comparison["withSolar"]
 
     Column(
-        modifier = Modifier.fillMaxSize().padding(32.dp),
+        modifier = Modifier.fillMaxSize().background(Color.Black).padding(32.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(

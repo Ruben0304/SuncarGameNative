@@ -1,6 +1,7 @@
 package com.suncar.solarsurvivor.ui.screens
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -77,7 +78,7 @@ fun GameScreen(
     onToggleAppliance: (String) -> Unit,
     onConfigureClick: () -> Unit
 ) {
-    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+    Column(modifier = Modifier.fillMaxSize().background(Color.Black).padding(16.dp)) {
         // Header
         Card(
             modifier = Modifier.fillMaxWidth(),
@@ -488,42 +489,6 @@ fun GameScreen(
                     }
                 }
 
-                // Savings Display
-                Card(
-                    colors =
-                        CardDefaults.cardColors(
-                            containerColor = Color(0xFF2A2A3E)
-                        )
-                ) {
-                    Column(modifier = Modifier.padding(16.dp)) {
-                        Text(
-                            text = "Impacto",
-                            style =
-                                MaterialTheme.typography
-                                    .titleMedium,
-                            fontWeight = FontWeight.Bold,
-                            color = Color(0xFFFFD700)
-                        )
-
-                        Spacer(modifier = Modifier.height(12.dp))
-
-                        SavingItem(
-                            Icons.Default.AttachMoney,
-                            "Ahorrado: $${moneySaved.toString().take(5)}",
-                            Color(0xFF4CAF50)
-                        )
-                        SavingItem(
-                            Icons.Default.Thermostat,
-                            "CO2: -${co2Saved.toInt()}kg",
-                            Color(0xFF4CAF50)
-                        )
-                        SavingItem(
-                            Icons.Default.EmojiEvents,
-                            "Puntos: $score",
-                            Color(0xFFFFD700)
-                        )
-                    }
-                }
 
                 Spacer(modifier = Modifier.weight(1f))
 

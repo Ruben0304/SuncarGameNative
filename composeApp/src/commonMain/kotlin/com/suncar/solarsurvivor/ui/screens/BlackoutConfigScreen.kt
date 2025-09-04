@@ -1,6 +1,7 @@
 package com.suncar.solarsurvivor.ui.screens
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -51,7 +52,7 @@ fun BlackoutConfigScreen(day: Int, onConfirm: (List<BlackoutSchedule>) -> Unit) 
     val scrollState = rememberScrollState()
 
     Column(
-        modifier = Modifier.fillMaxSize().verticalScroll(scrollState).padding(32.dp),
+        modifier = Modifier.fillMaxSize().background(Color.Black).verticalScroll(scrollState).padding(32.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         // Header
@@ -89,7 +90,7 @@ fun BlackoutConfigScreen(day: Int, onConfirm: (List<BlackoutSchedule>) -> Unit) 
                     schedules =
                         listOf(
                             BlackoutSchedule(10, 14),
-                            BlackoutSchedule(18, 22)
+
                         )
                 },
                 colors =
@@ -97,14 +98,13 @@ fun BlackoutConfigScreen(day: Int, onConfirm: (List<BlackoutSchedule>) -> Unit) 
                         contentColor = Color.White
                     ),
                 border = BorderStroke(1.dp, Color.White.copy(alpha = 0.5f))
-            ) { Text("La Habana (8h)") }
+            ) { Text("Bajo 4h") }
             OutlinedButton(
                 onClick = {
                     schedules =
                         listOf(
-                            BlackoutSchedule(8, 13),
-                            BlackoutSchedule(14, 18),
-                            BlackoutSchedule(19, 23)
+                            BlackoutSchedule(10, 14),
+                            BlackoutSchedule(18, 24)
                         )
                 },
                 colors =
@@ -112,15 +112,15 @@ fun BlackoutConfigScreen(day: Int, onConfirm: (List<BlackoutSchedule>) -> Unit) 
                         contentColor = Color.White
                     ),
                 border = BorderStroke(1.dp, Color.White.copy(alpha = 0.5f))
-            ) { Text("Provincias (12h)") }
+            ) { Text("Medio 10h") }
             OutlinedButton(
                 onClick = {
                     schedules =
                         listOf(
-                            BlackoutSchedule(6, 11),
-                            BlackoutSchedule(12, 17),
-                            BlackoutSchedule(18, 22),
-                            BlackoutSchedule(23, 23)
+                            BlackoutSchedule(2, 5),
+                            BlackoutSchedule(7, 14),
+                            BlackoutSchedule(16, 24),
+
                         )
                 },
                 colors =

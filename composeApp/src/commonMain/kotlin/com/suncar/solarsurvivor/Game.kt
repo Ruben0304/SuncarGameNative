@@ -1,17 +1,18 @@
-package com.suncar.suncargame
+package com.suncar.solarsurvivor
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.background
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.suncar.solarsurvivor.data.*
 import com.suncar.solarsurvivor.ui.screens.*
-import com.suncar.solarsurvivor.ui.components.*
 import com.suncar.solarsurvivor.ui.components.atom.EventPopup
 import com.suncar.solarsurvivor.ui.components.molecules.AchievementBadge
 import com.suncar.solarsurvivor.ui.components.organisms.NotificationCard
@@ -121,7 +122,7 @@ fun SolarSurvivorGame() {
                 type: NotificationType = NotificationType.INFO,
                 recommendation: String? = null
         ) {
-                val id = kotlin.random.Random.nextLong()
+                val id = Random.nextLong()
                 notifications = notifications + Notification(id, message, type, recommendation)
         }
 
@@ -337,15 +338,28 @@ fun SolarSurvivorGame() {
         MaterialTheme(
                 colorScheme =
                         darkColorScheme(
-                                primary = Color(0xFFFFD700),
-                                secondary = Color(0xFF764BA2),
-                                background = Color(0xFF1A1A2E),
-                                surface = Color(0xFF16213E)
+                                primary = Color(0xFF0F2B66),
+                                secondary = Color(0xFFF26729),
+                                tertiary = Color(0xFFFDB813),
+                                background = Color(0xFF0A1B40),
+                                surface = Color(0xFF0F2B66),
+                                surfaceVariant = Color(0xFF1B3A6B),
+                                outline = Color(0xFFF26729)
                         )
         ) {
-                Surface(
-                        modifier = Modifier.fillMaxSize(),
-                        color = MaterialTheme.colorScheme.background
+                Box(
+                        modifier = Modifier
+                                .fillMaxSize()
+//                                .background(
+//                                        brush = Brush.verticalGradient(
+//                                                colors = listOf(
+//                                                        Color(0xFF0A1B40), // Darker blue
+//                                                        Color(0xFF0F2B66), // Primary dark blue
+//                                                        Color(0xFF1B3A6B), // Lighter blue
+//                                                        Color(0xFF0F2B66)  // Primary dark blue
+//                                                )
+//                                        )
+//                                )
                 ) {
                         Box {
                                 when (gameState) {
@@ -427,7 +441,7 @@ fun SolarSurvivorGame() {
                                                                                                 ))
                                                                 }
 
-                                                                currentDay = 2
+                                                                currentDay = 1
                                                                 gameState =
                                                                         GameState.BLACKOUT_CONFIG
                                                                 timeOfDay = 6

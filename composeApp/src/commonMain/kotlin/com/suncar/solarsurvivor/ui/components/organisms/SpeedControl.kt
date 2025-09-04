@@ -18,6 +18,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -33,7 +34,8 @@ fun SpeedControl(gameSpeed: Long, onSpeedChange: (Long) -> Unit) {
             Icon(
                 Icons.Default.Schedule,
                 contentDescription = null,
-                modifier = Modifier.size(16.dp)
+                modifier = Modifier.size(16.dp),
+                tint = Color.White
             )
             Spacer(modifier = Modifier.width(4.dp))
             Text(
@@ -44,7 +46,8 @@ fun SpeedControl(gameSpeed: Long, onSpeedChange: (Long) -> Unit) {
                         1500L -> "Rápido"
                         else -> "Muy Rápido"
                     },
-                fontSize = 12.sp
+                fontSize = 12.sp,
+                color = Color.White
             )
         }
 

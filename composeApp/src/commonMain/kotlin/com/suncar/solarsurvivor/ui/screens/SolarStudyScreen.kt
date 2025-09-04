@@ -1,6 +1,7 @@
 package com.suncar.solarsurvivor.ui.screens
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -48,6 +49,7 @@ import com.suncar.solarsurvivor.ui.components.RecommendationCard
 import com.suncar.solarsurvivor.ui.components.atom.*
 import com.suncar.solarsurvivor.ui.components.molecules.*
 import com.suncar.solarsurvivor.ui.components.organisms.*
+import com.suncar.solarsurvivor.ui.components.organisms.ManualCustomizationModal
 import kotlin.collections.component1
 import kotlin.collections.component2
 import kotlin.collections.set
@@ -75,6 +77,7 @@ fun SolarStudyScreen(appliances: Map<String, Appliance>, onComplete: (Int, Int) 
 
     var budget by remember { mutableStateOf("medium") }
     var peopleCount by remember { mutableStateOf(4) }
+    var showManualModal by remember { mutableStateOf(false) }
 
     val requiredPower =
         priorities.entries.sumOf { (key, selected) ->
@@ -113,7 +116,7 @@ fun SolarStudyScreen(appliances: Map<String, Appliance>, onComplete: (Int, Int) 
     val autonomy = batteries * 5000f / requiredPower
 
     LazyColumn(
-        modifier = Modifier.fillMaxSize().padding(32.dp),
+        modifier = Modifier.fillMaxSize().background(Color.Black).padding(32.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         item {
@@ -401,7 +404,7 @@ fun SolarStudyScreen(appliances: Map<String, Appliance>, onComplete: (Int, Int) 
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 OutlinedButton(
-                    onClick = { /* Manual config */},
+                    onClick = { showManualModal = true },
                     modifier = Modifier.weight(1f),
                     colors =
                         ButtonDefaults.outlinedButtonColors(
@@ -422,5 +425,18 @@ fun SolarStudyScreen(appliances: Map<String, Appliance>, onComplete: (Int, Int) 
                 }
             }
         }
+    }
+    
+    // Manual customization modal
+    if (showManualModal) {
+        ManualCustomizationModal(
+            initialPanels = panels,
+            initialBatteries = batteries,
+            onApply = { newPanels, newBatteries ->
+                onComplete(newPanels, newBatteries)
+                showManualModal = false
+            },
+            onDismiss = { showManualModal = false }
+        )
     }
 }

@@ -1,0 +1,53 @@
+# Build artifacts
+**/build/
+**/target/
+**/.gradle/
+
+# IDE files
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+*~
+
+# Version control
+.git/
+.gitignore
+
+# Documentation and development files
+*.md
+README*
+CHANGELOG*
+LICENSE*
+docs/
+.editorconfig
+
+# Node.js (if any)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# Local configuration
+.env*
+local.properties
+
+# Kotlin compiler cache
+.kotlin/
+
+# Test results
+test-results/
+reports/
