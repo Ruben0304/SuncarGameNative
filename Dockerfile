@@ -64,9 +64,15 @@ RUN echo 'server {' > /etc/nginx/conf.d/default.conf && \
 
 # Create startup script
 RUN echo '#!/bin/sh' > /docker-entrypoint.sh && \
+    echo 'echo "Starting nginx with PORT: $PORT"' >> /docker-entrypoint.sh && \
     echo 'if [ -n "$PORT" ]; then' >> /docker-entrypoint.sh && \
+    echo '    echo "Updating nginx config to use port $PORT"' >> /docker-entrypoint.sh && \
     echo '    sed -i "s/listen 8080;/listen $PORT;/g" /etc/nginx/conf.d/default.conf' >> /docker-entrypoint.sh && \
+    echo 'else' >> /docker-entrypoint.sh && \
+    echo '    echo "Using default port 8080"' >> /docker-entrypoint.sh && \
     echo 'fi' >> /docker-entrypoint.sh && \
+    echo 'echo "Nginx config updated, starting nginx..."' >> /docker-entrypoint.sh && \
+    echo 'nginx -t' >> /docker-entrypoint.sh && \
     echo 'exec nginx -g "daemon off;"' >> /docker-entrypoint.sh && \
     chmod +x /docker-entrypoint.sh
 
