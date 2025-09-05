@@ -15,8 +15,8 @@ COPY composeApp/ composeApp/
 # Make gradlew executable
 RUN chmod +x ./gradlew
 
-# Build only wasm target
-RUN ./gradlew :composeApp:wasmJsBrowserProductionWebpack -PwasmBuild=true --no-daemon --stacktrace
+# Build only wasm target with full distribution
+RUN ./gradlew :composeApp:wasmJsBrowserDistribution -PwasmBuild=true --no-daemon --stacktrace
 
 # Serve with Nginx
 FROM nginx:alpine

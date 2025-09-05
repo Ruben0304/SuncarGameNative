@@ -48,10 +48,21 @@ jobs:
         curl -fsSL https://railway.app/install.sh | sh
         echo "$HOME/.railway/bin" >> $GITHUB_PATH
     
+    - name: Create Railway Config
+      run: |
+        cd railway-deploy
+        cat > railway.json <<EOF
+        {
+          "projectId": "${{ secrets.RAILWAY_PROJECT_ID }}",
+          "environmentId": "${{ secrets.RAILWAY_ENVIRONMENT_ID }}"
+        }
+        EOF
+      env:
+        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+    
     - name: Deploy to Railway
       run: |
         cd railway-deploy
-        railway login --token ${{ secrets.RAILWAY_TOKEN }}
         railway up --detach
       env:
         RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}

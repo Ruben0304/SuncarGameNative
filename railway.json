@@ -1,0 +1,17 @@
+{
+  "$schema": "https://railway.com/railway.schema.json",
+  "projectId": "429e27d6-7346-4fc2-8651-35b86b7bb1c0",
+  "environmentId": "cc0ec528-8df6-4768-bb76-81378dce928a",
+  "serviceId": "0f8308e7-c02e-4861-b3e9-5af0c6316f6a",
+  "build": {
+    "builder": "dockerfile",
+    "dockerfilePath": "./Dockerfile"
+  },
+  "deploy": {
+    "startCommand": "nginx -g 'daemon off;'",
+    "healthcheckPath": "/",
+    "healthcheckTimeout": 100,
+    "restartPolicyType": "on_failure",
+    "restartPolicyMaxRetries": 3
+  }
+}

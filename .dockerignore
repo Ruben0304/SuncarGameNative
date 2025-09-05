@@ -51,3 +51,6 @@ local.properties
 # Test results
 test-results/
 reports/
+
+# Railway deploy artifacts (no longer needed)
+railway-deploy/
