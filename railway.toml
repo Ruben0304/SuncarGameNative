@@ -1,6 +1,6 @@
 [build]
 builder = "DOCKERFILE"
-dockerfilePath = "railway-deploy/Dockerfile"
+dockerfilePath = "Dockerfile"
 buildTimeout = 1200
 
 [deploy]
