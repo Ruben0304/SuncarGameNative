@@ -16,7 +16,7 @@ plugins {
 }
 
 kotlin {
-    // Only configure Android target when not in Railway environment
+    // Only configure Android and iOS targets when not in Railway environment
     if (System.getenv("RAILWAY_ENVIRONMENT") == null) {
         androidTarget {
             @OptIn(ExperimentalKotlinGradlePluginApi::class)
@@ -24,16 +24,16 @@ kotlin {
                 jvmTarget.set(JvmTarget.JVM_11)
             }
         }
-    }
-    
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach { iosTarget ->
-        iosTarget.binaries.framework {
-            baseName = "ComposeApp"
-            isStatic = true
+        
+        listOf(
+            iosX64(),
+            iosArm64(),
+            iosSimulatorArm64()
+        ).forEach { iosTarget ->
+            iosTarget.binaries.framework {
+                baseName = "ComposeApp"
+                isStatic = true
+            }
         }
     }
     
