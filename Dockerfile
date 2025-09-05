@@ -27,64 +27,48 @@ COPY --from=builder /app/composeApp/build/dist/wasmJs/productionExecutable/ /usr
 # Add WASM MIME type to nginx
 RUN echo 'application/wasm wasm;' >> /etc/nginx/mime.types
 
-# Create nginx config using RUN command
-RUN cat > /etc/nginx/conf.d/default.conf <<'EOF'
-server {
-    listen 8080;
-    server_name localhost;
-    root /usr/share/nginx/html;
-    index index.html;
+# Create nginx config file
+RUN echo 'server {' > /etc/nginx/conf.d/default.conf && \
+    echo '    listen 8080;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    server_name localhost;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    root /usr/share/nginx/html;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    index index.html;' >> /etc/nginx/conf.d/default.conf && \
+    echo '' >> /etc/nginx/conf.d/default.conf && \
+    echo '    location ~* \.wasm$ {' >> /etc/nginx/conf.d/default.conf && \
+    echo '        add_header Content-Type application/wasm;' >> /etc/nginx/conf.d/default.conf && \
+    echo '        add_header Cross-Origin-Embedder-Policy require-corp;' >> /etc/nginx/conf.d/default.conf && \
+    echo '        add_header Cross-Origin-Opener-Policy same-origin;' >> /etc/nginx/conf.d/default.conf && \
+    echo '        expires 1y;' >> /etc/nginx/conf.d/default.conf && \
+    echo '        add_header Cache-Control "public, immutable";' >> /etc/nginx/conf.d/default.conf && \
+    echo '    }' >> /etc/nginx/conf.d/default.conf && \
+    echo '' >> /etc/nginx/conf.d/default.conf && \
+    echo '    location ~* \.js$ {' >> /etc/nginx/conf.d/default.conf && \
+    echo '        add_header Cross-Origin-Embedder-Policy require-corp;' >> /etc/nginx/conf.d/default.conf && \
+    echo '        add_header Cross-Origin-Opener-Policy same-origin;' >> /etc/nginx/conf.d/default.conf && \
+    echo '        expires 1y;' >> /etc/nginx/conf.d/default.conf && \
+    echo '        add_header Cache-Control "public, immutable";' >> /etc/nginx/conf.d/default.conf && \
+    echo '    }' >> /etc/nginx/conf.d/default.conf && \
+    echo '' >> /etc/nginx/conf.d/default.conf && \
+    echo '    location / {' >> /etc/nginx/conf.d/default.conf && \
+    echo '        try_files $uri $uri/ /index.html;' >> /etc/nginx/conf.d/default.conf && \
+    echo '        add_header Cross-Origin-Embedder-Policy require-corp;' >> /etc/nginx/conf.d/default.conf && \
+    echo '        add_header Cross-Origin-Opener-Policy same-origin;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    }' >> /etc/nginx/conf.d/default.conf && \
+    echo '' >> /etc/nginx/conf.d/default.conf && \
+    echo '    gzip on;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    gzip_vary on;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    gzip_min_length 1024;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    gzip_comp_level 6;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    gzip_types text/plain text/css text/xml text/javascript application/javascript application/xml+rss application/json application/wasm;' >> /etc/nginx/conf.d/default.conf && \
+    echo '}' >> /etc/nginx/conf.d/default.conf
 
-    # Force MIME type for WASM files
-    location ~* \.wasm$ {
-        add_header Content-Type application/wasm;
-        add_header Cross-Origin-Embedder-Policy require-corp;
-        add_header Cross-Origin-Opener-Policy same-origin;
-        expires 1y;
-        add_header Cache-Control "public, immutable";
-    }
-
-    location ~* \.js$ {
-        add_header Cross-Origin-Embedder-Policy require-corp;
-        add_header Cross-Origin-Opener-Policy same-origin;
-        expires 1y;
-        add_header Cache-Control "public, immutable";
-    }
-
-    location / {
-        try_files $uri $uri/ /index.html;
-        add_header Cross-Origin-Embedder-Policy require-corp;
-        add_header Cross-Origin-Opener-Policy same-origin;
-    }
-
-    # Enable gzip compression
-    gzip on;
-    gzip_vary on;
-    gzip_min_length 1024;
-    gzip_comp_level 6;
-    gzip_types 
-        text/plain 
-        text/css 
-        text/xml 
-        text/javascript 
-        application/javascript 
-        application/xml+rss 
-        application/json 
-        application/wasm;
-}
-EOF
-
-# Create startup script to use Railway's PORT variable
-RUN cat > /docker-entrypoint.sh <<'EOF'
-#!/bin/sh
-# Replace 8080 with Railway's PORT if available
-if [ -n "$PORT" ]; then
-    sed -i "s/listen 8080;/listen $PORT;/g" /etc/nginx/conf.d/default.conf
-fi
-exec nginx -g "daemon off;"
-EOF
-
-RUN chmod +x /docker-entrypoint.sh
+# Create startup script
+RUN echo '#!/bin/sh' > /docker-entrypoint.sh && \
+    echo 'if [ -n "$PORT" ]; then' >> /docker-entrypoint.sh && \
+    echo '    sed -i "s/listen 8080;/listen $PORT;/g" /etc/nginx/conf.d/default.conf' >> /docker-entrypoint.sh && \
+    echo 'fi' >> /docker-entrypoint.sh && \
+    echo 'exec nginx -g "daemon off;"' >> /docker-entrypoint.sh && \
+    chmod +x /docker-entrypoint.sh
 
 EXPOSE 8080
 
