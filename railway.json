@@ -5,7 +5,7 @@
   "serviceId": "0f8308e7-c02e-4861-b3e9-5af0c6316f6a",
   "build": {
     "builder": "dockerfile",
-    "dockerfilePath": "./Dockerfile"
+    "dockerfilePath": "Dockerfile"
   },
   "deploy": {
     "startCommand": "nginx -g 'daemon off;'",
