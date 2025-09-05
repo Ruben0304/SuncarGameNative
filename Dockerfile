@@ -24,6 +24,9 @@ FROM nginx:alpine
 # Copy built app
 COPY --from=builder /app/composeApp/build/dist/wasmJs/productionExecutable/ /usr/share/nginx/html/
 
+# Add WASM MIME type to nginx
+RUN echo 'application/wasm wasm;' >> /etc/nginx/mime.types
+
 # Create nginx config using RUN command
 RUN cat > /etc/nginx/conf.d/default.conf <<'EOF'
 server {
@@ -32,15 +35,20 @@ server {
     root /usr/share/nginx/html;
     index index.html;
 
+    # Force MIME type for WASM files
     location ~* \.wasm$ {
+        add_header Content-Type application/wasm;
         add_header Cross-Origin-Embedder-Policy require-corp;
         add_header Cross-Origin-Opener-Policy same-origin;
-        add_header Content-Type application/wasm;
+        expires 1y;
+        add_header Cache-Control "public, immutable";
     }
 
     location ~* \.js$ {
         add_header Cross-Origin-Embedder-Policy require-corp;
         add_header Cross-Origin-Opener-Policy same-origin;
+        expires 1y;
+        add_header Cache-Control "public, immutable";
     }
 
     location / {
@@ -49,10 +57,20 @@ server {
         add_header Cross-Origin-Opener-Policy same-origin;
     }
 
+    # Enable gzip compression
     gzip on;
     gzip_vary on;
     gzip_min_length 1024;
-    gzip_types text/plain text/css text/xml text/javascript application/javascript application/xml+rss application/json application/wasm;
+    gzip_comp_level 6;
+    gzip_types 
+        text/plain 
+        text/css 
+        text/xml 
+        text/javascript 
+        application/javascript 
+        application/xml+rss 
+        application/json 
+        application/wasm;
 }
 EOF
 
