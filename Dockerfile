@@ -2,8 +2,9 @@
 FROM gradle:8.5-jdk17 AS builder
 WORKDIR /app
 
-# Copy Gradle wrapper and settings first
+# Copy Gradle wrapper files first
 COPY gradle gradle
+COPY gradle/wrapper gradle/wrapper
 COPY gradlew gradlew.bat gradle.properties settings.gradle.kts ./
 COPY build.gradle.kts ./
 COPY composeApp/build.gradle.kts composeApp/
@@ -23,8 +24,8 @@ FROM nginx:alpine
 # Copy built app
 COPY --from=builder /app/composeApp/build/dist/wasmJs/productionExecutable/ /usr/share/nginx/html/
 
-# Nginx config
-COPY <<EOF /etc/nginx/conf.d/default.conf
+# Create nginx config using RUN command
+RUN cat > /etc/nginx/conf.d/default.conf <<'EOF'
 server {
     listen 8080;
     server_name localhost;
@@ -34,6 +35,7 @@ server {
     location ~* \.wasm$ {
         add_header Cross-Origin-Embedder-Policy require-corp;
         add_header Cross-Origin-Opener-Policy same-origin;
+        add_header Content-Type application/wasm;
     }
 
     location ~* \.js$ {
@@ -42,7 +44,7 @@ server {
     }
 
     location / {
-        try_files \$uri \$uri/ /index.html;
+        try_files $uri $uri/ /index.html;
         add_header Cross-Origin-Embedder-Policy require-corp;
         add_header Cross-Origin-Opener-Policy same-origin;
     }
@@ -54,5 +56,18 @@ server {
 }
 EOF
 
+# Create startup script to use Railway's PORT variable
+RUN cat > /docker-entrypoint.sh <<'EOF'
+#!/bin/sh
+# Replace 8080 with Railway's PORT if available
+if [ -n "$PORT" ]; then
+    sed -i "s/listen 8080;/listen $PORT;/g" /etc/nginx/conf.d/default.conf
+fi
+exec nginx -g "daemon off;"
+EOF
+
+RUN chmod +x /docker-entrypoint.sh
+
 EXPOSE 8080
-CMD ["nginx", "-g", "daemon off;"]
+
+CMD ["/docker-entrypoint.sh"]

@@ -4,6 +4,10 @@ dockerfilePath = "Dockerfile"
 
 [deploy]
 healthcheckPath = "/"
-healthcheckTimeout = 300
+healthcheckTimeout = 100
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 10
+
+[env]
+GRADLE_OPTS = "-Xmx4g -XX:MaxMetaspaceSize=1g"
+JAVA_OPTS = "-Xmx2g"

@@ -4,8 +4,16 @@ import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
-// 👇 Definir aquí la variable
-val isWasmBuild: Boolean = (findProperty("wasmBuild") as? String) == "true"
+// 👇 Flag para diferenciar builds de Railway (wasm-only) vs local (multiplatform completo)
+val isWasmBuild: Boolean =
+    (project.findProperty("wasmBuild") as? String)?.toBoolean() ?: false
+
+// Build type validation and logging
+if (isWasmBuild) {
+    println("🚀 Building WASM-only for Railway deployment")
+} else {
+    println("📱 Building full multiplatform")
+}
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -45,8 +53,15 @@ kotlin {
             val projectDirPath = project.projectDir.path
             commonWebpackConfig {
                 outputFileName = "composeApp.js"
+                // Agregar para Railway
+                mode = if (isWasmBuild) {
+                    org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig.Mode.PRODUCTION
+                } else {
+                    org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig.Mode.DEVELOPMENT
+                }
                 devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
                     static = (static ?: mutableListOf()).apply {
+                        // Para poder debuggear desde el navegador
                         add(projectDirPath)
                     }
                 }
