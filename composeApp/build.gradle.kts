@@ -4,20 +4,20 @@ import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
+val isWasmBuild = project.findProperty("wasmBuild") == "true"
+
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     
-    // Only apply Android plugin when not in Railway environment
-    if (System.getenv("RAILWAY_ENVIRONMENT") == null) {
+    if (!isWasmBuild) {
         alias(libs.plugins.androidApplication)
     }
 }
 
 kotlin {
-    // Only configure Android and iOS targets when not in Railway environment
-    if (System.getenv("RAILWAY_ENVIRONMENT") == null) {
+    if (!isWasmBuild) {
         androidTarget {
             @OptIn(ExperimentalKotlinGradlePluginApi::class)
             compilerOptions {
@@ -56,8 +56,7 @@ kotlin {
     }
     
     sourceSets {
-        // Only configure Android dependencies when not in Railway environment
-        if (System.getenv("RAILWAY_ENVIRONMENT") == null) {
+        if (!isWasmBuild) {
             androidMain.dependencies {
                 implementation(compose.preview)
                 implementation(libs.androidx.activity.compose)
@@ -80,8 +79,7 @@ kotlin {
     }
 }
 
-// Only configure Android when not in Railway environment
-if (System.getenv("RAILWAY_ENVIRONMENT") == null) {
+if (!isWasmBuild) {
     android {
         namespace = "com.suncar.solarsurvivor"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
@@ -110,8 +108,7 @@ if (System.getenv("RAILWAY_ENVIRONMENT") == null) {
     }
 }
 
-// Only configure Android dependencies when not in Railway environment
-if (System.getenv("RAILWAY_ENVIRONMENT") == null) {
+if (!isWasmBuild) {
     dependencies {
         debugImplementation(compose.uiTooling)
     }
