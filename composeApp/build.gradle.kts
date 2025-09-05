@@ -4,13 +4,14 @@ import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
-val isWasmBuild = project.findProperty("wasmBuild") == "true"
+// 👇 Definir aquí la variable
+val isWasmBuild: Boolean = (findProperty("wasmBuild") as? String) == "true"
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
-    
+
     if (!isWasmBuild) {
         alias(libs.plugins.androidApplication)
     }
@@ -24,7 +25,7 @@ kotlin {
                 jvmTarget.set(JvmTarget.JVM_11)
             }
         }
-        
+
         listOf(
             iosX64(),
             iosArm64(),
@@ -36,7 +37,7 @@ kotlin {
             }
         }
     }
-    
+
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
         outputModuleName.set("composeApp")
@@ -46,7 +47,6 @@ kotlin {
                 outputFileName = "composeApp.js"
                 devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
                     static = (static ?: mutableListOf()).apply {
-                        // Serve sources to debug inside browser
                         add(projectDirPath)
                     }
                 }
@@ -54,7 +54,7 @@ kotlin {
         }
         binaries.executable()
     }
-    
+
     sourceSets {
         if (!isWasmBuild) {
             androidMain.dependencies {
@@ -106,11 +106,8 @@ if (!isWasmBuild) {
             targetCompatibility = JavaVersion.VERSION_11
         }
     }
-}
 
-if (!isWasmBuild) {
     dependencies {
         debugImplementation(compose.uiTooling)
     }
 }
-

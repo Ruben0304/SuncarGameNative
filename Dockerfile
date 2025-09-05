@@ -1,38 +1,29 @@
-# Multi-stage Docker build for Kotlin Multiplatform Compose Web app
-
 # Build stage
 FROM gradle:8.5-jdk17 AS builder
-
-# Set working directory
 WORKDIR /app
 
-# Copy gradle files first for better caching
+# Copy Gradle wrapper and settings first
 COPY gradle gradle
 COPY gradlew gradlew.bat gradle.properties settings.gradle.kts ./
 COPY build.gradle.kts ./
+COPY composeApp/build.gradle.kts composeApp/
 
-# Copy source code
+# Copy source
 COPY composeApp/ composeApp/
 
 # Make gradlew executable
 RUN chmod +x ./gradlew
 
-# Set gradle daemon properties for container environment
-ENV GRADLE_OPTS="-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=4 -Xmx2g -Dorg.gradle.warning.mode=all"
-
-# Build the WASM JS application with wasmBuild flag
+# Build only wasm target
 RUN ./gradlew :composeApp:wasmJsBrowserProductionWebpack -PwasmBuild=true --no-daemon --stacktrace
 
-# Production stage - nginx for serving static files
+# Serve with Nginx
 FROM nginx:alpine
 
-# Install Node.js for serving WASM files with proper MIME types
-RUN apk add --no-cache nodejs npm
-
-# Copy built WASM application
+# Copy built app
 COPY --from=builder /app/composeApp/build/dist/wasmJs/productionExecutable/ /usr/share/nginx/html/
 
-# Create nginx configuration for WASM and proper routing
+# Nginx config
 COPY <<EOF /etc/nginx/conf.d/default.conf
 server {
     listen 8080;
@@ -40,27 +31,22 @@ server {
     root /usr/share/nginx/html;
     index index.html;
 
-    # Add WASM MIME type
     location ~* \.wasm$ {
-        add_header Content-Type application/wasm;
         add_header Cross-Origin-Embedder-Policy require-corp;
         add_header Cross-Origin-Opener-Policy same-origin;
     }
 
-    # Handle JS files with proper headers for WASM
     location ~* \.js$ {
         add_header Cross-Origin-Embedder-Policy require-corp;
         add_header Cross-Origin-Opener-Policy same-origin;
     }
 
-    # Serve static files
     location / {
         try_files \$uri \$uri/ /index.html;
         add_header Cross-Origin-Embedder-Policy require-corp;
         add_header Cross-Origin-Opener-Policy same-origin;
     }
 
-    # Enable gzip compression
     gzip on;
     gzip_vary on;
     gzip_min_length 1024;
@@ -68,8 +54,5 @@ server {
 }
 EOF
 
-# Expose port 8080 (Railway requirement)
 EXPOSE 8080
-
-# Use nginx in foreground
 CMD ["nginx", "-g", "daemon off;"]
