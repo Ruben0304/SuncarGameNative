@@ -4,45 +4,29 @@ import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
-// 👇 Flag para diferenciar builds de Railway (wasm-only) vs local (multiplatform completo)
-val isWasmBuild: Boolean =
-    (project.findProperty("wasmBuild") as? String)?.toBoolean() ?: false
-
-// Build type validation and logging
-if (isWasmBuild) {
-    println("🚀 Building WASM-only for Railway deployment")
-} else {
-    println("📱 Building full multiplatform")
-}
-
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
-
-    if (!isWasmBuild) {
-        alias(libs.plugins.androidApplication)
-    }
 }
 
 kotlin {
-    if (!isWasmBuild) {
-        androidTarget {
-            @OptIn(ExperimentalKotlinGradlePluginApi::class)
-            compilerOptions {
-                jvmTarget.set(JvmTarget.JVM_11)
-            }
+    androidTarget {
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
         }
+    }
 
-        listOf(
-            iosX64(),
-            iosArm64(),
-            iosSimulatorArm64()
-        ).forEach { iosTarget ->
-            iosTarget.binaries.framework {
-                baseName = "ComposeApp"
-                isStatic = true
-            }
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
+            baseName = "ComposeApp"
+            isStatic = true
         }
     }
 
@@ -50,32 +34,17 @@ kotlin {
     wasmJs {
         outputModuleName.set("composeApp")
         browser {
-            val projectDirPath = project.projectDir.path
             commonWebpackConfig {
                 outputFileName = "composeApp.js"
-                // Agregar para Railway
-                mode = if (isWasmBuild) {
-                    org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig.Mode.PRODUCTION
-                } else {
-                    org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig.Mode.DEVELOPMENT
-                }
-                devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
-                    static = (static ?: mutableListOf()).apply {
-                        // Para poder debuggear desde el navegador
-                        add(projectDirPath)
-                    }
-                }
             }
         }
         binaries.executable()
     }
 
     sourceSets {
-        if (!isWasmBuild) {
-            androidMain.dependencies {
-                implementation(compose.preview)
-                implementation(libs.androidx.activity.compose)
-            }
+        androidMain.dependencies {
+            implementation(compose.preview)
+            implementation(libs.androidx.activity.compose)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -94,35 +63,33 @@ kotlin {
     }
 }
 
-if (!isWasmBuild) {
-    android {
-        namespace = "com.suncar.solarsurvivor"
-        compileSdk = libs.versions.android.compileSdk.get().toInt()
+android {
+    namespace = "com.suncar.solarsurvivor"
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
 
-        defaultConfig {
-            applicationId = "com.suncar.solarsurvivor"
-            minSdk = libs.versions.android.minSdk.get().toInt()
-            targetSdk = libs.versions.android.targetSdk.get().toInt()
-            versionCode = 1
-            versionName = "1.0"
-        }
-        packaging {
-            resources {
-                excludes += "/META-INF/{AL2.0,LGPL2.1}"
-            }
-        }
-        buildTypes {
-            getByName("release") {
-                isMinifyEnabled = false
-            }
-        }
-        compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_11
-            targetCompatibility = JavaVersion.VERSION_11
+    defaultConfig {
+        applicationId = "com.suncar.solarsurvivor"
+        minSdk = libs.versions.android.minSdk.get().toInt()
+        targetSdk = libs.versions.android.targetSdk.get().toInt()
+        versionCode = 1
+        versionName = "1.0"
+    }
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-
-    dependencies {
-        debugImplementation(compose.uiTooling)
+    buildTypes {
+        getByName("release") {
+            isMinifyEnabled = false
+        }
     }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+}
+
+dependencies {
+    debugImplementation(compose.uiTooling)
 }

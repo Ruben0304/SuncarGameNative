@@ -1,0 +1,9 @@
+# Ignora todo excepto los archivos necesarios
+*
+!Dockerfile
+!.gitignore
+!*.html
+!*.js
+!*.wasm
+!*.css
+!composeResources/

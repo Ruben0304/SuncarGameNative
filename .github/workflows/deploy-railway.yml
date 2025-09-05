@@ -1,0 +1,51 @@
+name: Deploy to Railway
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+    
+    - name: Build WASM
+      run: |
+        chmod +x ./gradlew
+        ./gradlew :composeApp:wasmJsBrowserProductionWebpack
+    
+    - name: Prepare deployment files
+      run: |
+        # Limpia directorio manteniendo Dockerfile y .gitignore
+        find railway-deploy -type f ! -name 'Dockerfile' ! -name '.gitignore' -delete
+        find railway-deploy -type d -empty -delete
+        
+        # Copia archivos compilados
+        cp composeApp/build/processedResources/wasmJs/main/*.html railway-deploy/
+        cp composeApp/build/processedResources/wasmJs/main/*.css railway-deploy/
+        cp composeApp/build/kotlin-webpack/wasmJs/productionExecutable/*.js railway-deploy/
+        cp composeApp/build/kotlin-webpack/wasmJs/productionExecutable/*.wasm railway-deploy/
+        
+        # Copia recursos si existen
+        if [ -d "composeApp/build/processedResources/wasmJs/main/composeResources" ]; then
+          cp -r composeApp/build/processedResources/wasmJs/main/composeResources railway-deploy/
+        fi
+        
+        echo "📋 Archivos preparados:"
+        ls -la railway-deploy/
+    
+    - name: Deploy to Railway
+      uses: bervProject/railway-deploy@main
+      with:
+        railway_token: ${{ secrets.RAILWAY_TOKEN }}
+        service: "suncargamenative"
+        src: "./railway-deploy"
