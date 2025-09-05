@@ -9,15 +9,15 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     
-    // Only apply Android plugin when not in CI/Docker environment
-    if (System.getenv("RAILWAY_ENVIRONMENT_ID") == null) {
+    // Only apply Android plugin when not in Railway environment
+    if (System.getenv("RAILWAY_ENVIRONMENT") == null) {
         alias(libs.plugins.androidApplication)
     }
 }
 
 kotlin {
-    // Only configure Android target when not in CI/Docker environment
-    if (System.getenv("RAILWAY_ENVIRONMENT_ID") == null) {
+    // Only configure Android target when not in Railway environment
+    if (System.getenv("RAILWAY_ENVIRONMENT") == null) {
         androidTarget {
             @OptIn(ExperimentalKotlinGradlePluginApi::class)
             compilerOptions {
@@ -56,8 +56,8 @@ kotlin {
     }
     
     sourceSets {
-        // Only configure Android dependencies when not in CI/Docker environment
-        if (System.getenv("RAILWAY_ENVIRONMENT_ID") == null) {
+        // Only configure Android dependencies when not in Railway environment
+        if (System.getenv("RAILWAY_ENVIRONMENT") == null) {
             androidMain.dependencies {
                 implementation(compose.preview)
                 implementation(libs.androidx.activity.compose)
@@ -80,8 +80,8 @@ kotlin {
     }
 }
 
-// Only configure Android when not in CI/Docker environment
-if (System.getenv("RAILWAY_ENVIRONMENT_ID") == null) {
+// Only configure Android when not in Railway environment
+if (System.getenv("RAILWAY_ENVIRONMENT") == null) {
     android {
         namespace = "com.suncar.solarsurvivor"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
@@ -110,8 +110,8 @@ if (System.getenv("RAILWAY_ENVIRONMENT_ID") == null) {
     }
 }
 
-// Only configure Android dependencies when not in CI/Docker environment
-if (System.getenv("RAILWAY_ENVIRONMENT_ID") == null) {
+// Only configure Android dependencies when not in Railway environment
+if (System.getenv("RAILWAY_ENVIRONMENT") == null) {
     dependencies {
         debugImplementation(compose.uiTooling)
     }
