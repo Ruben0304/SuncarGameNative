@@ -20,11 +20,8 @@ RUN chmod +x ./gradlew
 # Set gradle daemon properties for container environment
 ENV GRADLE_OPTS="-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=4 -Xmx2g -Dorg.gradle.warning.mode=all"
 
-# Download dependencies first for better caching
-RUN ./gradlew dependencies --no-daemon || true
-
-# Build the WASM JS application with more verbose output
-RUN ./gradlew :composeApp:wasmJsBrowserProductionWebpack --no-daemon --stacktrace --info --warning-mode all
+# Build the WASM JS application
+RUN ./gradlew :composeApp:wasmJsBrowserProductionWebpack --no-daemon --stacktrace
 
 # Production stage - nginx for serving static files
 FROM nginx:alpine

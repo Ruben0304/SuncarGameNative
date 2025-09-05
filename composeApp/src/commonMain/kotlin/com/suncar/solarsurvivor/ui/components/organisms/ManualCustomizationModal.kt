@@ -41,7 +41,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -61,9 +61,9 @@ fun ManualCustomizationModal(
     var batteries by remember { mutableStateOf(initialBatteries) }
     var showHelp by remember { mutableStateOf(true) }
     
-    val configuration = LocalConfiguration.current
-    val isTablet = configuration.screenWidthDp >= 600
-    val isMobile = configuration.screenWidthDp < 600
+    // Use a simpler approach for multiplatform compatibility
+    val isTablet = false // Default to mobile layout for WASM
+    val isMobile = true
     
     val investment = panels * 800 + batteries * 1200
     val monthlyGeneration = panels * 505 * 5 * 30 / 1000
