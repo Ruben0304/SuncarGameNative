@@ -3,7 +3,9 @@
     "allow": [
       "WebFetch(domain:github.com)",
       "WebSearch",
-      "WebFetch(domain:serverfault.com)"
+      "WebFetch(domain:serverfault.com)",
+      "mcp__ide__getDiagnostics",
+      "Bash(./gradlew:*)"
     ],
     "deny": [],
     "ask": []

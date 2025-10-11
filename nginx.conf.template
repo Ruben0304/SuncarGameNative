@@ -1,0 +1,78 @@
+server {
+    # Escuchar en el puerto proporcionado por Railway
+    listen ${PORT} default_server;
+    listen [::]:${PORT} default_server;
+
+    server_name _;
+    root /usr/share/nginx/html;
+    index index.html;
+
+    # Definir tipos MIME correctamente
+    types {
+        application/wasm wasm;
+        application/javascript js;
+        text/css css;
+        text/html html;
+        application/json json;
+        application/octet-stream dat;
+        application/octet-stream pdb;
+        application/font-woff woff;
+        application/font-woff2 woff2;
+    }
+
+    # Gzip para mejorar rendimiento
+    gzip on;
+    gzip_vary on;
+    gzip_min_length 1024;
+    gzip_proxied any;
+    gzip_comp_level 6;
+    gzip_types
+        text/plain
+        text/css
+        text/xml
+        application/json
+        application/javascript
+        application/wasm
+        image/svg+xml
+        image/x-icon
+        application/font-woff
+        application/font-woff2;
+
+    # Headers de seguridad
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+
+    # CORS (ajusta si lo necesitas)
+    add_header Access-Control-Allow-Origin * always;
+    add_header Access-Control-Allow-Methods "GET, POST, OPTIONS" always;
+    add_header Access-Control-Allow-Headers "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range" always;
+
+    # Soporte para SPA (Single Page Application)
+    location / {
+        try_files $uri /index.html;
+    }
+
+    # Cache de archivos estáticos
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg)$ {
+        expires 30d;
+        add_header Cache-Control "public, immutable";
+    }
+
+    # Cache específico para WASM
+    location ~* \.(wasm)$ {
+        expires 1h;
+        add_header Cache-Control "public, must-revalidate";
+        default_type application/wasm;
+    }
+
+    # Silenciar logs innecesarios
+    location = /favicon.ico {
+        log_not_found off;
+        access_log off;
+    }
+    location = /robots.txt {
+        log_not_found off;
+        access_log off;
+    }
+}

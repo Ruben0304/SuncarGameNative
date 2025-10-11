@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
+import com.suncar.solarsurvivor.util.getScreenConfiguration
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
@@ -39,17 +41,40 @@ fun ScheduleRow(
     onEndChange: (Int) -> Unit,
     onRemove: (() -> Unit)?
 ) {
-    Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+    val screenConfiguration = getScreenConfiguration()
+    val screenWidth = screenConfiguration.screenWidthDp
+    
+    // Responsive spacing and sizing
+    val horizontalSpacing = when {
+        screenWidth > 800.dp -> 16.dp
+        screenWidth > 600.dp -> 12.dp
+        else -> 8.dp
+    }
+    
+    val titleWidth = when {
+        screenWidth > 800.dp -> 120.dp
+        screenWidth > 600.dp -> 100.dp
+        else -> 80.dp
+    }
+    
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
         Text(
             text = "Apagón $index",
-            style = MaterialTheme.typography.bodyLarge,
+            style = if (screenWidth > 600.dp) MaterialTheme.typography.bodyLarge else MaterialTheme.typography.bodyMedium,
             fontWeight = FontWeight.Bold,
             color = Color(0xFFFFD700),
-            modifier = Modifier.width(100.dp)
+            modifier = Modifier.widthIn(min = titleWidth, max = titleWidth)
         )
 
-        Text("Desde:", color = Color.White.copy(alpha = 0.8f))
-        Spacer(modifier = Modifier.width(8.dp))
+        Text(
+            "Desde:", 
+            color = Color.White.copy(alpha = 0.8f),
+            style = if (screenWidth > 600.dp) MaterialTheme.typography.bodyMedium else MaterialTheme.typography.bodySmall
+        )
+        Spacer(modifier = Modifier.width(horizontalSpacing))
 
         var startExpanded by remember { mutableStateOf(false) }
         Box {
@@ -80,9 +105,13 @@ fun ScheduleRow(
             }
         }
 
-        Spacer(modifier = Modifier.width(16.dp))
-        Text("Hasta:", color = Color.White.copy(alpha = 0.8f))
-        Spacer(modifier = Modifier.width(8.dp))
+        Spacer(modifier = Modifier.width(horizontalSpacing))
+        Text(
+            "Hasta:", 
+            color = Color.White.copy(alpha = 0.8f),
+            style = if (screenWidth > 600.dp) MaterialTheme.typography.bodyMedium else MaterialTheme.typography.bodySmall
+        )
+        Spacer(modifier = Modifier.width(horizontalSpacing))
 
         var endExpanded by remember { mutableStateOf(false) }
         Box {
@@ -113,15 +142,22 @@ fun ScheduleRow(
             }
         }
 
-        Spacer(modifier = Modifier.width(16.dp))
+        Spacer(modifier = Modifier.width(horizontalSpacing))
 
         // Duration badge
-        Surface(color = Color(0x33FFD700), shape = RoundedCornerShape(4.dp)) {
+        Surface(
+            color = Color(0x33FFD700), 
+            shape = RoundedCornerShape(4.dp)
+        ) {
             Text(
                 text = "${schedule.end - schedule.start}h",
-                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
+                modifier = Modifier.padding(
+                    horizontal = if (screenWidth > 600.dp) 8.dp else 6.dp,
+                    vertical = if (screenWidth > 600.dp) 4.dp else 3.dp
+                ),
                 color = Color(0xFFFFD700),
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Bold,
+                style = if (screenWidth > 600.dp) MaterialTheme.typography.bodyMedium else MaterialTheme.typography.bodySmall
             )
         }
 

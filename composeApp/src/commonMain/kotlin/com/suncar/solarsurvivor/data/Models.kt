@@ -12,7 +12,6 @@ data class Appliance(
     var on: Boolean = false,
     val priority: Int,
     val consumption: Int,
-    val essential: Boolean = false,
     var autoOn: Boolean = false
 )
 

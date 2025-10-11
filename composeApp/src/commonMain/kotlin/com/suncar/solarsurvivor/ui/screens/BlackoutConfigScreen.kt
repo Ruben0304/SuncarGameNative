@@ -3,7 +3,10 @@ package com.suncar.solarsurvivor.ui.screens
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,8 +15,13 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.runtime.remember
+import com.suncar.solarsurvivor.util.getScreenConfiguration
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Battery1Bar
 import androidx.compose.material.icons.filled.Check
@@ -45,16 +53,40 @@ import com.suncar.solarsurvivor.ui.components.*
 import com.suncar.solarsurvivor.ui.components.organisms.ImpactStat
 
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun BlackoutConfigScreen(day: Int, onConfirm: (List<BlackoutSchedule>) -> Unit) {
     var schedules by remember { mutableStateOf(listOf(BlackoutSchedule(10, 14))) }
 
     val scrollState = rememberScrollState()
+    val screenConfiguration = getScreenConfiguration()
+    val screenWidth = screenConfiguration.screenWidthDp
+    
+    // Responsive padding and max width
+    val horizontalPadding = when {
+        screenWidth > 1200.dp -> 64.dp
+        screenWidth > 800.dp -> 48.dp
+        else -> 24.dp
+    }
+    
+    val maxContentWidth = when {
+        screenWidth > 1200.dp -> 800.dp
+        screenWidth > 800.dp -> 700.dp
+        else -> screenWidth - (horizontalPadding * 2)
+    }
 
-    Column(
-        modifier = Modifier.fillMaxSize().background(Color.Black).verticalScroll(scrollState).padding(32.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+    Box(
+        modifier = Modifier.fillMaxSize().background(Color.Black).padding(horizontal = horizontalPadding),
+        contentAlignment = Alignment.TopCenter
     ) {
+        Column(
+            modifier = Modifier
+                .widthIn(max = maxContentWidth)
+                .fillMaxWidth()
+                .verticalScroll(scrollState)
+                .padding(vertical = 32.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
         // Header
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(
@@ -79,56 +111,55 @@ fun BlackoutConfigScreen(day: Int, onConfirm: (List<BlackoutSchedule>) -> Unit) 
             modifier = Modifier.padding(top = 8.dp, bottom = 24.dp)
         )
 
-        // Quick suggestions
-        Row(
+        // Quick suggestions - Responsive flow layout
+        FlowRow(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement =
-                Arrangement.spacedBy(16.dp, Alignment.CenterHorizontally)
+            horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             OutlinedButton(
                 onClick = {
-                    schedules =
-                        listOf(
-                            BlackoutSchedule(10, 14),
-
-                        )
+                    schedules = listOf(BlackoutSchedule(10, 14))
                 },
-                colors =
-                    ButtonDefaults.outlinedButtonColors(
-                        contentColor = Color.White
-                    ),
+                colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.White),
                 border = BorderStroke(1.dp, Color.White.copy(alpha = 0.5f))
-            ) { Text("Bajo 4h") }
+            ) { 
+                Text(
+                    "Bajo 4h",
+                    modifier = Modifier.padding(horizontal = 4.dp)
+                )
+            }
             OutlinedButton(
                 onClick = {
-                    schedules =
-                        listOf(
-                            BlackoutSchedule(10, 14),
-                            BlackoutSchedule(18, 24)
-                        )
+                    schedules = listOf(
+                        BlackoutSchedule(10, 14),
+                        BlackoutSchedule(18, 24)
+                    )
                 },
-                colors =
-                    ButtonDefaults.outlinedButtonColors(
-                        contentColor = Color.White
-                    ),
+                colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.White),
                 border = BorderStroke(1.dp, Color.White.copy(alpha = 0.5f))
-            ) { Text("Medio 10h") }
+            ) { 
+                Text(
+                    "Medio 10h",
+                    modifier = Modifier.padding(horizontal = 4.dp)
+                )
+            }
             OutlinedButton(
                 onClick = {
-                    schedules =
-                        listOf(
-                            BlackoutSchedule(2, 5),
-                            BlackoutSchedule(7, 14),
-                            BlackoutSchedule(16, 24),
-
-                        )
+                    schedules = listOf(
+                        BlackoutSchedule(2, 5),
+                        BlackoutSchedule(7, 14),
+                        BlackoutSchedule(16, 24)
+                    )
                 },
-                colors =
-                    ButtonDefaults.outlinedButtonColors(
-                        contentColor = Color(0xFFFF6B6B)
-                    ),
+                colors = ButtonDefaults.outlinedButtonColors(contentColor = Color(0xFFFF6B6B)),
                 border = BorderStroke(1.dp, Color(0xFFFF6B6B))
-            ) { Text("Zona Crítica (18h)") }
+            ) { 
+                Text(
+                    "Zona Crítica (18h)",
+                    modifier = Modifier.padding(horizontal = 4.dp)
+                )
+            }
         }
 
         Spacer(modifier = Modifier.height(32.dp))
@@ -213,45 +244,62 @@ fun BlackoutConfigScreen(day: Int, onConfirm: (List<BlackoutSchedule>) -> Unit) 
 
         Spacer(modifier = Modifier.height(32.dp))
 
-        // Impact preview
+        // Impact preview - Responsive grid
         val totalHours = schedules.sumOf { it.end - it.start }
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(24.dp)
+        val gridColumns = when {
+            screenWidth > 800.dp -> 3
+            screenWidth > 500.dp -> 2
+            else -> 1
+        }
+        
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(gridColumns),
+            modifier = Modifier.fillMaxWidth().height(
+                when (gridColumns) {
+                    1 -> 300.dp
+                    2 -> 200.dp
+                    else -> 120.dp
+                }
+            ),
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            ImpactStat(
-                icon = Icons.Default.Warning,
-                value = "$totalHours horas",
-                label = "sin electricidad",
-                severity =
-                    when {
+            item {
+                ImpactStat(
+                    icon = Icons.Default.Warning,
+                    value = "$totalHours horas",
+                    label = "sin electricidad",
+                    severity = when {
                         totalHours > 12 -> "critical"
                         totalHours > 8 -> "warning"
                         else -> "normal"
                     }
-            )
-            ImpactStat(
-                icon = Icons.Default.Battery1Bar,
-                value = "${24 - totalHours} horas",
-                label = "con electricidad",
-                severity = "normal"
-            )
-            ImpactStat(
-                icon = Icons.Default.Thermostat,
-                value =
-                    when {
+                )
+            }
+            item {
+                ImpactStat(
+                    icon = Icons.Default.Battery1Bar,
+                    value = "${24 - totalHours} horas",
+                    label = "con electricidad",
+                    severity = "normal"
+                )
+            }
+            item {
+                ImpactStat(
+                    icon = Icons.Default.Thermostat,
+                    value = when {
                         totalHours > 12 -> "Crítico"
                         totalHours > 8 -> "Severo"
                         else -> "Moderado"
                     },
-                label = "Impacto en confort",
-                severity =
-                    when {
+                    label = "Impacto en confort",
+                    severity = when {
                         totalHours > 12 -> "critical"
                         totalHours > 8 -> "warning"
                         else -> "normal"
                     }
-            )
+                )
+            }
         }
 
         Spacer(modifier = Modifier.height(24.dp))
@@ -309,12 +357,15 @@ fun BlackoutConfigScreen(day: Int, onConfirm: (List<BlackoutSchedule>) -> Unit) 
 
         Button(
             onClick = { onConfirm(schedules) },
-            modifier = Modifier.fillMaxWidth().height(56.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(56.dp),
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF667EEA))
         ) {
             Icon(Icons.Default.PlayArrow, contentDescription = null)
             Spacer(modifier = Modifier.width(8.dp))
             Text("Comenzar Día $day", fontSize = 18.sp)
+        }
         }
     }
 }

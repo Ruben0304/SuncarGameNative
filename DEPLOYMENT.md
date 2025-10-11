@@ -1,134 +1,270 @@
-# Solar Survivor - Railway Deployment Guide
+# 🚀 Guía de Despliegue - Kotlin Multiplatform WASM en Railway
 
-## 🎯 Optimized Deployment Strategy (2025)
+## 📋 Pre-requisitos
 
-This project uses a **Docker multi-stage build** strategy, following Railway's best practices for Kotlin Multiplatform WASM applications.
+1. **Railway CLI** instalado: https://docs.railway.app/develop/cli
+2. **Docker** instalado localmente (para pruebas)
+3. **JDK 17+** y **Gradle 8.4+**
+4. Cuenta en [Railway](https://railway.app)
 
-## 🏗️ Architecture
+## 🛠️ Configuración Inicial
 
-### Multi-Stage Docker Build
-```dockerfile
-Stage 1 (Builder): gradle:8.5-jdk17
-- Builds WASM production bundle with Gradle
-- Runs wasmJsBrowserProductionWebpack
-- Generates optimized artifacts
+### 1. Instalar Railway CLI
 
-Stage 2 (Server): nginx:alpine
-- Lightweight nginx server
-- Proper CORS headers for WASM
-- Railway PORT configuration
-- Gzip compression enabled
+```bash
+# macOS/Linux
+curl -fsSL https://railway.app/install.sh | sh
+
+# Windows (PowerShell)
+iwr -useb https://railway.app/install.ps1 | iex
 ```
 
-## 🚀 Deployment Methods
+### 2. Autenticarse en Railway
 
-### Method 1: Automatic GitHub Deployment (Recommended)
-1. Push changes to your connected GitHub repository
-2. Railway automatically detects `Dockerfile` and `railway.json`
-3. Multi-stage build runs automatically
-4. App deploys with zero downtime
-
-### Method 2: Railway CLI
 ```bash
-# Install Railway CLI (if not installed)
-npm install -g @railway/cli
-
-# Deploy from project root
 railway login
+```
+
+### 3. Vincular el Proyecto
+
+```bash
+# Si ya tienes un proyecto en Railway
+railway link
+
+# Si necesitas crear uno nuevo
+railway init
+```
+
+## 📦 Estructura de Archivos Necesarios
+
+```
+proyecto/
+├── Dockerfile
+├── nginx.conf.template
+├── docker-entrypoint.sh
+├── .dockerignore
+├── railway.toml
+├── railway.json
+├── docker-compose.yml (opcional)
+├── deploy.sh (opcional)
+└── composeApp/
+    └── build.gradle.kts
+```
+
+## 🔧 Proceso de Despliegue
+
+### Opción 1: Despliegue Automático con Script
+
+```bash
+chmod +x deploy.sh
+./deploy.sh
+```
+
+### Opción 2: Despliegue Manual
+
+#### 1. Construir Localmente (Verificación)
+
+```bash
+./gradlew :composeApp:wasmJsBrowserDistribution
+```
+
+#### 2. Verificar Archivos Generados
+
+```bash
+ls -la composeApp/build/dist/wasmJs/productionExecutable/
+```
+
+Deberías ver:
+- `index.html`
+- `composeApp.js`
+- `*.wasm` (archivos WebAssembly)
+- Otros recursos estáticos
+
+#### 3. Hacer Ejecutable el Script de Docker
+
+```bash
+chmod +x docker-entrypoint.sh
+```
+
+#### 4. Desplegar en Railway
+
+```bash
 railway up
 ```
 
-### Method 3: Quick Deploy Scripts
+## 🐳 Pruebas Locales con Docker
+
+### Construir Imagen Local
+
 ```bash
-# Linux/Mac
-./deploy.sh
-
-# Windows
-deploy.bat
+docker build -t kotlin-wasm-app .
 ```
 
-## 📁 Project Structure
+### Ejecutar Contenedor Local
 
-```
-SuncarGameNative/
-├── Dockerfile              # Multi-stage build configuration
-├── railway.json           # Railway deployment config
-├── .dockerignore         # Optimizes build context
-├── deploy.sh/.bat        # Deployment scripts
-└── composeApp/           # Source code
-    └── build/dist/wasmJs/productionExecutable/  # Build output
-```
-
-## ⚙️ Configuration Files
-
-### railway.json
-- Forces Dockerfile builder (overrides Nixpacks)
-- Configures health checks
-- Sets restart policies
-
-### .dockerignore
-- Excludes unnecessary files from build context
-- Improves build performance
-- Reduces image size
-
-## 🔧 Build Process
-
-1. **Gradle Build**: Compiles Kotlin/Multiplatform to WASM
-2. **Production Webpack**: Bundles for production with optimization
-3. **nginx Setup**: Configures web server with WASM support
-4. **Railway Deploy**: Automatic deployment with health checks
-
-## 🌐 WASM Configuration
-
-The nginx configuration includes:
-- **CORS Headers**: Required for WASM execution
-- **MIME Types**: Proper `application/wasm` content type
-- **Gzip Compression**: Reduces bundle size
-- **Caching**: Optimizes static asset delivery
-
-## 🗂️ Legacy Files (Can be Removed)
-
-The `railway-deploy/` folder contains legacy manual deployment files:
-- Manual asset copying approach
-- Multiple deployment scripts
-- Static file copies
-
-**These are no longer needed** with the new Docker strategy.
-
-## 🎮 Benefits of New Strategy
-
-1. **🔄 Automated**: No manual file copying
-2. **🚀 Faster**: Multi-stage builds with caching
-3. **🛡️ Reliable**: Consistent build environment
-4. **📦 Optimized**: Smaller images, better compression
-5. **🔧 Maintainable**: Single source of truth in Dockerfile
-
-## 🧪 Testing
-
-Test the build locally:
 ```bash
-# Build Docker image
-docker build -t solar-survivor .
+# Opción 1: Docker directo
+docker run -p 8080:8080 -e PORT=8080 kotlin-wasm-app
 
-# Run locally
-docker run -p 8080:8080 solar-survivor
+# Opción 2: Docker Compose
+docker-compose up
 ```
 
-Visit `http://localhost:8080` to verify the game works correctly.
+Visita: http://localhost:8080
 
-## 🐛 Troubleshooting
+## 🔍 Verificación y Debugging
 
-### Build Fails
-- Check Gradle version compatibility
-- Verify all source files are included in Docker context
-- Check .dockerignore for excluded files
+### Ver Logs en Railway
 
-### WASM Loading Issues
-- Verify CORS headers are set correctly
-- Check browser developer console for errors
-- Ensure proper MIME types for .wasm files
+```bash
+railway logs
+```
 
-### Railway Deployment Issues
-- Verify railway.json is in project root
-- Check Railway dashboard for build logs
-- Ensure GitHub repository is connected properly
+### Abrir la Aplicación
+
+```bash
+railway open
+```
+
+### Variables de Entorno en Railway
+
+Railway automáticamente proporciona:
+- `PORT`: Puerto dinámico asignado
+- `RAILWAY_ENVIRONMENT`: Nombre del ambiente
+- `RAILWAY_PROJECT_ID`: ID del proyecto
+
+## ⚠️ Problemas Comunes y Soluciones
+
+### 1. Error: "wasm streaming compile failed"
+
+**Causa:** MIME type incorrecto para archivos WASM
+**Solución:** Verifica que `nginx.conf.template` incluya:
+```nginx
+types {
+    application/wasm wasm;
+}
+```
+
+### 2. Error: "404 en rutas SPA"
+
+**Causa:** nginx no está configurado para SPA
+**Solución:** Asegúrate que nginx.conf incluya:
+```nginx
+location / {
+    try_files $uri $uri/ /index.html;
+}
+```
+
+### 3. Error: "Port binding failed"
+
+**Causa:** No se está usando la variable PORT de Railway
+**Solución:** Verifica que docker-entrypoint.sh use `$PORT`
+
+### 4. Build muy lento o timeout
+
+**Causa:** Tiempo de build insuficiente
+**Solución:** En `railway.toml`:
+```toml
+[build]
+buildTimeout = 1800  # 30 minutos
+```
+
+### 5. Archivos WASM muy grandes
+
+**Optimizaciones:**
+- Habilita minificación en Gradle
+- Usa compresión gzip en nginx
+- Considera lazy loading de módulos
+
+## 🎯 Optimizaciones de Rendimiento
+
+### 1. Cache de Browser
+
+El nginx.conf ya incluye:
+- Cache de 30 días para assets estáticos
+- Cache de 1 hora para archivos WASM
+
+### 2. Compresión
+
+Gzip está habilitado para:
+- JavaScript, CSS, HTML
+- Archivos WASM
+- Fuentes web
+
+### 3. Headers de Seguridad
+
+Incluidos:
+- X-Frame-Options
+- X-Content-Type-Options
+- X-XSS-Protection
+
+## 📊 Monitoreo
+
+### Métricas en Railway
+
+1. Ve a tu proyecto en Railway Dashboard
+2. Click en el servicio
+3. Pestaña "Metrics" para ver:
+    - Uso de CPU
+    - Memoria
+    - Red
+    - Logs en tiempo real
+
+### Health Check
+
+Railway hace health checks automáticos en `/`
+Configurado en `railway.toml`:
+```toml
+healthcheckPath = "/"
+healthcheckTimeout = 120
+```
+
+## 🔄 Actualizaciones y Redeploys
+
+### Deploy Automático (GitHub)
+
+1. Conecta tu repo de GitHub en Railway
+2. Cada push a `main` dispara un deploy automático
+
+### Deploy Manual
+
+```bash
+railway up
+```
+
+### Rollback
+
+En Railway Dashboard:
+1. Ve a "Deployments"
+2. Encuentra el deployment anterior
+3. Click en "Rollback"
+
+## 📝 Checklist Final
+
+- [ ] Dockerfile creado y configurado
+- [ ] nginx.conf.template con MIME types WASM
+- [ ] docker-entrypoint.sh ejecutable
+- [ ] railway.toml configurado
+- [ ] Variables de entorno configuradas en Railway
+- [ ] Build local exitoso
+- [ ] Prueba local con Docker funcionando
+- [ ] Deploy en Railway exitoso
+- [ ] Health checks pasando
+- [ ] Aplicación accesible públicamente
+
+## 🆘 Soporte
+
+- [Railway Docs](https://docs.railway.app)
+- [Kotlin/WASM Docs](https://kotlinlang.org/docs/wasm-overview.html)
+- [Railway Discord](https://discord.gg/railway)
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/railway)
+
+## 🎉 ¡Listo!
+
+Tu aplicación Kotlin Multiplatform WASM ahora está desplegada en Railway con:
+- ✅ Servidor nginx optimizado
+- ✅ Soporte completo para WebAssembly
+- ✅ Configuración SPA
+- ✅ HTTPS automático
+- ✅ Auto-scaling
+- ✅ CI/CD integrado

@@ -1,7 +1,8 @@
-# Build artifacts
+# Build artifacts (estos se generan durante el build en Docker)
 **/build/
 **/target/
 **/.gradle/
+**/dist/
 
 # IDE files
 .idea/
@@ -9,15 +10,21 @@
 *.ipr
 *.iws
 .vscode/
+*.swp
+*.swo
 
 # OS files
 .DS_Store
 Thumbs.db
 *~
+desktop.ini
 
 # Version control
 .git/
 .gitignore
+.gitattributes
+.svn/
+.hg/
 
 # Documentation and development files
 *.md
@@ -27,11 +34,13 @@ LICENSE*
 docs/
 .editorconfig
 
-# Node.js (if any)
+# Node.js (si existe)
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+package-lock.json
+yarn.lock
 
 # Temporary files
 *.tmp
@@ -40,17 +49,28 @@ yarn-error.log*
 *.pid
 *.seed
 *.pid.lock
-
-# Local configuration
 .env*
-local.properties
+*.bak
+*.backup
 
-# Kotlin compiler cache
+# Kotlin/Gradle specific
 .kotlin/
+*.hprof
+local.properties
 
 # Test results
 test-results/
 reports/
+coverage/
 
-# Railway deploy artifacts (no longer needed)
+# Railway specific (archivos locales de Railway)
 railway-deploy/
+.railway/
+
+# Docker files (no copiar dentro del contenedor)
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# Archivos de configuración nginx (se copian específicamente)
+nginx.conf

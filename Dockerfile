@@ -1,81 +1,46 @@
-# Build stage
-FROM gradle:8.5-jdk17 AS builder
+# Etapa 1: Construcción con Gradle
+FROM gradle:8.11.1-jdk17 AS builder
+
+# Establecer directorio de trabajo
 WORKDIR /app
 
-# Copy Gradle wrapper files first
-COPY gradle gradle
-COPY gradle/wrapper gradle/wrapper
-COPY gradlew gradlew.bat gradle.properties settings.gradle.kts ./
-COPY build.gradle.kts ./
-COPY composeApp/build.gradle.kts composeApp/
+# Instalar Node.js y Yarn (necesarios para wasmJs)
+RUN apt-get update && apt-get install -y curl gnupg && \
+    curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
+    apt-get install -y nodejs yarn && \
+    rm -rf /var/lib/apt/lists/*
 
-# Copy source
-COPY composeApp/ composeApp/
+# Copiar archivos de configuración de Gradle primero (para aprovechar cache de Docker)
+COPY gradlew gradle.properties settings.gradle.kts build.gradle.kts ./
+COPY gradle ./gradle
 
-# Make gradlew executable
+# Dar permisos de ejecución al wrapper
 RUN chmod +x ./gradlew
 
-# Build only wasm target with full distribution
-RUN ./gradlew :composeApp:wasmJsBrowserDistribution -PwasmBuild=true --no-daemon --stacktrace
+# Copiar el resto del código fuente
+COPY composeApp ./composeApp
 
-# Serve with Nginx
+# Construir la aplicación WASM para producción usando el wrapper
+RUN ./gradlew :composeApp:wasmJsBrowserDistribution --no-daemon --no-configuration-cache
+
+# Etapa 2: Servidor nginx para servir la aplicación
 FROM nginx:alpine
 
-# Copy built app
-COPY --from=builder /app/composeApp/build/dist/wasmJs/productionExecutable/ /usr/share/nginx/html/
+# Instalar envsubst para variables de entorno
+RUN apk add --no-cache gettext
 
-# Add WASM MIME type to nginx
-RUN echo 'application/wasm wasm;' >> /etc/nginx/mime.types
+# Copiar los archivos compilados desde la etapa de construcción
+COPY --from=builder /app/composeApp/build/dist/wasmJs/productionExecutable /usr/share/nginx/html
 
-# Create nginx config file
-RUN echo 'server {' > /etc/nginx/conf.d/default.conf && \
-    echo '    listen 8080;' >> /etc/nginx/conf.d/default.conf && \
-    echo '    server_name localhost;' >> /etc/nginx/conf.d/default.conf && \
-    echo '    root /usr/share/nginx/html;' >> /etc/nginx/conf.d/default.conf && \
-    echo '    index index.html;' >> /etc/nginx/conf.d/default.conf && \
-    echo '' >> /etc/nginx/conf.d/default.conf && \
-    echo '    location ~* \.wasm$ {' >> /etc/nginx/conf.d/default.conf && \
-    echo '        add_header Content-Type application/wasm;' >> /etc/nginx/conf.d/default.conf && \
-    echo '        add_header Cross-Origin-Embedder-Policy require-corp;' >> /etc/nginx/conf.d/default.conf && \
-    echo '        add_header Cross-Origin-Opener-Policy same-origin;' >> /etc/nginx/conf.d/default.conf && \
-    echo '        expires 1y;' >> /etc/nginx/conf.d/default.conf && \
-    echo '        add_header Cache-Control "public, immutable";' >> /etc/nginx/conf.d/default.conf && \
-    echo '    }' >> /etc/nginx/conf.d/default.conf && \
-    echo '' >> /etc/nginx/conf.d/default.conf && \
-    echo '    location ~* \.js$ {' >> /etc/nginx/conf.d/default.conf && \
-    echo '        add_header Cross-Origin-Embedder-Policy require-corp;' >> /etc/nginx/conf.d/default.conf && \
-    echo '        add_header Cross-Origin-Opener-Policy same-origin;' >> /etc/nginx/conf.d/default.conf && \
-    echo '        expires 1y;' >> /etc/nginx/conf.d/default.conf && \
-    echo '        add_header Cache-Control "public, immutable";' >> /etc/nginx/conf.d/default.conf && \
-    echo '    }' >> /etc/nginx/conf.d/default.conf && \
-    echo '' >> /etc/nginx/conf.d/default.conf && \
-    echo '    location / {' >> /etc/nginx/conf.d/default.conf && \
-    echo '        try_files $uri $uri/ /index.html;' >> /etc/nginx/conf.d/default.conf && \
-    echo '        add_header Cross-Origin-Embedder-Policy require-corp;' >> /etc/nginx/conf.d/default.conf && \
-    echo '        add_header Cross-Origin-Opener-Policy same-origin;' >> /etc/nginx/conf.d/default.conf && \
-    echo '    }' >> /etc/nginx/conf.d/default.conf && \
-    echo '' >> /etc/nginx/conf.d/default.conf && \
-    echo '    gzip on;' >> /etc/nginx/conf.d/default.conf && \
-    echo '    gzip_vary on;' >> /etc/nginx/conf.d/default.conf && \
-    echo '    gzip_min_length 1024;' >> /etc/nginx/conf.d/default.conf && \
-    echo '    gzip_comp_level 6;' >> /etc/nginx/conf.d/default.conf && \
-    echo '    gzip_types text/plain text/css text/xml text/javascript application/javascript application/xml+rss application/json application/wasm;' >> /etc/nginx/conf.d/default.conf && \
-    echo '}' >> /etc/nginx/conf.d/default.conf
+# Copiar configuración de nginx
+COPY nginx.conf.template /etc/nginx/templates/default.conf.template
 
-# Create startup script
-RUN echo '#!/bin/sh' > /docker-entrypoint.sh && \
-    echo 'echo "Starting nginx with PORT: $PORT"' >> /docker-entrypoint.sh && \
-    echo 'if [ -n "$PORT" ]; then' >> /docker-entrypoint.sh && \
-    echo '    echo "Updating nginx config to use port $PORT"' >> /docker-entrypoint.sh && \
-    echo '    sed -i "s/listen 8080;/listen $PORT;/g" /etc/nginx/conf.d/default.conf' >> /docker-entrypoint.sh && \
-    echo 'else' >> /docker-entrypoint.sh && \
-    echo '    echo "Using default port 8080"' >> /docker-entrypoint.sh && \
-    echo 'fi' >> /docker-entrypoint.sh && \
-    echo 'echo "Nginx config updated, starting nginx..."' >> /docker-entrypoint.sh && \
-    echo 'nginx -t' >> /docker-entrypoint.sh && \
-    echo 'exec nginx -g "daemon off;"' >> /docker-entrypoint.sh && \
-    chmod +x /docker-entrypoint.sh
+# Script de inicio personalizado
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
 
-EXPOSE 8080
+# Exponer el puerto (Railway lo sobreescribirá con su variable PORT)
+EXPOSE 80
 
-CMD ["/docker-entrypoint.sh"]
+# Usar el script de inicio personalizado
+ENTRYPOINT ["/docker-entrypoint.sh"]
