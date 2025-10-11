@@ -1,6 +1,5 @@
 package com.suncar.solarsurvivor.ui.screens
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -22,9 +21,6 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AttachMoney
-import androidx.compose.material.icons.filled.Battery1Bar
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.WbSunny
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -50,7 +46,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.suncar.solarsurvivor.data.Appliance
 import com.suncar.solarsurvivor.data.SolarKits
-import com.suncar.solarsurvivor.ui.components.RecommendationCard
 import com.suncar.solarsurvivor.ui.components.atom.*
 import com.suncar.solarsurvivor.ui.components.molecules.*
 import com.suncar.solarsurvivor.ui.components.organisms.*
@@ -88,10 +83,6 @@ fun SolarStudyScreen(appliances: Map<String, Appliance>, onComplete: (Int, Int) 
     var selectedKitId by remember { mutableStateOf<String?>(null) }
 
     val kits = remember { SolarKits.getKitsByPower() }
-    val selectedKit = kits.firstOrNull { it.id == selectedKitId }
-    val kitGameUnits = selectedKit?.toGameUnits() ?: (0 to 0)
-    val kitPanels = kitGameUnits.first
-    val kitBatteries = kitGameUnits.second
 
     val requiredPower =
         priorities.entries.sumOf { (key, selected) ->
@@ -125,10 +116,6 @@ fun SolarStudyScreen(appliances: Map<String, Appliance>, onComplete: (Int, Int) 
     panels = minOf(12, panels)
     batteries = minOf(6, batteries)
 
-    val investment = panels * 800 + batteries * 1200
-    val monthlyGeneration = panels * 505 * 5 * 30 / 1000
-    val autonomy = batteries * 5000f / requiredPower
-
     val screenWidth = getScreenConfiguration().screenWidthDp
     val isCompact = screenWidth < 600.dp
     val horizontalPadding = when {
@@ -145,10 +132,6 @@ fun SolarStudyScreen(appliances: Map<String, Appliance>, onComplete: (Int, Int) 
         if (isCompact) MaterialTheme.typography.titleMedium else MaterialTheme.typography.titleLarge
     val primaryBodyStyle =
         if (isCompact) MaterialTheme.typography.bodyMedium else MaterialTheme.typography.bodyLarge
-    val secondaryBodyStyle =
-        if (isCompact) MaterialTheme.typography.bodySmall else MaterialTheme.typography.bodyMedium
-    val accentTitleStyle =
-        if (isCompact) MaterialTheme.typography.titleSmall else MaterialTheme.typography.titleMedium
     val contentModifier =
         Modifier
             .fillMaxWidth()
@@ -429,133 +412,6 @@ fun SolarStudyScreen(appliances: Map<String, Appliance>, onComplete: (Int, Int) 
             Spacer(modifier = Modifier.height(if (isCompact) 20.dp else 24.dp))
         }
 
-        // Section 3: Recommendation
-        item {
-            Card(
-                modifier = contentModifier,
-                colors =
-                    CardDefaults.cardColors(containerColor = Color(0x33FFD700)),
-                border = BorderStroke(2.dp, Color(0xFFFFD700))
-            ) {
-                Column(
-                    modifier =
-                        Modifier.padding(
-                            horizontal = if (isCompact) 16.dp else 24.dp,
-                            vertical = if (isCompact) 20.dp else 24.dp
-                        )
-                ) {
-                    Text(
-                        text = "3. Sistema Recomendado para Ti",
-                        style = sectionTitleStyle,
-                        fontWeight = FontWeight.Bold,
-                        color = Color(0xFFFFD700)
-                    )
-
-                    Spacer(modifier = Modifier.height(if (isCompact) 20.dp else 24.dp))
-
-                    if (isCompact) {
-                        Column(
-                            modifier = Modifier.fillMaxWidth(),
-                            verticalArrangement = Arrangement.spacedBy(12.dp)
-                        ) {
-                            RecommendationCard(
-                                icon = Icons.Default.WbSunny,
-                                value = panels.toString(),
-                                label = "Paneles Solares",
-                                detail = "505W c/u",
-                                color = Color(0xFFFFD700),
-                                modifier = Modifier.fillMaxWidth()
-                            )
-                            RecommendationCard(
-                                icon = Icons.Default.Battery1Bar,
-                                value = batteries.toString(),
-                                label = "Baterías",
-                                detail = "5kWh c/u",
-                                color = Color(0xFF4CAF50),
-                                modifier = Modifier.fillMaxWidth()
-                            )
-                            RecommendationCard(
-                                icon = Icons.Default.AttachMoney,
-                                value = "$${investment}",
-                                label = "Inversión Total",
-                                detail = "Financiamiento disponible",
-                                color = Color(0xFF2196F3),
-                                modifier = Modifier.fillMaxWidth()
-                            )
-                        }
-                    } else {
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.spacedBy(16.dp)
-                        ) {
-                            RecommendationCard(
-                                icon = Icons.Default.WbSunny,
-                                value = panels.toString(),
-                                label = "Paneles Solares",
-                                detail = "505W c/u",
-                                color = Color(0xFFFFD700),
-                                modifier = Modifier.weight(1f)
-                            )
-                            RecommendationCard(
-                                icon = Icons.Default.Battery1Bar,
-                                value = batteries.toString(),
-                                label = "Baterías",
-                                detail = "5kWh c/u",
-                                color = Color(0xFF4CAF50),
-                                modifier = Modifier.weight(1f)
-                            )
-                            RecommendationCard(
-                                icon = Icons.Default.AttachMoney,
-                                value = "$${investment}",
-                                label = "Inversión Total",
-                                detail = "Financiamiento disponible",
-                                color = Color(0xFF2196F3),
-                                modifier = Modifier.weight(1f)
-                            )
-                        }
-                    }
-
-                    Spacer(modifier = Modifier.height(if (isCompact) 20.dp else 24.dp))
-
-                    Card(
-                        colors =
-                            CardDefaults.cardColors(
-                                containerColor = Color(0x334CAF50)
-                            )
-                    ) {
-                        Column(modifier = Modifier.padding(20.dp)) {
-                            Text(
-                                text = "Con este sistema podrás:",
-                                style = accentTitleStyle,
-                                fontWeight = FontWeight.Bold,
-                                color = Color(0xFF4CAF50)
-                            )
-
-                            Spacer(modifier = Modifier.height(12.dp))
-
-                            BenefitItem(
-                                "✅ Mantener todos los dispositivos seleccionados durante apagones"
-                            )
-                            BenefitItem(
-                                "✅ ${autonomy.toInt()} horas de autonomía sin sol"
-                            )
-                            BenefitItem(
-                                "✅ Generar ${monthlyGeneration} kWh mensuales"
-                            )
-                            BenefitItem(
-                                "✅ Ahorrar ~$${(monthlyGeneration * 0.15f).toInt()} USD/mes"
-                            )
-                            BenefitItem(
-                                "✅ ROI en ${(investment / (monthlyGeneration * 0.15f * 12)).toInt()} años"
-                            )
-                        }
-                    }
-                }
-            }
-
-            Spacer(modifier = Modifier.height(if (isCompact) 24.dp else 32.dp))
-        }
-
         // Actions
         item {
             Column(modifier = contentModifier) {
@@ -573,17 +429,13 @@ fun SolarStudyScreen(appliances: Map<String, Appliance>, onComplete: (Int, Int) 
                                 )
                         ) { Text("Personalizar Manualmente") }
                         Button(
-                            onClick = { onComplete(panels, batteries) },
+                            onClick = { showKitOptions = true },
                             modifier = Modifier.fillMaxWidth(),
                             colors =
                                 ButtonDefaults.buttonColors(
                                     containerColor = Color(0xFF4CAF50)
                                 )
-                        ) {
-                            Icon(Icons.Default.Check, contentDescription = null)
-                            Spacer(modifier = Modifier.width(8.dp))
-                            Text("Aceptar y Continuar")
-                        }
+                        ) { Text("Seleccionar un Kit Suncar") }
                     }
                 } else {
                     Row(
@@ -599,137 +451,35 @@ fun SolarStudyScreen(appliances: Map<String, Appliance>, onComplete: (Int, Int) 
                                 )
                         ) { Text("Personalizar Manualmente") }
                         Button(
-                            onClick = { onComplete(panels, batteries) },
+                            onClick = { showKitOptions = true },
                             modifier = Modifier.weight(1f),
                             colors =
                                 ButtonDefaults.buttonColors(
                                     containerColor = Color(0xFF4CAF50)
                                 )
-                        ) {
-                            Icon(Icons.Default.Check, contentDescription = null)
-                            Spacer(modifier = Modifier.width(8.dp))
-                            Text("Aceptar y Continuar")
-                        }
-                    }
-                }
-
-                Spacer(modifier = Modifier.height(if (isCompact) 12.dp else 16.dp))
-
-                OutlinedButton(
-                    onClick = {
-                        showKitOptions = !showKitOptions
-                        if (!showKitOptions) {
-                            selectedKitId = null
-                        }
-                    },
-                    modifier = Modifier.fillMaxWidth(),
-                    colors =
-                        ButtonDefaults.outlinedButtonColors(
-                            contentColor = Color.White
-                        )
-                ) {
-                    Text(
-                        text =
-                            if (showKitOptions) "Ocultar Kits Predefinidos"
-                            else "Ver Kits Predefinidos"
-                    )
-                }
-
-                if (showKitOptions) {
-                    Spacer(modifier = Modifier.height(24.dp))
-                    Text(
-                        text = "Kits Suncar recomendados",
-                        style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.Bold,
-                        color = Color(0xFFFFD700)
-                    )
-                    Spacer(modifier = Modifier.height(12.dp))
-                    Text(
-                        text = "Explora las ofertas reales y tradúcelas a tu partida con un clic.",
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = Color.White.copy(alpha = 0.9f)
-                    )
-
-                    Spacer(modifier = Modifier.height(if (isCompact) 16.dp else 20.dp))
-
-                    kits.forEachIndexed { index, kit ->
-                        KitCard(
-                            kit = kit,
-                            selected = selectedKitId == kit.id,
-                            onClick = {
-                                selectedKitId =
-                                    if (selectedKitId == kit.id) null else kit.id
-                            },
-                            modifier = Modifier.fillMaxWidth()
-                        )
-                        if (index != kits.lastIndex) {
-                            Spacer(modifier = Modifier.height(if (isCompact) 12.dp else 16.dp))
-                        }
-                    }
-
-                    Spacer(modifier = Modifier.height(if (isCompact) 16.dp else 20.dp))
-
-                    selectedKit?.let { kit ->
-                        Card(
-                            colors =
-                                CardDefaults.cardColors(
-                                    containerColor = Color(0xFF1F3321)
-                                ),
-                            border = BorderStroke(1.dp, Color(0xFF4CAF50))
-                        ) {
-                            Column(modifier = Modifier.padding(16.dp)) {
-                                Text(
-                                    text = "Tu selección se traduce a:",
-                                    style = MaterialTheme.typography.titleMedium,
-                                    fontWeight = FontWeight.Bold,
-                                    color = Color(0xFF4CAF50)
-                                )
-                                Spacer(modifier = Modifier.height(12.dp))
-                                Text(
-                                    text = "$kitPanels paneles dentro del juego",
-                                    color = Color.White
-                                )
-                                Text(
-                                    text =
-                                        "$kitBatteries baterías de 5kWh c/u (${kit.capacidadBateriaKWh} kWh reales)",
-                                    color = Color.White
-                                )
-                            }
-                        }
-                        Spacer(modifier = Modifier.height(if (isCompact) 12.dp else 16.dp))
-                    } ?: run {
-                        Text(
-                            text = "Selecciona uno de los kits para continuar.",
-                            color = Color.White.copy(alpha = 0.8f)
-                        )
-                        Spacer(modifier = Modifier.height(if (isCompact) 12.dp else 16.dp))
-                    }
-
-                    Button(
-                        onClick = {
-                            selectedKit?.let {
-                                onComplete(kitPanels, kitBatteries)
-                            }
-                        },
-                        modifier = Modifier.fillMaxWidth().height(if (isCompact) 52.dp else 56.dp),
-                        colors =
-                            ButtonDefaults.buttonColors(
-                                containerColor = Color(0xFF4CAF50)
-                            ),
-                        enabled = selectedKit != null
-                    ) {
-                        Text(
-                            text =
-                                selectedKit?.let { "Instalar ${it.getLabel()}" }
-                                    ?: "Selecciona un kit",
-                            fontWeight = FontWeight.Bold
-                        )
+                        ) { Text("Seleccionar un Kit Suncar") }
                     }
                 }
             }
         }
     }
-    
+    if (showKitOptions) {
+        KitSelectionModal(
+            kits = kits,
+            selectedKitId = selectedKitId,
+            isCompact = isCompact,
+            onDismiss = {
+                showKitOptions = false
+            },
+            onKitSelected = { kit ->
+                selectedKitId = kit.id
+                val (kitPanels, kitBatteries) = kit.toGameUnits()
+                showKitOptions = false
+                onComplete(kitPanels, kitBatteries)
+            }
+        )
+    }
+
     // Manual customization modal
     if (showManualModal) {
         ManualCustomizationModal(
