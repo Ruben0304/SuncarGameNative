@@ -1,0 +1,138 @@
+[
+  {
+    "nombre_marca": "Greenheiss",
+    "kW": 3.0,
+    "precio": 5440,
+    "cantidad_paneles": 6,
+    "capacidad_bateria_kWh": 4.8,
+    "kW_paneles": 3.54
+  },
+  {
+    "nombre_marca": "Greenheiss",
+    "kW": 5.0,
+    "precio": 9911.26,
+    "cantidad_paneles": 10,
+    "capacidad_bateria_kWh": 4.0,
+    "kW_paneles": 5.9
+  },
+  {
+    "nombre_marca": "Huawei",
+    "kW": 10.0,
+    "precio": 29249.37,
+    "cantidad_paneles": 26,
+    "capacidad_bateria_kWh": 21.0,
+    "kW_paneles": 15.34
+  },
+  {
+    "nombre_marca": "Must",
+    "kW": 3.0,
+    "precio": 3830,
+    "cantidad_paneles": 4,
+    "capacidad_bateria_kWh": 7.0,
+    "kW_paneles": 2.36
+  },
+  {
+    "nombre_marca": "Must",
+    "kW": 6.0,
+    "precio": 4500,
+    "cantidad_paneles": 0,
+    "capacidad_bateria_kWh": 14.3,
+    "kW_paneles": null
+  },
+  {
+    "nombre_marca": "Must",
+    "kW": 3.0,
+    "precio": 2350,
+    "cantidad_paneles": 0,
+    "capacidad_bateria_kWh": 7.0,
+    "kW_paneles": null
+  },
+  {
+    "nombre_marca": "Must",
+    "kW": 6.0,
+    "precio": 7560.77,
+    "cantidad_paneles": 8,
+    "capacidad_bateria_kWh": 14.3,
+    "kW_paneles": 4.72
+  },
+  {
+    "nombre_marca": "Felicity Solar",
+    "kW": 5.0,
+    "precio": 7163.51,
+    "cantidad_paneles": 8,
+    "capacidad_bateria_kWh": 15.0,
+    "kW_paneles": 4.72
+  },
+  {
+    "nombre_marca": "Felicity Solar",
+    "kW": 10.0,
+    "precio": 7273.51,
+    "cantidad_paneles": 8,
+    "capacidad_bateria_kWh": 10.0,
+    "kW_paneles": 4.72
+  },
+  {
+    "nombre_marca": "Felicity Solar",
+    "kW": 2.0,
+    "precio": 2352.45,
+    "cantidad_paneles": 2,
+    "capacidad_bateria_kWh": 2.56,
+    "kW_paneles": 1.18
+  },
+  {
+    "nombre_marca": "Felicity Solar",
+    "kW": 5.0,
+    "precio": 5843.51,
+    "cantidad_paneles": 8,
+    "capacidad_bateria_kWh": 5.12,
+    "kW_paneles": 4.72
+  },
+  {
+    "nombre_marca": "Felicity Solar",
+    "kW": 10.0,
+    "precio": 7933.51,
+    "cantidad_paneles": 8,
+    "capacidad_bateria_kWh": 15.0,
+    "kW_paneles": 4.72
+  },
+  {
+    "nombre_marca": "Felicity Solar",
+    "kW": 5.0,
+    "precio": 6503.51,
+    "cantidad_paneles": 8,
+    "capacidad_bateria_kWh": 10.0,
+    "kW_paneles": 4.72
+  },
+  {
+    "nombre_marca": "Felicity Solar",
+    "kW": 10.0,
+    "precio": 6613.51,
+    "cantidad_paneles": 8,
+    "capacidad_bateria_kWh": 15.0,
+    "kW_paneles": 4.72
+  },
+  {
+    "nombre_marca": "Felicity Solar",
+    "kW": 3.0,
+    "precio": 5044.25,
+    "cantidad_paneles": 5,
+    "capacidad_bateria_kWh": 10.0,
+    "kW_paneles": 2.95
+  },
+  {
+    "nombre_marca": "Felicity Solar",
+    "kW": 2.0,
+    "precio": 2650.45,
+    "cantidad_paneles": 2,
+    "capacidad_bateria_kWh": 5.0,
+    "kW_paneles": 1.18
+  },
+  {
+    "nombre_marca": "Felicity Solar",
+    "kW": 3.0,
+    "precio": 4384.25,
+    "cantidad_paneles": 5,
+    "capacidad_bateria_kWh": 5.0,
+    "kW_paneles": 2.95
+  }
+]

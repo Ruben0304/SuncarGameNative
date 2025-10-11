@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -20,7 +21,6 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AttachMoney
 import androidx.compose.material.icons.filled.Battery1Bar
 import androidx.compose.material.icons.filled.Bedtime
 import androidx.compose.material.icons.filled.Bolt
@@ -45,6 +45,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.suncar.solarsurvivor.data.Appliance
 import com.suncar.solarsurvivor.data.EnergySource
@@ -89,6 +90,7 @@ fun GameScreen(
     onSpeedChange: (Long) -> Unit,
     onToggleAppliance: (String) -> Unit,
     onConfigureClick: () -> Unit,
+    onFinishClick: () -> Unit,
     isFirstTime: Boolean = currentDay == 1 && timeOfDay < 8
 ) {
     val scrollState = rememberScrollState()
@@ -111,126 +113,263 @@ fun GameScreen(
                 modifier = Modifier.fillMaxWidth(),
                 colors = CardDefaults.cardColors(containerColor = Color(0xFF2A2A3E))
             ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth().padding(16.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    // Time Display
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Icon(
-                            imageVector =
-                                if (timeOfDay in 6..17)
-                                    Icons.Default.WbSunny
-                                else Icons.Default.Bedtime,
-                            contentDescription = null,
-                            modifier = Modifier.size(24.dp),
-                            tint =
-                                if (timeOfDay in 6..17) Color(0xFFFFD700)
-                                else Color(0xFF9C9CDB)
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Column {
-                            Text(
-                                text =
-                                    "${timeOfDay.toString().padStart(2, '0')}:00",
-                                style = MaterialTheme.typography.titleLarge,
-                                fontWeight = FontWeight.Bold,
-                                color = Color.White
+                val timeSection: @Composable () -> Unit = {
+                    Column {
+                        // Time Display
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(
+                                imageVector =
+                                    if (timeOfDay in 6..17)
+                                        Icons.Default.WbSunny
+                                    else Icons.Default.Bedtime,
+                                contentDescription = null,
+                                modifier = Modifier.size(24.dp),
+                                tint =
+                                    if (timeOfDay in 6..17) Color(0xFFFFD700)
+                                    else Color(0xFF9C9CDB)
                             )
-                            Text(
-                                text = "Día $currentDay",
-                                style = MaterialTheme.typography.bodySmall,
-                                color = Color.White.copy(alpha = 0.8f)
-                            )
-                        }
-                    }
-
-                    // Energy Status
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(12.dp)
-                    ) {
-                        EnergyIndicator(energySource)
-
-                        if (isBlackout) {
-                            Surface(
-                                color = Color(0xFFFF6B6B),
-                                shape = RoundedCornerShape(8.dp)
-                            ) {
-                                Row(
-                                    modifier =
-                                        Modifier.padding(
-                                            horizontal = 12.dp,
-                                            vertical = 6.dp
-                                        ),
-                                    verticalAlignment =
-                                        Alignment.CenterVertically
-                                ) {
-                                    Icon(
-                                        Icons.Default.Warning,
-                                        contentDescription = null,
-                                        modifier =
-                                            Modifier.size(
-                                                16.dp
-                                            ),
-                                        tint = Color.White
-                                    )
-                                    Spacer(
-                                        modifier =
-                                            Modifier.width(4.dp)
-                                    )
-                                    Text(
-                                        text = "APAGÓN ACTIVO",
-                                        fontWeight =
-                                            FontWeight.Bold,
-                                        color = Color.White
-                                    )
-                                }
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Column {
+                                Text(
+                                    text =
+                                        "${timeOfDay.toString().padStart(2, '0')}:00",
+                                    style = MaterialTheme.typography.titleLarge,
+                                    fontWeight = FontWeight.Bold,
+                                    color = Color.White
+                                )
+                                Text(
+                                    text = "Día $currentDay",
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = Color.White.copy(alpha = 0.8f)
+                                )
                             }
                         }
 
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(8.dp)
-                        ) {
-                            SpeedControl(gameSpeed, onSpeedChange)
-                            HelpTooltip(
-                                text = "Controla la velocidad del tiempo. Acelera para pasar rápido por las horas, ralentiza para gestionar mejor tu energía.",
-                                icon = Icons.Default.HelpOutline,
-                                iconColor = Color(0xFFFFD700)
+                        Spacer(modifier = Modifier.height(8.dp))
+
+                        // Score Display
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(
+                                imageVector = Icons.Default.EmojiEvents,
+                                contentDescription = null,
+                                modifier = Modifier.size(20.dp),
+                                tint = Color(0xFFFDB813)
+                            )
+                            Spacer(modifier = Modifier.width(6.dp))
+                            Text(
+                                text = "Puntuación: $score pts",
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.SemiBold,
+                                color = Color(0xFFFDB813)
                             )
                         }
                     }
+                }
 
-                    // Metrics
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Icon(
-                            Icons.Default.Groups,
-                            contentDescription = null,
-                            modifier = Modifier.size(16.dp),
-                            tint = Color.White.copy(alpha = 0.8f)
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            text = "Comfort: ${comfortLevel.toInt()}%",
-                            color = Color.White
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        LinearProgressIndicator(
-                            progress = comfortLevel / 100f,
-                            modifier = Modifier.width(100.dp),
-                            color =
-                                when {
-                                    comfortLevel < 30 ->
-                                        Color(0xFFFF6B6B)
+                val energySection: @Composable () -> Unit = {
+                    if (isCompact) {
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(12.dp),
+                            horizontalAlignment = Alignment.Start
+                        ) {
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(12.dp)
+                            ) {
+                                EnergyIndicator(energySource)
 
-                                    comfortLevel < 60 ->
-                                        Color(0xFFFFA500)
-
-                                    else -> Color(0xFF4CAF50)
+                                if (isBlackout) {
+                                    Surface(
+                                        color = Color(0xFFFF6B6B),
+                                        shape = RoundedCornerShape(8.dp)
+                                    ) {
+                                        Row(
+                                            modifier =
+                                                Modifier.padding(
+                                                    horizontal = 12.dp,
+                                                    vertical = 6.dp
+                                                ),
+                                            verticalAlignment =
+                                                Alignment.CenterVertically
+                                        ) {
+                                            Icon(
+                                                Icons.Default.Warning,
+                                                contentDescription = null,
+                                                modifier =
+                                                    Modifier.size(
+                                                        16.dp
+                                                    ),
+                                                tint = Color.White
+                                            )
+                                            Spacer(
+                                                modifier =
+                                                    Modifier.width(4.dp)
+                                            )
+                                            Text(
+                                                text = "APAGÓN ACTIVO",
+                                                fontWeight =
+                                                    FontWeight.Bold,
+                                                color = Color.White
+                                            )
+                                        }
+                                    }
                                 }
-                        )
+                            }
+
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(8.dp)
+                            ) {
+                                SpeedControl(gameSpeed, onSpeedChange)
+                                HelpTooltip(
+                                    text = "Controla la velocidad del tiempo. Acelera para pasar rápido por las horas, ralentiza para gestionar mejor tu energía.",
+                                    icon = Icons.Default.HelpOutline,
+                                    iconColor = Color(0xFFFFD700)
+                                )
+                            }
+                        }
+                    } else {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(12.dp)
+                        ) {
+                            EnergyIndicator(energySource)
+
+                            if (isBlackout) {
+                                Surface(
+                                    color = Color(0xFFFF6B6B),
+                                    shape = RoundedCornerShape(8.dp)
+                                ) {
+                                    Row(
+                                        modifier =
+                                            Modifier.padding(
+                                                horizontal = 12.dp,
+                                                vertical = 6.dp
+                                            ),
+                                        verticalAlignment =
+                                            Alignment.CenterVertically
+                                    ) {
+                                        Icon(
+                                            Icons.Default.Warning,
+                                            contentDescription = null,
+                                            modifier =
+                                                Modifier.size(
+                                                    16.dp
+                                                ),
+                                            tint = Color.White
+                                        )
+                                        Spacer(
+                                            modifier =
+                                                Modifier.width(4.dp)
+                                        )
+                                        Text(
+                                            text = "APAGÓN ACTIVO",
+                                            fontWeight =
+                                                FontWeight.Bold,
+                                            color = Color.White
+                                        )
+                                    }
+                                }
+                            }
+
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(8.dp)
+                            ) {
+                                SpeedControl(gameSpeed, onSpeedChange)
+                                HelpTooltip(
+                                    text = "Controla la velocidad del tiempo. Acelera para pasar rápido por las horas, ralentiza para gestionar mejor tu energía.",
+                                    icon = Icons.Default.HelpOutline,
+                                    iconColor = Color(0xFFFFD700)
+                                )
+                            }
+                        }
+                    }
+                }
+
+                val metricsSection: @Composable () -> Unit = {
+                    if (isCompact) {
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Icon(
+                                    Icons.Default.Groups,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(16.dp),
+                                    tint = Color.White.copy(alpha = 0.8f)
+                                )
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Text(
+                                    text = "Comfort: ${comfortLevel.toInt()}%",
+                                    color = Color.White
+                                )
+                            }
+                            LinearProgressIndicator(
+                                progress = comfortLevel / 100f,
+                                modifier = Modifier.fillMaxWidth(),
+                                color =
+                                    when {
+                                        comfortLevel < 30 ->
+                                            Color(0xFFFF6B6B)
+
+                                        comfortLevel < 60 ->
+                                            Color(0xFFFFA500)
+
+                                        else -> Color(0xFF4CAF50)
+                                    }
+                            )
+                        }
+                    } else {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(
+                                Icons.Default.Groups,
+                                contentDescription = null,
+                                modifier = Modifier.size(16.dp),
+                                tint = Color.White.copy(alpha = 0.8f)
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Text(
+                                text = "Comfort: ${comfortLevel.toInt()}%",
+                                color = Color.White
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            LinearProgressIndicator(
+                                progress = comfortLevel / 100f,
+                                modifier = Modifier.width(100.dp),
+                                color =
+                                    when {
+                                        comfortLevel < 30 ->
+                                            Color(0xFFFF6B6B)
+
+                                        comfortLevel < 60 ->
+                                            Color(0xFFFFA500)
+
+                                        else -> Color(0xFF4CAF50)
+                                    }
+                            )
+                        }
+                    }
+                }
+
+                if (isCompact) {
+                    Column(
+                        modifier = Modifier.fillMaxWidth().padding(16.dp),
+                        verticalArrangement = Arrangement.spacedBy(16.dp)
+                    ) {
+                        timeSection()
+                        energySection()
+                        metricsSection()
+                    }
+                } else {
+                    Row(
+                        modifier = Modifier.fillMaxWidth().padding(16.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        timeSection()
+                        energySection()
+                        metricsSection()
                     }
                 }
             }
@@ -275,6 +414,8 @@ fun GameScreen(
                         security = security,
                         currentDay = currentDay,
                         onConfigureClick = onConfigureClick,
+                        onFinishClick = onFinishClick,
+                        isCompact = true,
                         modifier = Modifier.fillMaxWidth()
                     )
 
@@ -286,6 +427,7 @@ fun GameScreen(
                         isBlackout = isBlackout,
                         batteryCharge = batteryCharge,
                         onToggleAppliance = onToggleAppliance,
+                        isCompact = true,
                         modifier = Modifier.fillMaxWidth()
                     )
                 }
@@ -303,6 +445,7 @@ fun GameScreen(
                         isBlackout = isBlackout,
                         batteryCharge = batteryCharge,
                         onToggleAppliance = onToggleAppliance,
+                        isCompact = false,
                         modifier = Modifier.weight(1f)
                     )
 
@@ -326,6 +469,8 @@ fun GameScreen(
                         security = security,
                         currentDay = currentDay,
                         onConfigureClick = onConfigureClick,
+                        onFinishClick = onFinishClick,
+                        isCompact = false,
                         modifier = Modifier.width(350.dp)
                     )
                 }
@@ -344,6 +489,7 @@ fun MainHouseArea(
     isBlackout: Boolean,
     batteryCharge: Float,
     onToggleAppliance: (String) -> Unit,
+    isCompact: Boolean,
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier) {
@@ -390,10 +536,16 @@ fun MainHouseArea(
             )
         ) {
             LazyVerticalGrid(
-                columns = GridCells.Adaptive(150.dp),
-                modifier = Modifier.padding(16.dp).height(400.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp),
-                horizontalArrangement = Arrangement.spacedBy(12.dp)
+                columns = if (isCompact) GridCells.Fixed(2) else GridCells.Adaptive(150.dp),
+                modifier =
+                    Modifier.fillMaxWidth()
+                        .padding(16.dp)
+                        .heightIn(
+                            min = 240.dp,
+                            max = if (isCompact) 420.dp else 480.dp
+                        ),
+                verticalArrangement = Arrangement.spacedBy(if (isCompact) 8.dp else 12.dp),
+                horizontalArrangement = Arrangement.spacedBy(if (isCompact) 8.dp else 12.dp)
             ) {
                 items(appliances.entries.toList()) { (key, appliance) ->
                     val totalConsumption =
@@ -435,11 +587,13 @@ fun SidePanel(
     security: Float,
     currentDay: Int,
     onConfigureClick: () -> Unit,
+    onFinishClick: () -> Unit,
+    isCompact: Boolean,
     modifier: Modifier = Modifier
 ) {
     Column(
         modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+        verticalArrangement = Arrangement.spacedBy(if (isCompact) 12.dp else 16.dp)
     ) {
         // Energy Flow
         Card(
@@ -632,10 +786,12 @@ fun SidePanel(
                 // Temperatura mejorada con ícono de calor
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
+                    Row(
+                        modifier = if (isCompact) Modifier.weight(1f) else Modifier,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
                         Icon(
                             Icons.Default.Thermostat,
                             contentDescription = null,
@@ -649,7 +805,9 @@ fun SidePanel(
                         Spacer(modifier = Modifier.width(8.dp))
                         Text("Calor:", color = Color.White)
                     }
+                    Spacer(modifier = Modifier.width(if (isCompact) 8.dp else 12.dp))
                     Surface(
+                        modifier = if (isCompact) Modifier.weight(1f, fill = false) else Modifier,
                         color = when {
                             temperature > 32 -> Color(0x33FF6B6B)
                             temperature > 28 -> Color(0x33FFA500)
@@ -670,7 +828,8 @@ fun SidePanel(
                                 temperature > 32 -> Color(0xFFFF6B6B)
                                 temperature > 28 -> Color(0xFFFFA500)
                                 else -> Color(0xFF4CAF50)
-                            }
+                            },
+                            textAlign = TextAlign.Center
                         )
                     }
                 }
@@ -685,10 +844,14 @@ fun SidePanel(
                 // Nuevos indicadores vitales
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
+                    horizontalArrangement = if (isCompact) Arrangement.spacedBy(8.dp) else Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text("📡 Conectividad:", color = Color.White)
+                    Text(
+                        "📡 Conectividad:",
+                        color = Color.White,
+                        modifier = if (isCompact) Modifier.weight(1f) else Modifier
+                    )
                     Text(
                         text = when {
                             connectivity >= 80 -> "🟢 Excelente (${connectivity.toInt()}%)"
@@ -700,18 +863,24 @@ fun SidePanel(
                             connectivity >= 40 -> Color(0xFFFFA500)
                             else -> Color(0xFFFF6B6B)
                         },
-                        fontWeight = FontWeight.Bold
+                        fontWeight = FontWeight.Bold,
+                        modifier = if (isCompact) Modifier.weight(1f) else Modifier,
+                        textAlign = if (isCompact) TextAlign.End else TextAlign.Start
                     )
                 }
 
-                Spacer(modifier = Modifier.height(4.dp))
+                Spacer(modifier = Modifier.height(if (isCompact) 6.dp else 4.dp))
 
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
+                    horizontalArrangement = if (isCompact) Arrangement.spacedBy(8.dp) else Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text("💧 Agua Corriente:", color = Color.White)
+                    Text(
+                        "💧 Agua Corriente:",
+                        color = Color.White,
+                        modifier = if (isCompact) Modifier.weight(1f) else Modifier
+                    )
                     Text(
                         text = when {
                             waterSupply >= 100 -> "🟢 Disponible"
@@ -723,18 +892,24 @@ fun SidePanel(
                             waterSupply >= 50 -> Color(0xFFFFA500)
                             else -> Color(0xFFFF6B6B)
                         },
-                        fontWeight = FontWeight.Bold
+                        fontWeight = FontWeight.Bold,
+                        modifier = if (isCompact) Modifier.weight(1f) else Modifier,
+                        textAlign = if (isCompact) TextAlign.End else TextAlign.Start
                     )
                 }
 
-                Spacer(modifier = Modifier.height(4.dp))
+                Spacer(modifier = Modifier.height(if (isCompact) 6.dp else 4.dp))
 
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
+                    horizontalArrangement = if (isCompact) Arrangement.spacedBy(8.dp) else Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text("🔒 Seguridad:", color = Color.White)
+                    Text(
+                        "🔒 Seguridad:",
+                        color = Color.White,
+                        modifier = if (isCompact) Modifier.weight(1f) else Modifier
+                    )
                     Text(
                         text = when {
                             security >= 80 -> "🟢 Protegido (${security.toInt()}%)"
@@ -746,13 +921,16 @@ fun SidePanel(
                             security >= 50 -> Color(0xFFFFA500)
                             else -> Color(0xFFFF6B6B)
                         },
-                        fontWeight = FontWeight.Bold
+                        fontWeight = FontWeight.Bold,
+                        modifier = if (isCompact) Modifier.weight(1f) else Modifier,
+                        textAlign = if (isCompact) TextAlign.End else TextAlign.Start
                     )
                 }
             }
         }
 
 
+        // Botón de configuración solar - siempre disponible
         Button(
             onClick = onConfigureClick,
             modifier = Modifier.fillMaxWidth(),
@@ -761,13 +939,26 @@ fun SidePanel(
             )
         ) {
             Text(
-                text = if (currentDay == 1)
-                    "Configurar Sistema Solar"
-                else "Ver Comparación",
+                text = "Configurar Sistema Solar",
                 color = Color.Black,
+                fontWeight = FontWeight.Bold
+            )
+        }
+
+        Spacer(modifier = Modifier.height(if (isCompact) 8.dp else 12.dp))
+
+        Button(
+            onClick = onFinishClick,
+            modifier = Modifier.fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFF4CAF50)
+            )
+        ) {
+            Text(
+                text = "Terminar",
+                color = Color.White,
                 fontWeight = FontWeight.Bold
             )
         }
     }
 }
-

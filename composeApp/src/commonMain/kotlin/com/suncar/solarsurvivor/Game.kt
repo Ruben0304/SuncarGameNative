@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.suncar.solarsurvivor.data.*
 import com.suncar.solarsurvivor.ui.screens.*
 import com.suncar.solarsurvivor.ui.components.atom.EventPopup
+import com.suncar.solarsurvivor.ui.components.atom.SituationDialog
 import com.suncar.solarsurvivor.ui.components.molecules.AchievementBadge
 import com.suncar.solarsurvivor.ui.components.organisms.NotificationCard
 import kotlin.random.Random
@@ -83,19 +84,19 @@ fun SolarSurvivorGame() {
         var notifications by remember { mutableStateOf<List<Notification>>(emptyList()) }
         var achievements by remember { mutableStateOf<List<Achievement>>(emptyList()) }
         var score by remember { mutableStateOf(0) }
+        val sessionSummary by GameStatsCollector.sessionSummary
+
+        // Sistema de situaciones y puntuación
+        var currentSituation by remember { mutableStateOf<Situation?>(null) }
+        var lastSituationHour by remember { mutableStateOf(-1) }
+        var dailySituationsShown by remember { mutableStateOf(0) }
+        var isPausedBySituation by remember { mutableStateOf(false) }
+        var dailyComfortSum by remember { mutableStateOf(0f) }
+        var dailyComfortCount by remember { mutableStateOf(0) }
 
         // Configuración y estadísticas
         var selectedHome by remember { mutableStateOf("medium") }
         var dayStats by remember { mutableStateOf(DayStats()) }
-        var comparison by remember {
-                mutableStateOf(
-                        mapOf(
-                                "withoutSolar" to null as ComparisonData?,
-                                "withSolar" to null as ComparisonData?
-                        )
-                )
-        }
-
         // Handle notification removal
         LaunchedEffect(notifications.size) {
                 if (notifications.isNotEmpty()) {
@@ -232,6 +233,69 @@ fun SolarSurvivorGame() {
                 notifications = notifications + Notification(id, message, type, recommendation)
         }
         
+        fun tryGenerateSituation() {
+                // Solo 2 situaciones por día: a las 10:00 y 16:00
+                if (currentSituation != null) return // Ya hay una situación activa
+                if (dailySituationsShown >= 2) return // Máximo 2 por día
+
+                // Horarios fijos para situaciones
+                val shouldShowSituation = when (dailySituationsShown) {
+                        0 -> timeOfDay == 10 // Primera situación a las 10:00
+                        1 -> timeOfDay == 16 // Segunda situación a las 16:00
+                        else -> false
+                }
+
+                if (!shouldShowSituation) return
+
+                val situation = SituationsDatabase.getRandomSituationWeighted()
+                if (situation != null) {
+                        currentSituation = situation
+                        dailySituationsShown++
+                        isPausedBySituation = true // Pausar el juego
+                }
+        }
+
+        fun handleSituationAnswer(option: SituationOption) {
+                val situation = currentSituation ?: return
+
+                val pointsEarned = if (option.isCorrect) situation.points else 0
+                score += pointsEarned
+
+                if (option.isCorrect) {
+                        addNotification(
+                                "¡Respuesta correcta! +${situation.points} puntos",
+                                NotificationType.SUCCESS,
+                                "Has demostrado conocimiento en gestión de energía solar"
+                        )
+                } else {
+                        addNotification(
+                                "Respuesta incorrecta",
+                                NotificationType.INFO,
+                                "Aprende de esta situación para mejorar tu gestión energética"
+                        )
+                }
+
+                currentSituation = null
+                isPausedBySituation = false // Reanudar el juego
+        }
+
+        fun calculateDailyComfortBonus(): Int {
+                if (dailyComfortCount == 0) return 0
+                val averageComfort = dailyComfortSum / dailyComfortCount
+
+                // Bonificación por confort promedio:
+                // 90-100: 15 puntos
+                // 80-89: 10 puntos
+                // 70-79: 5 puntos
+                // < 70: 0 puntos
+                return when {
+                        averageComfort >= 90f -> 15
+                        averageComfort >= 80f -> 10
+                        averageComfort >= 70f -> 5
+                        else -> 0
+                }
+        }
+
         fun checkAndGenerateContextualNotifications() {
                 // Solo generar notificaciones cada 2 horas para evitar spam
                 if (timeOfDay % 2 != 0) return
@@ -320,8 +384,8 @@ fun SolarSurvivorGame() {
         }
 
         // Game Loop Effect
-        LaunchedEffect(gameState, dayStarted) {
-                if (gameState == GameState.PLAYING && dayStarted) {
+        LaunchedEffect(gameState, dayStarted, isPausedBySituation) {
+                if (gameState == GameState.PLAYING && dayStarted && !isPausedBySituation) {
                         while (true) {
                                 delay(gameSpeed)
 
@@ -329,18 +393,29 @@ fun SolarSurvivorGame() {
                                 timeOfDay = (timeOfDay + 1) % 24
 
                                 if (timeOfDay == 0) {
+                                        // Calcular bonificación por confort promedio del día
+                                        val comfortBonus = calculateDailyComfortBonus()
+                                        if (comfortBonus > 0) {
+                                                score += comfortBonus
+                                                addNotification(
+                                                        "¡Bonificación del día! +${comfortBonus} puntos",
+                                                        NotificationType.SUCCESS,
+                                                        "Confort promedio del día: ${(dailyComfortSum / dailyComfortCount).toInt()}%"
+                                                )
+                                        }
+
                                         // Capturar estadísticas al final del día
-                                        val blackoutHoursToday = blackoutSchedule.sumOf { 
+                                        val blackoutHoursToday = blackoutSchedule.sumOf {
                                             maxOf(0, minOf(it.end, 24) - maxOf(it.start, 0))
                                         }
                                         val hourlyStatsToday = GameStatsCollector.hourlyStats.filter { it.day == currentDay }
                                         val minComfortToday = hourlyStatsToday.minOfOrNull { it.comfortLevel } ?: comfortLevel
                                         val maxSolarToday = hourlyStatsToday.maxOfOrNull { it.solarGeneration } ?: currentSolarGeneration
                                         val totalEnergyToday = hourlyStatsToday.sumOf { it.totalConsumption }
-                                        val criticalEventsToday = GameStatsCollector.gameEvents.count { 
+                                        val criticalEventsToday = GameStatsCollector.gameEvents.count {
                                             it.day == currentDay && (it.type.contains("ERROR") || it.type.contains("BLACKOUT"))
                                         }
-                                        
+
                                         GameStatsCollector.captureDayEndStats(
                                             day = currentDay,
                                             finalComfortLevel = comfortLevel,
@@ -351,7 +426,14 @@ fun SolarSurvivorGame() {
                                             totalEnergyConsumed = totalEnergyToday,
                                             criticalEventsCount = criticalEventsToday
                                         )
-                                        
+
+                                        // Reset daily comfort tracking
+                                        dailyComfortSum = 0f
+                                        dailyComfortCount = 0
+
+                                        // Reset daily situations counter
+                                        dailySituationsShown = 0
+
                                         dayStarted = false
                                         currentDay++
                                         gameState = GameState.BLACKOUT_CONFIG
@@ -560,9 +642,16 @@ fun SolarSurvivorGame() {
                                         moneySpent += consumption * 0.00015f
                                 }
                                 
+                                // Acumular confort para bonificación diaria
+                                dailyComfortSum += comfortLevel
+                                dailyComfortCount++
+
                                 // Generar notificaciones contextuales inteligentes
                                 checkAndGenerateContextualNotifications()
-                                
+
+                                // Intentar generar situaciones educativas
+                                tryGenerateSituation()
+
                                 // Capturar estadísticas cada hora
                                 GameStatsCollector.captureHourlyStats(
                                     currentDay = currentDay,
@@ -691,24 +780,6 @@ fun SolarSurvivorGame() {
                                                                 // Registrar configuración solar
                                                                 GameStatsCollector.setSolarConfiguration(panels, batts, batts * 5000f)
 
-                                                                if (currentDay == 1) {
-                                                                        comparison =
-                                                                                comparison +
-                                                                                        ("withoutSolar" to
-                                                                                                ComparisonData(
-                                                                                                        comfort =
-                                                                                                                comfortLevel,
-                                                                                                        moneySpent =
-                                                                                                                moneySpent,
-                                                                                                        blackoutsSurvived =
-                                                                                                                dayStats.blackoutTime,
-                                                                                                        foodLost =
-                                                                                                                foodSpoilage,
-                                                                                                        productivity =
-                                                                                                                productivity
-                                                                                                ))
-                                                                }
-
                                                                 currentDay = 1
                                                                 gameState =
                                                                         GameState.BLACKOUT_CONFIG
@@ -736,50 +807,24 @@ fun SolarSurvivorGame() {
                                                                 batteries = batts
                                                                 maxBatteryCapacity = batts * 5000f
                                                                 batteryCharge = batts * 2500f
-                                                                
+
                                                                 // Registrar configuración solar
                                                                 GameStatsCollector.setSolarConfiguration(panels, batts, batts * 5000f)
 
-                                                                if (currentDay == 1) {
-                                                                        comparison =
-                                                                                comparison +
-                                                                                        ("withoutSolar" to
-                                                                                                ComparisonData(
-                                                                                                        comfort =
-                                                                                                                comfortLevel,
-                                                                                                        moneySpent =
-                                                                                                                moneySpent,
-                                                                                                        blackoutsSurvived =
-                                                                                                                dayStats.blackoutTime,
-                                                                                                        foodLost =
-                                                                                                                foodSpoilage,
-                                                                                                        productivity =
-                                                                                                                productivity
-                                                                                                ))
-                                                                }
+                                                                // Volver al juego sin reiniciar el día
+                                                                gameState = GameState.PLAYING
 
-                                                                currentDay = 2
-                                                                gameState =
-                                                                        GameState.BLACKOUT_CONFIG
-                                                                timeOfDay = 6
-                                                                comfortLevel = 100f
-                                                                moneySpent = 0f
-                                                                foodSpoilage = 0f
-                                                                productivity = 100f
-                                                                hygiene = 100f
-                                                                connectivity = 100f
-                                                                waterSupply = 100f
-                                                                security = 100f
+                                                                addNotification(
+                                                                        "✅ SISTEMA SOLAR ACTUALIZADO",
+                                                                        NotificationType.SUCCESS,
+                                                                        "⚡ ${panels} paneles (${panels * 505}W) + ${batts} baterías (${batts * 5}kWh)"
+                                                                )
                                                         }
                                                 )
-                                        GameState.COMPARISON ->
-                                                ComparisonScreen(
-                                                        onShare = {
-                                                                // Share functionality
-                                                        },
-                                                        onQuote = {
-                                                                // Quote request functionality
-                                                        }
+                                        GameState.FINISHED ->
+                                                FinalSummaryScreen(
+                                                        score = score,
+                                                        averageComfort = sessionSummary.averageComfort
                                                 )
                                         GameState.PLAYING ->
                                                 GameScreen(
@@ -809,25 +854,12 @@ fun SolarSurvivorGame() {
                                                         onSpeedChange = { gameSpeed = it },
                                                         onToggleAppliance = { toggleAppliance(it) },
                                                         onConfigureClick = {
-                                                                if (currentDay == 1) {
-                                                                        gameState =
-                                                                                GameState
-                                                                                        .CONFIGURING
-                                                                } else {
-                                                                        comparison =
-                                                                                comparison +
-                                                                                        ("withSolar" to
-                                                                                                ComparisonData(
-                                                                                                        comfort =
-                                                                                                                comfortLevel,
-                                                                                                        moneySaved =
-                                                                                                                moneySaved,
-                                                                                                        co2Saved =
-                                                                                                                co2Saved
-                                                                                                ))
-                                                                        gameState =
-                                                                                GameState.COMPARISON
-                                                                }
+                                                                // Siempre permitir reconfigurar el sistema solar
+                                                                gameState = GameState.CONFIGURING
+                                                        },
+                                                        onFinishClick = {
+                                                                GameStatsCollector.endSession()
+                                                                gameState = GameState.FINISHED
                                                         },
                                                         isFirstTime = currentDay == 1 && timeOfDay < 8
                                                 )
@@ -850,6 +882,18 @@ fun SolarSurvivorGame() {
                                 // Events overlay
                                 currentEvent?.let { event -> EventPopup(event) }
 
+                                // Situations overlay
+                                currentSituation?.let { situation ->
+                                        SituationDialog(
+                                                situation = situation,
+                                                onAnswer = { option -> handleSituationAnswer(option) },
+                                                onDismiss = {
+                                                        currentSituation = null
+                                                        isPausedBySituation = false // Reanudar el juego si se omite
+                                                }
+                                        )
+                                }
+
                                 // Achievements overlay
                                 Column(modifier = Modifier.align(Alignment.TopEnd).padding(16.dp)) {
                                         achievements.forEach { achievement ->
@@ -861,5 +905,3 @@ fun SolarSurvivorGame() {
                 }
         }
 }
-
-

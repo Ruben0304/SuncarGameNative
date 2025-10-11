@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -20,7 +21,6 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.runtime.remember
 import com.suncar.solarsurvivor.util.getScreenConfiguration
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Battery1Bar
@@ -46,6 +46,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.suncar.solarsurvivor.data.BlackoutSchedule
@@ -61,12 +62,14 @@ fun BlackoutConfigScreen(day: Int, onConfirm: (List<BlackoutSchedule>) -> Unit) 
     val scrollState = rememberScrollState()
     val screenConfiguration = getScreenConfiguration()
     val screenWidth = screenConfiguration.screenWidthDp
+    val isCompact = screenWidth < 600.dp
     
     // Responsive padding and max width
     val horizontalPadding = when {
         screenWidth > 1200.dp -> 64.dp
         screenWidth > 800.dp -> 48.dp
-        else -> 24.dp
+        screenWidth > 500.dp -> 24.dp
+        else -> 16.dp
     }
     
     val maxContentWidth = when {
@@ -76,7 +79,13 @@ fun BlackoutConfigScreen(day: Int, onConfirm: (List<BlackoutSchedule>) -> Unit) 
     }
 
     Box(
-        modifier = Modifier.fillMaxSize().background(Color.Black).padding(horizontal = horizontalPadding),
+        modifier =
+            Modifier.fillMaxSize()
+                .background(Color.Black)
+                .padding(
+                    horizontal = horizontalPadding,
+                    vertical = if (isCompact) 16.dp else 24.dp
+                ),
         contentAlignment = Alignment.TopCenter
     ) {
         Column(
@@ -84,92 +93,154 @@ fun BlackoutConfigScreen(day: Int, onConfirm: (List<BlackoutSchedule>) -> Unit) 
                 .widthIn(max = maxContentWidth)
                 .fillMaxWidth()
                 .verticalScroll(scrollState)
-                .padding(vertical = 32.dp),
+                .padding(vertical = if (isCompact) 16.dp else 32.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
         // Header
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Icon(
-                imageVector = Icons.Default.Warning,
-                contentDescription = null,
-                modifier = Modifier.size(32.dp),
-                tint = Color(0xFFFFD700)
-            )
-            Spacer(modifier = Modifier.width(16.dp))
-            Text(
-                text = "Programa de Apagones - Día $day",
-                style = MaterialTheme.typography.headlineMedium,
-                fontWeight = FontWeight.Bold,
-                color = Color(0xFFFFD700)
-            )
+        if (isCompact) {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Icon(
+                    imageVector = Icons.Default.Warning,
+                    contentDescription = null,
+                    modifier = Modifier.size(32.dp),
+                    tint = Color(0xFFFFD700)
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+                Text(
+                    text = "Programa de Apagones - Día $day",
+                    style = MaterialTheme.typography.headlineMedium,
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFFFFD700)
+                )
+            }
+        } else {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(
+                    imageVector = Icons.Default.Warning,
+                    contentDescription = null,
+                    modifier = Modifier.size(32.dp),
+                    tint = Color(0xFFFFD700)
+                )
+                Spacer(modifier = Modifier.width(16.dp))
+                Text(
+                    text = "Programa de Apagones - Día $day",
+                    style = MaterialTheme.typography.headlineMedium,
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFFFFD700)
+                )
+            }
         }
 
         Text(
             text = "Configura los horarios de cortes eléctricos para hoy",
             style = MaterialTheme.typography.bodyLarge,
             color = Color.White.copy(alpha = 0.9f),
-            modifier = Modifier.padding(top = 8.dp, bottom = 24.dp)
+            modifier =
+                Modifier.padding(
+                    top = 8.dp,
+                    bottom = if (isCompact) 20.dp else 24.dp
+                ),
+            textAlign = if (isCompact) TextAlign.Center else TextAlign.Start
         )
 
-        // Quick suggestions - Responsive flow layout
-        FlowRow(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            OutlinedButton(
-                onClick = {
-                    schedules = listOf(BlackoutSchedule(10, 14))
-                },
-                colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.White),
-                border = BorderStroke(1.dp, Color.White.copy(alpha = 0.5f))
-            ) { 
-                Text(
-                    "Bajo 4h",
-                    modifier = Modifier.padding(horizontal = 4.dp)
+        // Quick suggestions - Responsive layout
+        if (isCompact) {
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                QuickSuggestionButton(
+                    label = "Bajo 4h",
+                    textColor = Color.White,
+                    borderColor = Color.White.copy(alpha = 0.5f),
+                    fullWidth = true,
+                    onClick = { schedules = listOf(BlackoutSchedule(10, 14)) }
+                )
+                QuickSuggestionButton(
+                    label = "Medio 10h",
+                    textColor = Color.White,
+                    borderColor = Color.White.copy(alpha = 0.5f),
+                    fullWidth = true,
+                    onClick = {
+                        schedules =
+                            listOf(
+                                BlackoutSchedule(10, 14),
+                                BlackoutSchedule(18, 24)
+                            )
+                    }
+                )
+                QuickSuggestionButton(
+                    label = "Zona Crítica (18h)",
+                    textColor = Color(0xFFFF6B6B),
+                    borderColor = Color(0xFFFF6B6B),
+                    fullWidth = true,
+                    onClick = {
+                        schedules =
+                            listOf(
+                                BlackoutSchedule(2, 5),
+                                BlackoutSchedule(7, 14),
+                                BlackoutSchedule(16, 24)
+                            )
+                    }
                 )
             }
-            OutlinedButton(
-                onClick = {
-                    schedules = listOf(
-                        BlackoutSchedule(10, 14),
-                        BlackoutSchedule(18, 24)
-                    )
-                },
-                colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.White),
-                border = BorderStroke(1.dp, Color.White.copy(alpha = 0.5f))
-            ) { 
-                Text(
-                    "Medio 10h",
-                    modifier = Modifier.padding(horizontal = 4.dp)
+        } else {
+            FlowRow(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                QuickSuggestionButton(
+                    label = "Bajo 4h",
+                    textColor = Color.White,
+                    borderColor = Color.White.copy(alpha = 0.5f),
+                    fullWidth = false,
+                    onClick = { schedules = listOf(BlackoutSchedule(10, 14)) }
                 )
-            }
-            OutlinedButton(
-                onClick = {
-                    schedules = listOf(
-                        BlackoutSchedule(2, 5),
-                        BlackoutSchedule(7, 14),
-                        BlackoutSchedule(16, 24)
-                    )
-                },
-                colors = ButtonDefaults.outlinedButtonColors(contentColor = Color(0xFFFF6B6B)),
-                border = BorderStroke(1.dp, Color(0xFFFF6B6B))
-            ) { 
-                Text(
-                    "Zona Crítica (18h)",
-                    modifier = Modifier.padding(horizontal = 4.dp)
+                QuickSuggestionButton(
+                    label = "Medio 10h",
+                    textColor = Color.White,
+                    borderColor = Color.White.copy(alpha = 0.5f),
+                    fullWidth = false,
+                    onClick = {
+                        schedules =
+                            listOf(
+                                BlackoutSchedule(10, 14),
+                                BlackoutSchedule(18, 24)
+                            )
+                    }
+                )
+                QuickSuggestionButton(
+                    label = "Zona Crítica (18h)",
+                    textColor = Color(0xFFFF6B6B),
+                    borderColor = Color(0xFFFF6B6B),
+                    fullWidth = false,
+                    onClick = {
+                        schedules =
+                            listOf(
+                                BlackoutSchedule(2, 5),
+                                BlackoutSchedule(7, 14),
+                                BlackoutSchedule(16, 24)
+                            )
+                    }
                 )
             }
         }
 
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(if (isCompact) 24.dp else 32.dp))
 
         // Schedules
         Card(
             modifier = Modifier.fillMaxWidth(),
             colors = CardDefaults.cardColors(containerColor = Color(0xFF2A2A3E))
         ) {
-            Column(modifier = Modifier.padding(24.dp)) {
+            Column(
+                modifier =
+                    Modifier.padding(
+                        horizontal = if (isCompact) 16.dp else 24.dp,
+                        vertical = if (isCompact) 20.dp else 24.dp
+                    )
+            ) {
                 schedules.forEachIndexed { index, schedule ->
                     ScheduleRow(
                         index = index + 1,
@@ -242,7 +313,7 @@ fun BlackoutConfigScreen(day: Int, onConfirm: (List<BlackoutSchedule>) -> Unit) 
             }
         }
 
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(if (isCompact) 24.dp else 32.dp))
 
         // Impact preview - Responsive grid
         val totalHours = schedules.sumOf { it.end - it.start }
@@ -254,13 +325,12 @@ fun BlackoutConfigScreen(day: Int, onConfirm: (List<BlackoutSchedule>) -> Unit) 
         
         LazyVerticalGrid(
             columns = GridCells.Fixed(gridColumns),
-            modifier = Modifier.fillMaxWidth().height(
-                when (gridColumns) {
-                    1 -> 300.dp
-                    2 -> 200.dp
-                    else -> 120.dp
-                }
-            ),
+            modifier =
+                Modifier.fillMaxWidth()
+                    .heightIn(
+                        min = if (gridColumns == 1) 240.dp else 160.dp,
+                        max = if (gridColumns == 1) 360.dp else 220.dp
+                    ),
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
@@ -302,7 +372,7 @@ fun BlackoutConfigScreen(day: Int, onConfirm: (List<BlackoutSchedule>) -> Unit) 
             }
         }
 
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(if (isCompact) 20.dp else 24.dp))
 
         // Warning/Success message
         if (day == 1) {
@@ -312,7 +382,11 @@ fun BlackoutConfigScreen(day: Int, onConfirm: (List<BlackoutSchedule>) -> Unit) 
                 border = BorderStroke(1.dp, Color(0xFFFF6B6B))
             ) {
                 Row(
-                    modifier = Modifier.padding(16.dp),
+                    modifier =
+                        Modifier.padding(
+                            horizontal = 16.dp,
+                            vertical = if (isCompact) 12.dp else 16.dp
+                        ),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
@@ -353,13 +427,13 @@ fun BlackoutConfigScreen(day: Int, onConfirm: (List<BlackoutSchedule>) -> Unit) 
             }
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(if (isCompact) 12.dp else 16.dp))
 
         Button(
             onClick = { onConfirm(schedules) },
             modifier = Modifier
                 .fillMaxWidth()
-                .height(56.dp),
+                .height(if (isCompact) 52.dp else 56.dp),
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF667EEA))
         ) {
             Icon(Icons.Default.PlayArrow, contentDescription = null)
@@ -367,5 +441,26 @@ fun BlackoutConfigScreen(day: Int, onConfirm: (List<BlackoutSchedule>) -> Unit) 
             Text("Comenzar Día $day", fontSize = 18.sp)
         }
         }
+    }
+}
+
+@Composable
+private fun QuickSuggestionButton(
+    label: String,
+    textColor: Color,
+    borderColor: Color,
+    fullWidth: Boolean,
+    onClick: () -> Unit
+) {
+    OutlinedButton(
+        onClick = onClick,
+        modifier = if (fullWidth) Modifier.fillMaxWidth() else Modifier,
+        colors = ButtonDefaults.outlinedButtonColors(contentColor = textColor),
+        border = BorderStroke(1.dp, borderColor)
+    ) {
+        Text(
+            label,
+            modifier = Modifier.padding(horizontal = 4.dp)
+        )
     }
 }

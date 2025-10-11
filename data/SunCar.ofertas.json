@@ -1,0 +1,1716 @@
+[{
+  "_id": {
+    "$oid": "68cda22e33da53b76ba3338e"
+  },
+  "precio": 5440,
+  "precio_cliente": null,
+  "imagen": "https://s3.suncarsrl.com:443/ofertas/3b0d3e87-be46-4107-9e6c-6bd500c10948.png",
+  "garantias": [
+    "2 años sobre la instalación efectuada por nosotros.",
+    "5 años para el inversor.",
+    "3 años o 5000 ciclos de carga para la batería de LiFePo4.",
+    "15 años para los paneles."
+  ],
+  "elementos": [
+    {
+      "categoria": "Inversor",
+      "descripcion": "INVERSOR DE CONEXIÓN A RED MONOFÁSICO  GREENHEISS SOLAR GH-IH STYLE 12,5A 3000W  2MPPT 230V MODELO HÍBRIDO",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/adfe2d9e-b800-496d-a0f0-af590e7e6ac7.png"
+    },
+    {
+      "categoria": "Batería",
+      "descripcion": "BATERÍA DE LITIO PARA INSTALACIÓN SOLAR  FOTOVOLTAICA GREENHEISS SOLAR 2,4KWH IRON",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/d23ddca7-0652-46ff-9b24-ba456348c225.png"
+    },
+    {
+      "categoria": "Batería",
+      "descripcion": "GH KIT MONTAJE PARA BATERIA LI 2,4KWH IRON ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/3d9c9560-e3c4-4018-ab67-3da98b5bd7c3.png"
+    },
+    {
+      "categoria": "Paneles",
+      "descripcion": "JA SOLAR MÓDULO FOTOVOLTAICO BIFACIAL  TOPCON NTYPE JAM72D40-590/MB 590WP  MONOCRISTALINO 138 CELULAS 1500V",
+      "cantidad": 6,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/aa28283e-40b3-4c49-b32e-5d87394d58c6.png"
+    },
+    {
+      "categoria": "Estructura",
+      "descripcion": "ESTRUCTURA PARA MONTAJE DE MÓDULO  FOTOVOLTÁICO SUNFER FOTOTERMIA 09V5  CUBIERTA PLANA 6 MÓDULOS 72 CÉLULAS 30º 33 50MM ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/9d4ec26f-6c45-4826-b06a-b6a9980356eb.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE SOLAR H1Z2Z2-K 1X4MM NEGRO  (B.CORTE) ",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/e40ab065-01b0-4115-9cf9-bdf79923d792.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE SOLAR H1Z2Z2-K 1X4MM ROJO  (B.CORTE)",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/81af1d9b-442f-45fc-8a16-526f4b61dfca.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 2,5MM AM/VERDE  FLEX PM",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/a31f134d-0902-4db6-90a2-34b35066dd28.png"
+    },
+    {
+      "categoria": "Cableado AC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 6MM NEGRO FLEX  PM ",
+      "cantidad": 20,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/d246126a-4205-430a-a50f-2af0cfc3f6ff.png"
+    },
+    {
+      "categoria": "Cableado AC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 6MM AZUL FLEX PM",
+      "cantidad": 20,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/9f46e33e-f4f4-493b-803f-f906f0dbeae5.png"
+    },
+    {
+      "categoria": "Cableado AC",
+      "descripcion": "CABLE DE REDES KOMMDATA U/UTP  4X2XAWG24 CAT6 DCA VIOLETA ",
+      "cantidad": 20,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/80576a6c-0e6a-4846-9d4f-b337d0a23174.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "ML TUBO PVC M-25 GRIS ENCHUFABLE RIGIDO",
+      "cantidad": 15,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/df94b038-7d20-4fd0-a11e-4a8824dfd3e1.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "MANGUITO PVC M-25 ENCHUFABLE IP40  GRIS",
+      "cantidad": 5,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/e744fab7-0e72-4b46-a9db-81d5d448b084.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "ML TUBO CORRUGADO LHA M-25 320 NW GRIS",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/4c275abd-50d1-4a01-b5bc-69212fd8abfd.png"
+    },
+    {
+      "categoria": "Pica Tierra",
+      "descripcion": "GRAPA CABLE/PICA 40",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/3818937c-9eaf-4835-8748-cbff4e6a4821.png"
+    },
+    {
+      "categoria": "Protección Eléctrica",
+      "descripcion": "ADLER BASE PORTAFUSIBLE 10X38 1000VDC  BH100-01",
+      "cantidad": 4,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/3bee1c02-1c04-44a1-a823-b99d52991580.png"
+    },
+    {
+      "categoria": "Protección Eléctrica",
+      "descripcion": "FUSIBLE CILÍNDRICO 15A 10X38 MM 1000VDC  GPV (PROTECCIÓN FOTOVOLTAICA)",
+      "cantidad": 4,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/07ff9939-5ef5-4e78-aaf4-d9863324bfad.png"
+    },
+    {
+      "categoria": "Material Vario",
+      "descripcion": "CONECTOR MULTI-CONTACT AÉREO MC4 4 6MM2 HEMBRA ",
+      "cantidad": 3,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/5f5929bc-0864-4c05-8bdc-b7abe8713842.png"
+    },
+    {
+      "categoria": "Material Vario",
+      "descripcion": "CONECTOR MULTI-CONTACT AÉREO MC4 4 6MM2 MACHO",
+      "cantidad": 3,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/f4ae52e2-1ed1-4df7-bf8c-ed03403c0077.png"
+    },
+    {
+      "categoria": "Material Vario",
+      "descripcion": "PRY CINTA AISLANTE 20M X 19MM X 0,13MM  VERDE/AMARILLO P1000",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/99338bf7-16d8-49da-a9ed-02f493f2a07e.png"
+    },
+    {
+      "categoria": "Material Vario",
+      "descripcion": "TACO-BRIDA Y BRIDA",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/bbc6c61e-d837-464a-9adf-83f323cb7173.png"
+    },
+    {
+      "categoria": "Transformador",
+      "descripcion": "TRANSFORMADOR CONVERTIDOR DE VOLTAJE  SUBE/BAJA 220-110V/110-220V ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/6ef84611-9e05-42b7-a7dc-be66c925165f.png"
+    },
+    {
+      "categoria": "Pica Tierra",
+      "descripcion": "PICA T.T.PCT 2ML 100MICRAS COBREADA 14,2MM",
+      "cantidad": 0.5,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/f27d5e53-3ef1-4af6-8424-a6d463082389.png"
+    }
+  ],
+  "moneda": "usd",
+  "financiamiento": true,
+  "descripcion_detallada": "SISTEMA FOTOVOLTAICO 3 kW con paneles de 590 W y 2 Baterías de 2.4 kW (total 4.8 kWh de almacenamiento)\nEste sistema cuenta con 6 paneles solares monocristalinos de 590 W (total ~3.5 kWp) y un inversor híbrido monofásico de 3 kW que permite trabajar tanto conectado a la red como en modo aislado durante apagones. Incluye 2 baterías de litio LiFePO4 de 2.4 kWh cada una (4.8 kWh en total), suficientes para mantener consumos básicos y moderados durante varias horas.\nCaso de uso ideal: familias con consumo medio que necesiten respaldo confiable para refrigerador, ventiladores, TV, laptop, iluminación y pequeños electrodomésticos. Permite unas 8-12 horas de autonomía en apagones con cargas moderadas. Puede ampliarse en el futuro agregando más baterías.\nVentajas adicionales: vida útil de más de 5000 ciclos de carga, garantía de 15 años en paneles y posibilidad de financiamiento desde España, lo que lo convierte en una excelente opción calidad-precio para hogares que buscan seguridad sin una inversión excesiva.",
+  "descripcion": "SISTEMA FOTOVOLTAICO 3 kW con paneles de 590 W y 2 Baterías de 2.4 kW"
+},
+{
+  "_id": {
+    "$oid": "68cda2b633da53b76ba3338f"
+  },
+  "descripcion": "SISTEMA FOTOVOLTAICO 5 kW con paneles de 590 W",
+  "precio": 9911.26,
+  "precio_cliente": null,
+  "imagen": "https://s3.suncarsrl.com:443/ofertas/fa337bf8-fdc0-49ec-bb72-82f8270cef7e.png",
+  "garantias": [
+    "2 años sobre la instalación efectuada por nosotros.",
+    "5 años para el inversor.",
+    "3 años o 5000 ciclos de carga para la batería de LiFePo4.",
+    "15 años para los paneles."
+  ],
+  "elementos": [
+    {
+      "categoria": "Inversor",
+      "descripcion": "INVERSOR DE CONEXIÓN A RED MONOFÁSICO  GREENHEISS SOLAR GH-IH STYLE 12,5A 5000W  2MPPT 230V MODELO HÍBRIDO ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/680ffe6c-95df-4095-9137-8cdafff6cc5a.png"
+    },
+    {
+      "categoria": "Batería",
+      "descripcion": "PYLONTECH BATERIA MODULAR US50",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/8a320965-8a26-466a-98c9-d682ee67e723.png"
+    },
+    {
+      "categoria": "Batería",
+      "descripcion": "GH KIT MONTAJE PARA BATERIA LI 2,4KWH IRON",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/499efa5f-35f8-44da-b0c0-65ce4c6ffcbf.png"
+    },
+    {
+      "categoria": "Paneles",
+      "descripcion": "JA SOLAR MÓDULO FOTOVOLTAICO BIFACIAL  TOPCON NTYPE JAM72D40-590/MB 590WP  MONOCRISTALINO 138 CELULAS 1500V ",
+      "cantidad": 10,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/8ee3af92-84e5-4b67-afa4-d0624fdb5922.png"
+    },
+    {
+      "categoria": "Estructura",
+      "descripcion": "ESTRUCTURA PARA MONTAJE DE MÓDULO  FOTOVOLTÁICO SUNFER FOTOTERMIA 09V5  CUBIERTA PLANA 5 MÓDULOS 72 CÉLULAS 30º 33 50MM",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/de53df8d-741c-453e-9276-fe5d095fbb78.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE SOLAR H1Z2Z2-K 1X4MM NEGRO  (B.CORTE) ",
+      "cantidad": 50,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/919c6038-7849-4f12-8cc8-70de06ac41c0.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE SOLAR H1Z2Z2-K 1X4MM ROJO  (B.CORTE)",
+      "cantidad": 50,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/d061fa2e-97e8-47cd-95a0-10aee27031bf.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 2,5MM AM/VERDE  FLEX PM",
+      "cantidad": 50,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/6557daf0-3529-4e3d-9c7d-a126b2f54a81.png"
+    },
+    {
+      "categoria": "Cableado AC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 6MM NEGRO FLEX  PM",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/4162c1eb-06c0-421e-a3aa-c1a235b0615e.png"
+    },
+    {
+      "categoria": "Cableado AC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 6MM AZUL FLEX PM",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/3c82922e-682c-454c-bb93-5353bcddf5cc.png"
+    },
+    {
+      "categoria": "Cableado AC",
+      "descripcion": "CABLE DE REDES KOMMDATA U/UTP  4X2XAWG24 CAT6 DCA VIOLETA ",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/22909259-d0c7-43da-9ad6-54f834b1fdd4.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "ML TUBO PVC M-25 GRIS ENCHUFABLE RIGIDO ",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/c5775227-fef5-43b7-b6a2-4421edd4f571.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "MANGUITO PVC M-25 ENCHUFABLE IP40 GRIS",
+      "cantidad": 10,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/0b808fa4-0b61-40c0-97d5-7597f47ea36a.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "ML TUBO CORRUGADO LHA M-25 320 NW GRIS ",
+      "cantidad": 3,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/c9b9e8ef-16e9-4da6-9e43-7d60a0c5c37a.png"
+    },
+    {
+      "categoria": "Pica Tierra",
+      "descripcion": "PICA T.T.PCT 2ML 100MICRAS COBREADA  14,2MM ",
+      "cantidad": 0.5,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/0593b501-77c0-46e5-b3e7-f2c0bc81c877.png"
+    },
+    {
+      "categoria": "Pica Tierra",
+      "descripcion": "GRAPA CABLE/PICA 40",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/6194adbe-0294-465f-b098-243fde6c2c03.png"
+    },
+    {
+      "categoria": "Protección Eléctrica",
+      "descripcion": "ADLER BASE PORTAFUSIBLE 10X38 1000VDC  BH100-01",
+      "cantidad": 4,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/f41734e1-44b6-4d5f-8753-be0a587cf363.png"
+    },
+    {
+      "categoria": "Protección Eléctrica",
+      "descripcion": "FUSIBLE CILÍNDRICO 15A 10X38 MM 1000VDC  GPV (PROTECCIÓN FOTOVOLTAICA)",
+      "cantidad": 4,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/d349899a-1a46-42e5-815b-c57d3e47e580.png"
+    },
+    {
+      "categoria": "Material Vario",
+      "descripcion": "CONECTOR MULTI-CONTACT AÉREO MC4 4 6MM2 HEMBRA ",
+      "cantidad": 3,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/15aa42e1-7fb4-44b6-8cf1-130e58fe4800.png"
+    },
+    {
+      "categoria": "Material Vario",
+      "descripcion": "CONECTOR MULTI-CONTACT AÉREO MC4 4 6MM2 MACHO",
+      "cantidad": 3,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/ed07e9e6-d821-49b3-ae6c-580c384df7e3.png"
+    },
+    {
+      "categoria": "Material Vario",
+      "descripcion": "PRY CINTA AISLANTE 20M X 19MM X 0,13MM  VERDE/AMARILLO P1000 ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/ebb4eb79-b42c-40e6-9dff-7b12f623f023.png"
+    },
+    {
+      "categoria": "Material Vario",
+      "descripcion": "TACO-BRIDA Y BRIDA",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/df7c56e0-3f51-4097-b66b-994d70fee9e3.png"
+    },
+    {
+      "categoria": "Transformador",
+      "descripcion": "TRANSFORMADOR CONVERTIDOR DE VOLTAJE  SUBE/BAJA 220-110V/110-220V",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/84aaa46b-72da-4f43-a9a6-ba3f24b2edeb.png"
+    }
+  ],
+  "moneda": "usd",
+  "financiamiento": true,
+  "descripcion_detallada": "SISTEMA FOTOVOLTAICO 5 kW con paneles de 590 W y batería modular Pylontech US50\nEste sistema ofrece 10 paneles solares de 590 W (total ~5.9 kWp) y un inversor híbrido de 5 kW monofásico, capaz de gestionar consumos más exigentes y cargas continuas. La batería modular de litio Pylontech US50 garantiza escalabilidad, permitiendo iniciar con un nivel básico de almacenamiento e incrementar la capacidad según las necesidades del cliente.\nCaso de uso ideal: hogares medianos o pequeños negocios que necesitan mantener varios ventiladores, refrigeración, computadoras, televisores y equipos de oficina, e incluso soportar el uso intermitente de aires acondicionados de bajo consumo. Provee autonomía de entre 12 y 16 horas con consumos moderados.\nAspectos técnicos: tecnología MPPT en el inversor para mayor eficiencia, compatibilidad con ampliación de bancos de baterías y garantía de hasta 15 años en paneles.\n**Ideal para clientes que buscan expandir su sistema con el tiempo y desean un equilibrio entre costo, capacidad y confiabilidad. Disponible con financiamiento desde España."
+},
+{
+  "_id": {
+    "$oid": "68cda48833da53b76ba33390"
+  },
+  "descripcion": "SISTEMA FOTOVOLTAICO Huawei de 10 kW con 15 kW en paneles y 21 kWh \r\nen batería",
+  "precio": 29249.37,
+  "precio_cliente": null,
+  "imagen": "https://s3.suncarsrl.com:443/ofertas/213f8a5c-1057-43bf-8d94-7dcacee1cd32.png",
+  "garantias": [
+    "2 años sobre la instalación efectuada por nosotros.",
+    "5 años para el inversor.",
+    "3 años o 5000 ciclos de carga para la batería de LiFePo4.",
+    "15 años para los paneles."
+  ],
+  "elementos": [
+    {
+      "categoria": "Inversor",
+      "descripcion": "INVERSOR DE CONEXIÓN A RED MONOFÁSICO HUAWEI SUN 2000  16ª 10000W 3MPPT 230V MODELO HÍBRIDO",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/a9128343-3c9d-464c-a92c-e7599945bd54.png"
+    },
+    {
+      "categoria": "Protección Eléctrica",
+      "descripcion": "CONTADOR DE ENERGÍA MONOFÁSICO HUAWEI MEDICIÓN  INDIRECTA 100LN RS-485",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/a2e8377f-ccdc-4e6b-867d-b07001d8cd0a.png"
+    },
+    {
+      "categoria": "Material Vario",
+      "descripcion": "SOLVER CUADRO AC INVERSOR TRIFASICO 10KW / 12KW  RESIDENCIAL",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/b3aa4b7f-1095-4d61-b90d-4f62cd6e16b8.png"
+    },
+    {
+      "categoria": "Paneles",
+      "descripcion": "JA SOLAR MÓDULO FOTOVOLTAICO BIFACIAL  TOPCON NTYPE JAM72D40-590/MB 590WP  MONOCRISTALINO 138 CELULAS 1500V ",
+      "cantidad": 26,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/0617883a-fd70-4fd5-a218-248acf275536.png"
+    },
+    {
+      "categoria": "Estructura",
+      "descripcion": "ESTRUCTURA PARA MONTAJE DE MÓDULO FOTOVOLTÁICO  ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/a9c6d91d-fe13-40d5-a23a-78ddf8c05715.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE SOLAR H1Z2Z2-K 1X4MM NEGRO (B. CORTE) ",
+      "cantidad": 100,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/95d30a87-4b66-4412-9c3b-68df931377e1.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE SOLAR H1Z2Z2-K 1X4MM ROJO (B. CORTE)",
+      "cantidad": 100,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/aae48826-9d20-4e93-a8be-12692ca4f54b.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 2,5MM AM/VERDE FLEX PM",
+      "cantidad": 50,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/601bdc40-b4a4-468f-a963-134688d57088.png"
+    },
+    {
+      "categoria": "Transformador",
+      "descripcion": "TRANSFORMADOR TRIFÁSICO DE TENSIÓN POLYLUX REVERSIBLE  10000VA 230-400V 230-400V IP23",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/81e12eaa-2b72-4b3f-bd40-436319e32139.png"
+    },
+    {
+      "categoria": "Batería",
+      "descripcion": "MÓDULO DE POTENCIA HUAWEI LUNA 7KWH ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/29b4a8bc-2e4d-49e3-96a7-6dfce1e7f20c.png"
+    },
+    {
+      "categoria": "Batería",
+      "descripcion": "BATERÍA DE LITIO PARA INSTALACIÓN SOLAR FOTOVOLTAICA  HUAWEI LUNA 7KWH ",
+      "cantidad": 3,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/ec0cccf7-801a-4da7-9772-65a45f3b799e.png"
+    }
+  ],
+  "moneda": "eur",
+  "financiamiento": true,
+  "descripcion_detallada": "SISTEMA FOTOVOLTAICO Huawei de 10 kW con 15 kW en paneles y 21 kWh en batería\nUna solución premium de alta potencia, equipada con 26 paneles solares de 590 W (total ~15.3 kWp), inversor híbrido Huawei de 10 kW y un sistema de almacenamiento Huawei LUNA con capacidad total de 21 kWh (tres baterías de 7 kWh cada una más módulo de potencia). Soporta cargas trifásicas y monofásicas gracias a su transformador integrado.\nCaso de uso ideal: clientes con alto presupuesto que desean independencia energética total. Capaz de cubrir toda una vivienda con múltiples aires acondicionados, refrigeradores, bombas de agua, sistemas de seguridad, servidores, iluminación y electrodomésticos de alto consumo. Permite operar durante más de 24 horas en apagones prolongados (>18h), sin necesidad de desconectar equipos de confort.\nAspectos técnicos: baterías LiFePO4 de larga vida útil, eficiencia superior al 98% en el inversor Huawei SUN2000, comunicación inteligente con medidor de energía y capacidad de monitoreo remoto.\nEn resumen: un sistema diseñado para casas grandes o empresas que no pueden permitirse cortes de electricidad. Incluye financiamiento desde España para hacer más accesible la inversión.\n"
+},
+{
+  "_id": {
+    "$oid": "68cda9a733da53b76ba33394"
+  },
+  "descripcion": "Servicio de instalación y montaje de Equipo de 3K con 7k de Batería con 4 \r\npaneles solares ",
+  "precio": 3830,
+  "precio_cliente": null,
+  "imagen": "https://s3.suncarsrl.com:443/ofertas/80e36a9c-927c-41e4-a6cd-fd2f83633608.png",
+  "garantias": [
+    "1 año"
+  ],
+  "elementos": [
+    {
+      "categoria": "Paneles",
+      "descripcion": "JA SOLAR MÓDULO FOTOVOLTAICO BIFACIAL  TOPCON NTYPE JAM72D40-590/MB 590WP  MONOCRISTALINO 138 CELULAS 1500V",
+      "cantidad": 4,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/1664ba24-a4a0-47c9-a3a5-d63e1ab95891.png"
+    },
+    {
+      "categoria": "Unidad híbrida",
+      "descripcion": "Instalación y montaje de equipamiento TODO EN UNO marca MUST  120 Volt exclusivo",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/465fed1f-42a7-4972-905f-8568f79ca4fb.png"
+    }
+  ],
+  "moneda": "usd",
+  "financiamiento": false,
+  "descripcion_detallada": "Servicio de instalación y montaje de Equipo de 3 kW con 7 kWh de batería y 4 paneles solares\nEste paquete incluye un equipo híbrido todo en uno (marca MUST) de 3 kW, acompañado de 4 paneles solares de 590 W (~2.4 kWp) y una batería de 7 kWh de litio. Al ser un sistema compacto, es fácil de instalar y operar.\nCaso de uso ideal: familias pequeñas con consumo bajo a medio, que desean asegurar ventiladores, TV, laptop, iluminación básica y refrigerador en apagones de 6-10 horas. La capacidad de 7 kWh permite usar ventiladores toda la noche sin problemas y mantener conectados varios equipos de uso diario.\nVentajas: solución práctica con almacenamiento superior al promedio en su rango de precio, ideal para quienes buscan algo funcional y económico sin llegar a sistemas más complejos."
+},
+{
+  "_id": {
+    "$oid": "68cdaa3233da53b76ba33396"
+  },
+  "descripcion": "Servicio de instalación y montaje de Equipo de 6 K con 14.3 k de Batería(sin paneles)",
+  "precio": 4500,
+  "precio_cliente": null,
+  "imagen": "https://s3.suncarsrl.com:443/ofertas/662bd56e-352c-4a3a-a15f-98dec5ad976e.png",
+  "garantias": [
+    "1 año"
+  ],
+  "elementos": [
+    {
+      "categoria": "Unidad híbrida",
+      "descripcion": "Instalación y montaje de equipamiento TODO EN UNO marca MUST  OFF GRID 120/240 Volt",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/eab37e23-ae7e-4d60-b10c-6572b0d96ead.png"
+    }
+  ],
+  "moneda": "usd",
+  "financiamiento": false,
+  "descripcion_detallada": "Servicio de instalación y montaje de Equipo de 6 kW con 14.3 kWh de batería (sin paneles)\nIncluye un equipo híbrido todo en uno MUST de 6 kW y un banco de baterías de 14.3 kWh de litio, lo que brinda gran capacidad de respaldo aunque no incorpora paneles solares. Está pensado para integrarse con paneles ya existentes o para clientes que deseen añadirlos posteriormente.\nCaso de uso ideal: negocios o familias grandes que sufren apagones frecuentes y quieren respaldo prolongado para varios ventiladores, computadoras, refrigeradores, congeladores, televisores y hasta aires acondicionados de forma intermitente.\nAutonomía estimada: 12-18 horas con consumos moderados.\nVentajas: su gran capacidad de almacenamiento lo hace ideal para quienes ya tienen paneles o desean escalabilidad a futuro."
+},
+{
+  "_id": {
+    "$oid": "68cdaaf833da53b76ba33397"
+  },
+  "descripcion": "Servicio de instalación y montaje de Equipo de 3K con 7k de Batería (sin paneles)",
+  "precio": 2350,
+  "precio_cliente": null,
+  "imagen": "https://s3.suncarsrl.com:443/ofertas/8578d36f-fe4d-4a13-96e7-31dc703e99e3.png",
+  "garantias": [
+    "1 año"
+  ],
+  "elementos": [
+    {
+      "categoria": "Unidad híbrida",
+      "descripcion": "Instalación y montaje de equipamiento TODO EN UNO marca MUST  120 Volt exclusivo",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/9be2ecfb-c09e-4b52-acbc-ba789bd55a86.png"
+    }
+  ],
+  "moneda": "usd",
+  "financiamiento": false,
+  "descripcion_detallada": "Servicio de instalación y montaje de Equipo de 3 kW con 7 kWh de batería (sin paneles)\nEste sistema compacto todo en uno de 3 kW (marca MUST) incluye una batería de 7 kWh, pero no integra paneles solares. Está diseñado para clientes que buscan respaldo inmediato contra apagones sin necesidad de generación solar inicial.\nCaso de uso ideal: hogares con presupuesto ajustado que necesitan mantener ventiladores, televisor, laptop y refrigerador básico funcionando durante apagones de 6-10 horas. Perfecto para quienes planean comenzar con un sistema básico y agregar paneles solares más adelante.\nVentajas técnicas: instalación rápida, buena relación precio-autonomía y tecnología de litio de larga duración."
+},
+{
+  "_id": {
+    "$oid": "68cdab3e33da53b76ba33398"
+  },
+  "descripcion": "Servicio de instalación y montaje de Equipo de 6 K con 14.3 k de Batería con 8 \r\npaneles solares",
+  "precio": 7560.77,
+  "precio_cliente": null,
+  "imagen": "https://s3.suncarsrl.com:443/ofertas/0077dd8b-b9c0-463c-8145-e9475e192af5.png",
+  "garantias": [
+    "1 año"
+  ],
+  "elementos": [
+    {
+      "categoria": "Unidad híbrida",
+      "descripcion": "Instalación y montaje de equipamiento TODO EN UNO marca MUST  OFF GRID 120/240 Volt",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/38ae9c26-2bef-4841-a241-518c3f3d2596.png"
+    },
+    {
+      "categoria": "Paneles",
+      "descripcion": "JA SOLAR MÓDULO FOTOVOLTAICO BIFACIAL  TOPCON NTYPE JAM72D40-590/MB 590WP  MONOCRISTALINO 138 CELULAS 1500V",
+      "cantidad": 8,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/235da834-ee68-437a-9deb-f9a3d46b8905.png"
+    }
+  ],
+  "moneda": "usd",
+  "financiamiento": false,
+  "descripcion_detallada": "Servicio de instalación y montaje de Equipo de 6 kW con 14.3 kWh de batería y 8 paneles solares\nEste paquete robusto combina un equipo todo en uno de 6 kW con 14.3 kWh de almacenamiento en baterías y 8 paneles solares de 590 W (~4.7 kWp). Gracias a esta configuración, el sistema puede generar energía durante el día y almacenar lo suficiente para sostener consumos elevados en la noche.\nCaso de uso ideal: familias medianas o negocios que requieren energía constante para refrigeradores, congeladores, televisores, ventiladores y hasta aires acondicionados por varias horas. Brinda una autonomía de 14-20 horas dependiendo de la carga.\nVentajas técnicas: solución balanceada que combina buena potencia de generación con un banco de baterías amplio, ideal para climas calurosos donde se necesite aire acondicionado por intervalos."
+},
+{
+  "_id": {
+    "$oid": "68e80a0e4921630dd53ace0a"
+  },
+  "descripcion": "SISTEMA FOTOVOLTAICO FELICITY SOLAR DE 5 kW Salida 120 V con Batería de 15 kWh",
+  "descripcion_detallada": "SISTEMA FOTOVOLTAICO FELICITY SOLAR de 5 kW con batería de 15 kWh y salida 120 V: Sistema completo llave en mano que combina un inversor off-grid de 5 kW (salida 120 V) con una batería de litio FelicitySolar FLA de 15 kWh (300 Ah) y 8 paneles JA Solar de 590 W (monocristalinos bifaciales TOPCon N-Type). Ofrece una potencia fotovoltaica total cercana a 4.7 kWp y un amplio almacenamiento energético, ideal para garantizar autonomía prolongada ante apagones. Caso de uso ideal: viviendas medianas o pequeños negocios que desean mantener operativos equipos esenciales como refrigeradores, televisores, ventiladores, computadoras, iluminación y hasta aires acondicionados de bajo consumo durante cortes eléctricos prolongados. Proporciona entre 12 y 18 horas de respaldo dependiendo de la demanda. Ventajas técnicas: Inversor off-grid de alta eficiencia, diseñado para sistemas a 48 V. Batería de litio LiFePO₄ de larga vida útil (> 5000 ciclos). Paneles bifaciales de última generación con rendimiento superior al 22 %. Estructura Sunfer Fototermia para cubierta plana con ángulo de 30°. Protección eléctrica completa con fusibles GPV y bases Adler 10×38. Canalización y cableado certificado según norma EN 50618 (H1Z2Z2-K). Proyecto llave en mano: incluye estudio y dimensionado, documentación técnica, instalación, puesta en marcha y formación básica al usuario.\r\nGarantía: 1 año sobre la instalación y equipos, ampliable 2 años adicionales. Ideal para clientes que buscan independencia energética con una solución robusta, segura y eficiente a un precio equilibrado.",
+  "precio": 7163.51,
+  "precio_cliente": null,
+  "imagen": "https://s3.suncarsrl.com:443/ofertas/014e233f-b05e-4db5-9125-a84ddcba2d6e.png",
+  "moneda": "usd",
+  "financiamiento": false,
+  "descuentos": "Si realiza la reserva de su instalación recibe un porciento de descuento del \r\npresupuesto final. \r\n* Para reservar debe abonar el 10% del valor total del presupuesto \r\n* Los porcientos de descuentos para las reservas se describen a continuación: - Del 1 al 21 de octubre – Descuento del 5 % - Del 21 de octubre al 8 de noviembre – Descuento del 3 % \r\n* El presupuesto final puede variar en dependencia de la visita al cliente, en el caso \r\nde que haya que utilizarse mayor cantidad de materiales que lo que contempla la \r\noferta. \r\n* Fecha aproximada de disponibilidad: 15 de noviembre de 2025 ",
+  "garantias": [
+    "1 año sobre la instalación efectuada por nosotros y los equipos gratis.",
+    "Para ampliar la garantía por 2 años adicionales, se efectuará el pago de una  cuota anual que se calcula según los kW instalados y que se le dará a  conocer al cliente en caso de solicitar este servicio."
+  ],
+  "elementos": [
+    {
+      "categoria": "Inversor",
+      "descripcion": "INVERSOR OFF GRID 5K 120 V BATERIA DE 48 V ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/ae123853-ae6e-432a-b640-a71756382011.png"
+    },
+    {
+      "categoria": "Batería",
+      "descripcion": "BATERÍA DE LITIO PARA INSTALACIÓN SOLAR  FOTOVOLTAICA FELICITYSOLAR SERIE FLA DE 15 KWH  300A",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/502932f2-0029-41f8-9718-d3232bb00613.png"
+    },
+    {
+      "categoria": "Paneles",
+      "descripcion": "JA SOLAR MÓDULO FOTOVOLTAICO BIFACIAL TOPCON  NTYPE JAM72D40-590/MB 590WP MONOCRISTALINO  138 CELULAS 1500V",
+      "cantidad": 8,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/cc434509-1059-4ee3-aa42-4ca6b0ace5c2.png"
+    },
+    {
+      "categoria": "Estructura",
+      "descripcion": "ESTRUCTURA PARA MONTAJE DE MÓDULO  FOTOVOLTÁICO SUNFER FOTOTERMIA 09V4 CUBIERTA  PLANA 4 MÓDULOS 72 CÉLULAS 30º 33-50MM",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/0885a7da-701f-4ee1-83bf-eb6381e63518.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE SOLAR H1Z2Z2-K 1X4MM NEGRO (B. CORTE)",
+      "cantidad": 50,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/0f5bd83f-a8e9-4f30-8c1b-d5ca0bbfffd3.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE SOLAR H1Z2Z2-K 1X4MM ROJO (B. CORTE) ",
+      "cantidad": 50,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/23bc03ce-5f1e-4f93-943d-86522065b1d5.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 4MM AM/VERDE FLEX PM ",
+      "cantidad": 50,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/acfd6374-31bf-4cdf-819e-04b152909075.png"
+    },
+    {
+      "categoria": "Cableado AC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 6MM NEGRO FLEX PM ",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/9e0efa5d-78c3-470e-afb0-51111d23ec26.png"
+    },
+    {
+      "categoria": "Cableado AC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 6MM AZUL FLEX PM ",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/fbd0c27b-f656-4863-b6d6-4e858fcc0609.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "ML TUBO PVC M-25 GRIS ENCHUFABLE RIGIDO ",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/e9d6fc30-bb6a-4031-86f9-d9b6af1eb7e9.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "MANGUITO PVC M-25 ENCHUFABLE IP40 GRIS",
+      "cantidad": 6,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/4a70f499-e12d-4880-9928-188b7d787854.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "ML TUBO CORRUGADO LHA M-25 320 NW GRIS",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/d18e8b74-d810-4f5b-9d37-d0582a1c4bad.png"
+    },
+    {
+      "categoria": "Pica Tierra",
+      "descripcion": "PICA T.T.PCT 2ML 100MICRAS COBREADA 14,2MM ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/b1f9bb94-241f-47fe-a0d4-c665d585ac79.png"
+    },
+    {
+      "categoria": "Pica Tierra",
+      "descripcion": "GRAPA CABLE/PICA 40   ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/295c611d-12aa-44a2-972e-f1795638f9b8.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": " ADLER BASE PORTAFUSIBLE 10X38 1000VDC BH100-01 ",
+      "cantidad": 4,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/393732dd-1390-4222-9359-d81219582430.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "FUSIBLE CILÍNDRICO 15A 10X38 MM 1000VDC GPV  (PROTECCIÓN FOTOVOLTAICA) ",
+      "cantidad": 4,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/c2a140b2-2738-4f75-8577-e227a1e2b3f9.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "TRANSFERENCIAL AUTOMÁTICO DE 60 A ",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/c09aa1c5-5308-4a9b-9261-160abd32017e.png"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "68e80bc04921630dd53ace0b"
+  },
+  "descripcion": "SISTEMA FOTOVOLTAICO FELICITY SOLAR DE 10 kW Salida 220 V con Batería de 10 kWh ",
+  "descripcion_detallada": "SISTEMA FOTOVOLTAICO FELICITY SOLAR de 10 kW con batería de 10 kWh y salida 220 V. Sistema fotovoltaico de alta capacidad orientado a viviendas grandes o pequeñas empresas que demandan energía continua y estable. Compuesto por 2 inversores off-grid FelicitySolar de 5 kW (total 10 kW), batería de litio LiFePO₄ de 10 kWh (200 Ah), y 8 paneles solares JA Solar bifaciales TOPCon N-Type de 590 W (total ~4.7 kWp). Caso de uso ideal: hogares con alto consumo energético, oficinas o negocios que requieren alimentar simultáneamente varios aires acondicionados, refrigeradores, congeladores, computadoras, iluminación y equipos de red, incluso durante apagones prolongados. Ventajas técnicas: Configuración de doble inversor con salida 220 V para cargas exigentes. Batería LiFePO₄ de alto rendimiento y larga duración. Estructura Sunfer para techos planos con inclinación de 30° optimizada. Sistema completo de protección eléctrica y transferencia automática de 60 A. Cableado y canalización certificados según normas internacionales (H1Z2Z2-K). Proyecto llave en mano: incluye estudio, documentación técnica, instalación, puesta en marcha y capacitación al usuario.\r\nGarantía: 1 año sobre instalación y equipos, ampliable por 2 años adicionales. Recomendado para clientes que buscan independencia energética total con una solución sólida, escalable y de excelente relación calidad-precio.",
+  "precio": 7273.51,
+  "precio_cliente": null,
+  "imagen": "https://s3.suncarsrl.com:443/ofertas/b9829e28-7ff2-486d-b524-23814d66a65d.png",
+  "moneda": "usd",
+  "financiamiento": false,
+  "descuentos": "Si realiza la reserva de su instalación recibe un porciento de descuento del \r\npresupuesto final. \r\n* Para reservar debe abonar el 10% del valor total del presupuesto \r\n* Los porcientos de descuentos para las reservas se describen a continuación: - Del 1 al 21 de octubre – Descuento del 5 % - Del 21 de octubre al 8 de noviembre – Descuento del 3 % \r\n* El presupuesto final puede variar en dependencia de la visita al cliente, en el caso \r\nde que haya que utilizarse mayor cantidad de materiales que lo que contempla la \r\noferta. \r\n* Fecha aproximada de disponibilidad: 15 de noviembre de 2025",
+  "garantias": [
+    "1 año sobre la instalación efectuada por nosotros y los equipos gratis.",
+    "Para ampliar la garantía por 2 años adicionales, se efectuará el pago de una  cuota anual que se calcula según los kW instalados y que se le dará a  conocer al cliente en caso de solicitar este servicio."
+  ],
+  "elementos": [
+    {
+      "categoria": "Inversor",
+      "descripcion": "INVERSOR OFF GRID 5K 120 V BATERIA DE 48 V ",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/107a1350-ee2e-4f51-94bf-143043588495.png"
+    },
+    {
+      "categoria": "Batería",
+      "descripcion": "BATERÍA DE LITIO PARA INSTALACIÓN SOLAR  FOTOVOLTAICA FELICITYSOLAR SERIE FLA DE 10 KWH  200A",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/41aa6692-776e-493c-bade-87f8d9fc3756.png"
+    },
+    {
+      "categoria": "Paneles",
+      "descripcion": "JA SOLAR MÓDULO FOTOVOLTAICO BIFACIAL TOPCON  NTYPE JAM72D40-590/MB 590WP MONOCRISTALINO  138 CELULAS 1500V ",
+      "cantidad": 8,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/56d2462b-50b8-4b81-8963-2d99408ccfb9.png"
+    },
+    {
+      "categoria": "Estructura",
+      "descripcion": "ESTRUCTURA PARA MONTAJE DE MÓDULO  FOTOVOLTÁICO SUNFER FOTOTERMIA 09V4 CUBIERTA  PLANA 4 MÓDULOS 72 CÉLULAS 30º 33-50MM",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/aea45ace-a226-4a86-b027-bff373738e51.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE SOLAR H1Z2Z2-K 1X4MM NEGRO (B. CORTE) ",
+      "cantidad": 50,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/c53f0304-78c2-4510-99ee-1885d10c5e4d.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE SOLAR H1Z2Z2-K 1X4MM ROJO (B. CORTE)",
+      "cantidad": 50,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/055f224d-5cf6-45c5-baab-46dfae21e52a.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 4MM AM/VERDE FLEX PM ",
+      "cantidad": 50,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/f4502fe6-3b8d-4b60-b095-dad9ccc2906f.png"
+    },
+    {
+      "categoria": "Cableado AC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 6MM NEGRO FLEX PM ",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/fdcc7822-9012-4f66-a76a-9fd7668de18e.png"
+    },
+    {
+      "categoria": "Cableado AC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 6MM AZUL FLEX PM ",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/a9534101-4891-4885-b8a3-00711fab49c6.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "ML TUBO PVC M-25 GRIS ENCHUFABLE RIGIDO",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/f6dfe94d-0db6-4d69-955d-2baf7b708ffe.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "MANGUITO PVC M-25 ENCHUFABLE IP40 GRIS  ",
+      "cantidad": 6,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/bc81780d-42e8-46d8-9c7b-ec99d5a8fe7e.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "ML TUBO CORRUGADO LHA M-25 320 NW GRIS",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/2eafc884-cbe2-4ff3-a3ad-610de7e1b076.png"
+    },
+    {
+      "categoria": "Pica Tierra",
+      "descripcion": "PICA T.T.PCT 2ML 100MICRAS COBREADA 14,2MM ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/9af9d01a-f679-492a-9627-c56c873dc456.png"
+    },
+    {
+      "categoria": "Pica Tierra",
+      "descripcion": "GRAPA CABLE/PICA 40  ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/a2b348d7-1d1c-47fe-8418-2bb00dfa8818.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "ADLER BASE PORTAFUSIBLE 10X38 1000VDC BH100-01 ",
+      "cantidad": 4,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/974777b7-cd23-4b7b-a11f-81e4a65b5ee6.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "FUSIBLE CILÍNDRICO 15A 10X38 MM 1000VDC GPV  (PROTECCIÓN FOTOVOLTAICA)",
+      "cantidad": 4,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/040f7722-f5e6-4560-8478-4ce93b88cf44.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "TRANSFERENCIAL AUTOMÁTICO DE 60 A  ",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/02d18901-e3b3-4fda-9217-995dd5a5929f.png"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "68e80cfa4921630dd53ace0c"
+  },
+  "descripcion": "SISTEMA FOTOVOLTAICO FELICITY SOLAR DE 2 kW Salida 120 V con Batería de 2.56 kWh",
+  "descripcion_detallada": "SISTEMA FOTOVOLTAICO FELICITY SOLAR de 2 kW con batería de 2.56 kWh y salida 120 V: Sistema solar compacto diseñado para suministrar energía limpia en hogares con bajo consumo o como respaldo en casos de emergencia. Incluye un inversor off-grid FelicitySolar de 2 kW (salida 120 V), una batería de litio de 2.56 kWh (LiFePO₄) y 2 paneles JA Solar bifaciales de 590 W (monocristalinos N-Type), alcanzando una potencia total aproximada de 1.18 kWp. Caso de uso ideal: familias pequeñas, casas rurales o locales que necesitan cubrir consumos esenciales como iluminación, ventiladores, televisores, laptops y refrigeradores pequeños durante apagones de 4 a 6 horas. Ventajas técnicas: Tecnología LiFePO₄ de alta durabilidad (más de 5000 ciclos). Estructura inclinada BLTM P26 para una instalación sencilla y segura. Inversor todo en uno con gestión automática de carga y transferencia. Protección eléctrica integrada con fusibles GPV y portafusibles Adler. Instalación rápida y mantenimiento mínimo. Proyecto llave en mano: incluye estudio, documentación, instalación y puesta en marcha con formación al usuario. Garantía: 1 año ampliable a 3 años. Ideal para usuarios que buscan una solución económica, confiable y fácil de mantener, perfecta para zonas con cortes eléctricos frecuentes.",
+  "precio": 2352.45,
+  "precio_cliente": null,
+  "imagen": "https://s3.suncarsrl.com:443/ofertas/0ab3965c-2513-4311-8a09-2a2ed6d53742.png",
+  "moneda": "usd",
+  "financiamiento": false,
+  "descuentos": "Si realiza la reserva de su instalación recibe un porciento de descuento del \r\npresupuesto final. \r\n* Para reservar debe abonar el 10% del valor total del presupuesto \r\n* Los porcientos de descuentos para las reservas se describen a continuación: - Del 1 al 21 de octubre – Descuento del 5 % - Del 21 de octubre al 8 de noviembre – Descuento del 3 % \r\n* El presupuesto final puede variar en dependencia de la visita al cliente, en el caso \r\nde que haya que utilizarse mayor cantidad de materiales que lo que contempla la \r\noferta. \r\n* Fecha aproximada de disponibilidad: 15 de noviembre de 2025 ",
+  "garantias": [
+    "1 año sobre la instalación efectuada por nosotros y los equipos gratis.",
+    "Para ampliar la garantía por 2 años adicionales, se efectuará el pago de una  cuota anual que se calcula según los kW instalados y que se le dará a  conocer al cliente en caso de solicitar este servicio."
+  ],
+  "elementos": [
+    {
+      "categoria": "Inversor",
+      "descripcion": "INVERSOR OFF GRID 2K SALIDA 120 V BATERÍA DE 24 V ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/dd38e554-05ea-40d8-ad39-04db63b0d3ec.png"
+    },
+    {
+      "categoria": "Batería",
+      "descripcion": "BATERÍA DE LITIO PARA INSTALACIÓN SOLAR  FOTOVOLTAICA FELICITYSOLAR SERIE FLA DE 2.56 KWH  100A",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/76171ae7-8917-4cf5-b3bb-7fae8e61c3eb.png"
+    },
+    {
+      "categoria": "Paneles",
+      "descripcion": "JA SOLAR MÓDULO FOTOVOLTAICO BIFACIAL TOPCON  NTYPE JAM72D40-590/MB 590WP MONOCRISTALINO  138 CELULAS 1500V",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/c015f212-c4e8-48f7-b252-323cc76795cb.png"
+    },
+    {
+      "categoria": "Estructura",
+      "descripcion": "BLTM P26 ESTRUCTURA 2 PANEL <1055MM 72CEL  INCLINAD 30º",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/1807171d-65c9-4b58-99b9-491918c8e4f1.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE SOLAR H1Z2Z2-K 1X4MM NEGRO (B. CORTE)",
+      "cantidad": 20,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/255be607-ec0e-42c8-b7f0-48a4743cde2d.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE SOLAR H1Z2Z2-K 1X4MM ROJO (B. CORTE) ",
+      "cantidad": 20,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/12f956ca-ea70-4328-a693-2b2e20109592.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 4MM AM/VERDE FLEX PM ",
+      "cantidad": 20,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/41808383-1250-48fd-9a6c-d2a8b745487a.png"
+    },
+    {
+      "categoria": "Cableado AC",
+      "descripcion": "CABLE LIBRE DE HALÓGENOS (LHA) H07Z1-K(AS),  4MM2 NEGRO, CLASE 5 FLEXIBLE ",
+      "cantidad": 20,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/f87b55f8-44ef-472d-ba88-719c7edb1efc.png"
+    },
+    {
+      "categoria": "Cableado AC",
+      "descripcion": "CABLE LIBRE DE HALÓGENOS (LHA) H07Z1-K(AS),  4MM2 AZUL, CLASE 5 FLEXIBLE",
+      "cantidad": 20,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/b41c6270-73a7-4a9f-a9ec-ed4182256ec8.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "ML TUBO PVC M-25 GRIS ENCHUFABLE RIGIDO ",
+      "cantidad": 10,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/34acde49-3163-41d3-bb12-69d68f576aab.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "MANGUITO PVC M-25 ENCHUFABLE IP40 GRIS ",
+      "cantidad": 3,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/11314081-9e98-416a-8ef9-d6912cd406a8.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "ML TUBO CORRUGADO LHA M-25 320 NW GRIS",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/2a046da7-28d2-4204-bbff-230130ba290f.png"
+    },
+    {
+      "categoria": "Pica Tierra",
+      "descripcion": "PICA T.T.PCT 2ML 100MICRAS COBREADA 14,2MM",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/a717c693-a0d1-47ea-a602-2c2e68d5d8e3.png"
+    },
+    {
+      "categoria": "Pica Tierra",
+      "descripcion": "GRAPA CABLE/PICA 40  ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/a42a8a39-82d5-4701-9364-c25de1d9c2b4.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "ADLER BASE PORTAFUSIBLE 10X38 1000VDC BH100-01 ",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/72841d71-76d9-444c-9d63-bc499ba0d320.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "FUSIBLE CILÍNDRICO 15A 10X38 MM 1000VDC GPV  (PROTECCIÓN FOTOVOLTAICA)",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/da926834-42ba-41e1-abe8-59c3790ea856.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "TRANSFERENCIAL AUTOMÁTICO DE 20 A ",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/e99abb44-b513-4432-b559-07a0e64d97ca.png"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "68e80e044921630dd53ace0d"
+  },
+  "descripcion": "SISTEMA FOTOVOLTAICO FELICITY SOLAR DE 5 kW Salida 120 V con Batería de 5.12 kWh ",
+  "descripcion_detallada": "SISTEMA FOTOVOLTAICO FELICITY SOLAR de 5 kW con batería de 5.12 kWh y salida 120 V. Sistema solar residencial completo diseñado para ofrecer independencia energética en viviendas con consumo medio. Incorpora un inversor off-grid FelicitySolar de 5 kW (salida 120 V), una batería de litio LiFePO₄ de 5.12 kWh (100 Ah) y 8 paneles JA Solar bifaciales TOPCon N-Type de 590 W, sumando una potencia total aproximada de 4.7 kWp. Caso de uso ideal: hogares medianos o pequeños negocios que buscan respaldo confiable para refrigeradores, ventiladores, televisores, computadoras y equipos esenciales durante apagones de entre 8 y 12 horas, manteniendo autonomía energética durante el día gracias a la generación solar directa. Ventajas técnicas: Inversor off-grid de alta eficiencia con control inteligente de carga. Batería de litio LiFePO₄ de larga duración (más de 5000 ciclos). Paneles bifaciales con eficiencia superior al 21,5 %. Estructura Sunfer Fototermia para techos planos, inclinación de 30°. Protección eléctrica completa con fusibles GPV y bases Adler 10×38. Cableado y canalización de calidad industrial certificados. Proyecto llave en mano: incluye estudio técnico, documentación, instalación, puesta en marcha y formación inicial al usuario. Garantía: 1 año sobre instalación y equipos, ampliable hasta 3 años. Ideal para familias o negocios que desean un sistema robusto, confiable y eficiente para reducir su dependencia de la red eléctrica y asegurar energía continua.",
+  "precio": 5843.51,
+  "precio_cliente": null,
+  "imagen": "https://s3.suncarsrl.com:443/ofertas/ca8044bd-bd23-4734-94db-b463c378c408.png",
+  "moneda": "usd",
+  "financiamiento": false,
+  "descuentos": "Si realiza la reserva de su instalación recibe un porciento de descuento del \r\npresupuesto final. \r\n* Para reservar debe abonar el 10% del valor total del presupuesto \r\n* Los porcientos de descuentos para las reservas se describen a continuación: - Del 1 al 21 de octubre – Descuento del 5 % - Del 21 de octubre al 8 de noviembre – Descuento del 3 % \r\n* El presupuesto final puede variar en dependencia de la visita al cliente, en el caso \r\nde que haya que utilizarse mayor cantidad de materiales que lo que contempla la \r\noferta. \r\n* Fecha aproximada de disponibilidad: 15 de noviembre de 2025",
+  "garantias": [
+    "1 año sobre la instalación efectuada por nosotros y los equipos gratis.",
+    "Para ampliar la garantía por 2 años adicionales, se efectuará el pago de una  cuota anual que se calcula según los kW instalados y que se le dará a  conocer al cliente en caso de solicitar este servicio."
+  ],
+  "elementos": [
+    {
+      "categoria": "Inversor",
+      "descripcion": "INVERSOR OFF GRID 5K 120 V BATERIA DE 48 V",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/addb6ec3-0487-4373-93bd-9731fd4b733a.png"
+    },
+    {
+      "categoria": "Batería",
+      "descripcion": "BATERÍA DE LITIO PARA INSTALACIÓN SOLAR  FOTOVOLTAICA FELICITYSOLAR SERIE FLA DE 5.12 KWH  100A",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/e64f4f44-eae5-4b09-80d7-e2efa2be778b.png"
+    },
+    {
+      "categoria": "Paneles",
+      "descripcion": "JA SOLAR MÓDULO FOTOVOLTAICO BIFACIAL TOPCON  NTYPE JAM72D40-590/MB 590WP MONOCRISTALINO  138 CELULAS 1500V",
+      "cantidad": 8,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/11e87fb9-aa98-46ad-ad03-1eb66739ebea.png"
+    },
+    {
+      "categoria": "Estructura",
+      "descripcion": "ESTRUCTURA PARA MONTAJE DE MÓDULO  FOTOVOLTÁICO SUNFER FOTOTERMIA 09V4 CUBIERTA  PLANA 4 MÓDULOS 72 CÉLULAS 30º 33-50MM",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/2b48334e-172d-4025-a8a3-9cf231f5d0eb.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE SOLAR H1Z2Z2-K 1X4MM NEGRO (B. CORTE) ",
+      "cantidad": 50,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/c690606c-f2fc-4a37-93f7-dd8744cfdb42.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE SOLAR H1Z2Z2-K 1X4MM ROJO (B. CORTE) ",
+      "cantidad": 50,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/7d1f48b5-cde3-43d0-b56a-f9da102dfcbb.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 4MM AM/VERDE FLEX PM",
+      "cantidad": 50,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/f6972949-51af-4d31-896b-041c59aefb26.png"
+    },
+    {
+      "categoria": "Cableado AC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 6MM NEGRO FLEX PM",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/f158f738-b845-4960-838b-13771b996032.png"
+    },
+    {
+      "categoria": "Cableado AC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 6MM AZUL FLEX PM",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/0f097f6a-31db-4aea-8062-cb1505a96e3f.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "ML TUBO PVC M-25 GRIS ENCHUFABLE RIGIDO ",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/87ce1c34-b90e-4b15-8ab4-1aa3974074fd.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "MANGUITO PVC M-25 ENCHUFABLE IP40 GRIS",
+      "cantidad": 6,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/954eb4d8-3ba4-4623-86cf-0953945d9f7f.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "ML TUBO CORRUGADO LHA M-25 320 NW GRIS ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/0c9c5d15-7627-41d0-960f-9b65bcf0307a.png"
+    },
+    {
+      "categoria": "Pica Tierra",
+      "descripcion": "PICA T.T.PCT 2ML 100MICRAS COBREADA 14,2MM ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/58fd45da-05b8-44a9-a7e9-d50b39529f2a.png"
+    },
+    {
+      "categoria": "Pica Tierra",
+      "descripcion": "GRAPA CABLE/PICA 40   ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/176f31af-bcc1-4603-b244-62092c6f7feb.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "ADLER BASE PORTAFUSIBLE 10X38 1000VDC BH100-01 ",
+      "cantidad": 4,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/8e0b7212-fa0c-4f54-8946-259c377af6e7.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "FUSIBLE CILÍNDRICO 15A 10X38 MM 1000VDC GPV  (PROTECCIÓN FOTOVOLTAICA)",
+      "cantidad": 4,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/61013e47-75bd-4a88-bca1-c948ae5ac81b.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "TRANSFERENCIAL AUTOMÁTICO DE 60 A  ",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/43edbd9c-c176-49a6-b8ad-a6d4d3d35c77.png"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "68e80f494921630dd53ace0e"
+  },
+  "descripcion": "SISTEMA FOTOVOLTAICO FELICITY SOLAR DE 10 kW Salida 220 V con Batería de 15 kWh ",
+  "descripcion_detallada": "SISTEMA FOTOVOLTAICO FELICITY SOLAR de 10 kW con batería de 15 kWh. Este sistema fotovoltaico completo incluye un inversor off-grid de 5 kW (configuración doble, salida total 10 kW a 220 V) y una batería de litio FelicitySolar Serie FLA de 15 kWh (300 Ah), junto con 8 paneles solares JA Solar bifaciales TOPCon N-Type de 590 W (≈ 4,7 kWp en total). Está diseñado como una solución “llave en mano” que abarca desde el estudio y dimensionado hasta la instalación y puesta en marcha, garantizando un funcionamiento estable y de alta eficiencia incluso en entornos con cortes frecuentes de energía. Caso de uso ideal: viviendas medianas o negocios que requieren alimentar simultáneamente electrodomésticos de alto consumo como refrigeradores, congeladores, televisores, ventiladores, bombas de agua y hasta aires acondicionados de forma controlada. Proporciona autonomía estimada de 14 a 20 horas con cargas moderadas, pudiendo sostener consumos más intensivos gracias a su potente banco de baterías. Ventajas técnicas: Tecnología de batería LiFePO4 de alta durabilidad (más de 5000 ciclos). Inversores off-grid de 120 V/48 V configurados para salida 220 V. Paneles bifaciales de última generación que mejoran la captación solar hasta un 10 %. Estructura Sunfer de aluminio anodizado para cubiertas planas, con inclinación óptima de 30°. Sistema de protección eléctrica completa (fusibles, portafusibles, puesta a tierra y canalización certificada). Cableado solar H1Z2Z2-K y AC de 6 mm garantizan mínima pérdida de energía. Servicio incluido: Instalación profesional, puesta en marcha y explicación inicial de uso. El proyecto se entrega con estudio técnico, gestión documental y garantía de 1 año sobre instalación y equipos, ampliable a 3 años mediante contrato de mantenimiento. Ideal para quienes buscan independencia energética real y rendimiento estable durante todo el año.",
+  "precio": 7933.51,
+  "precio_cliente": null,
+  "imagen": "https://s3.suncarsrl.com:443/ofertas/30b58e02-d5be-4a3e-8f25-e9eadd4cbde7.png",
+  "moneda": "usd",
+  "financiamiento": false,
+  "descuentos": "Si realiza la reserva de su instalación recibe un porciento de descuento del \r\npresupuesto final. \r\n* Para reservar debe abonar el 10% del valor total del presupuesto \r\n* Los porcientos de descuentos para las reservas se describen a continuación: - Del 1 al 21 de octubre – Descuento del 5 % - Del 21 de octubre al 8 de noviembre – Descuento del 3 % \r\n* El presupuesto final puede variar en dependencia de la visita al cliente, en el caso \r\nde que haya que utilizarse mayor cantidad de materiales que lo que contempla la \r\noferta. \r\n* Fecha aproximada de disponibilidad: 15 de noviembre de 2025 ",
+  "garantias": [
+    "1 año sobre la instalación efectuada por nosotros y los equipos gratis.",
+    "Para ampliar la garantía por 2 años adicionales, se efectuará el pago de una  cuota anual que se calcula según los kW instalados y que se le dará a  conocer al cliente en caso de solicitar este servicio."
+  ],
+  "elementos": [
+    {
+      "categoria": "Inversor",
+      "descripcion": "INVERSOR OFF GRID 5K 120 V BATERIA DE 48 V ",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/11687871-1a76-4406-b17f-42013e658c99.png"
+    },
+    {
+      "categoria": "Batería",
+      "descripcion": "BATERÍA DE LITIO PARA INSTALACIÓN SOLAR  FOTOVOLTAICA FELICITYSOLAR SERIE FLA DE 15 KWH  300A",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/314daa43-e5a0-43bd-b29f-529a311c20dc.png"
+    },
+    {
+      "categoria": "Paneles",
+      "descripcion": "JA SOLAR MÓDULO FOTOVOLTAICO BIFACIAL TOPCON  NTYPE JAM72D40-590/MB 590WP MONOCRISTALINO  138 CELULAS 1500V",
+      "cantidad": 8,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/0d0c989b-218c-465d-ad2e-35d54ef7bf32.png"
+    },
+    {
+      "categoria": "Estructura",
+      "descripcion": "ESTRUCTURA PARA MONTAJE DE MÓDULO  FOTOVOLTÁICO SUNFER FOTOTERMIA 09V4 CUBIERTA  PLANA 4 MÓDULOS 72 CÉLULAS 30º 33-50MM ",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/19ed3cea-92a1-4bd5-b557-f6c4fcee110b.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE SOLAR H1Z2Z2-K 1X4MM NEGRO (B. CORTE) ",
+      "cantidad": 50,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/44624b85-dff6-4b65-b1f8-79686b48c0a5.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE SOLAR H1Z2Z2-K 1X4MM ROJO (B. CORTE) ",
+      "cantidad": 50,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/8b4a4f9a-bce5-471a-ad56-d2f077fa2557.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 4MM AM/VERDE FLEX PM",
+      "cantidad": 50,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/ca9e3bb4-42d5-40bf-b9ad-0f29bab76f2b.png"
+    },
+    {
+      "categoria": "Cableado AC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 6MM NEGRO FLEX PM",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/5e942177-9ab8-431c-8226-da620c442793.png"
+    },
+    {
+      "categoria": "Cableado AC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 6MM AZUL FLEX PM ",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/6bf940c8-aa63-4bae-83aa-d1aee2a436ef.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": " ML TUBO PVC M-25 GRIS ENCHUFABLE RIGIDO",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/9abe32b0-3a86-4273-8d39-bbee9716b670.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "MANGUITO PVC M-25 ENCHUFABLE IP40 GRIS ",
+      "cantidad": 6,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/953b7af2-2d83-4001-8813-6a9b52ce0315.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "ML TUBO CORRUGADO LHA M-25 320 NW GRIS",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/98a41a83-147c-4607-910e-b7e119fa9db0.png"
+    },
+    {
+      "categoria": "Pica Tierra",
+      "descripcion": "PICA T.T.PCT 2ML 100MICRAS COBREADA 14,2MM ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/aa7be5fa-670e-49a0-aa3a-db1078cc3c77.png"
+    },
+    {
+      "categoria": "Pica Tierra",
+      "descripcion": "GRAPA CABLE/PICA 40  ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/fcff24a2-ded5-4b6f-be5a-0233ee9bb312.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "ADLER BASE PORTAFUSIBLE 10X38 1000VDC BH100-01",
+      "cantidad": 4,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/5d5f1fd7-b9b9-455f-ab9a-e67fffc64f0b.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "FUSIBLE CILÍNDRICO 15A 10X38 MM 1000VDC GPV  (PROTECCIÓN FOTOVOLTAICA)",
+      "cantidad": 4,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/1fca9a73-5293-483e-9228-89043ea5b9a1.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "TRANSFERENCIAL AUTOMÁTICO DE 60 A  ",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/ef25f858-6150-444b-b701-ea87ee24295b.png"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "68e810b54921630dd53ace0f"
+  },
+  "descripcion": "SISTEMA FOTOVOLTAICO FELICITY SOLAR DE 5 kW Salida 120 V con Batería de 10 kWh",
+  "descripcion_detallada": "SISTEMA FOTOVOLTAICO FELICITY SOLAR de 5 kW con batería de 10 kWh. Este sistema fotovoltaico completo de 5 kW combina un inversor off-grid FelicitySolar de 5 kW (120 V, batería de 48 V) con 8 paneles solares JA Solar bifaciales TOPCon N-Type de 590 W (≈ 4,7 kWp totales) y una batería de litio FelicitySolar Serie FLA de 10 kWh (200 Ah). Está diseñado para viviendas medianas o pequeños negocios que desean independencia energética y respaldo seguro ante cortes eléctricos. Caso de uso ideal: hogares con consumo medio que requieren mantener refrigerador, TV, iluminación, ventiladores, computadoras y otros equipos esenciales durante apagones de 8 a 14 horas. Su banco de batería permite cubrir la noche completa con cargas moderadas. Ventajas técnicas: Tecnología de litio LiFePO₄ con más de 5000 ciclos de vida útil. Inversor de onda pura con capacidad de gestión de energía estable y confiable. Paneles bifaciales de alta eficiencia (+10 % de captación). Estructura Sunfer para cubiertas planas, inclinación óptima de 30°. Sistema completo de protección eléctrica con fusibles DC, puesta a tierra y canalización certificada. Cableado solar H1Z2Z2-K y AC de 6 mm para máxima eficiencia. Servicio incluido: Instalación profesional, puesta en marcha y capacitación inicial del usuario. El proyecto se entrega con estudio técnico, documentación y garantía de 1 año sobre instalación y equipos (ampliable a 3 años con contrato adicional). Ideal para clientes que buscan fiabilidad, autonomía y una inversión equilibrada en rendimiento y precio.",
+  "precio": 6503.51,
+  "precio_cliente": null,
+  "imagen": "https://s3.suncarsrl.com:443/ofertas/472ad51d-d6a6-456f-b577-b62b9101f27b.png",
+  "moneda": "usd",
+  "financiamiento": false,
+  "descuentos": "Si realiza la reserva de su instalación recibe un porciento de descuento del \r\npresupuesto final. \r\n* Para reservar debe abonar el 10% del valor total del presupuesto \r\n* Los porcientos de descuentos para las reservas se describen a continuación: - Del 1 al 21 de octubre – Descuento del 5 % - Del 21 de octubre al 8 de noviembre – Descuento del 3 % \r\n* El presupuesto final puede variar en dependencia de la visita al cliente, en el caso \r\nde que haya que utilizarse mayor cantidad de materiales que lo que contempla la \r\noferta. \r\n* Fecha aproximada de disponibilidad: 15 de noviembre de 2025",
+  "garantias": [
+    "1 año sobre la instalación efectuada por nosotros y los equipos gratis.",
+    "Para ampliar la garantía por 2 años adicionales, se efectuará el pago de una  cuota anual que se calcula según los kW instalados y que se le dará a  conocer al cliente en caso de solicitar este servicio."
+  ],
+  "elementos": [
+    {
+      "categoria": "Inversor",
+      "descripcion": "INVERSOR OFF GRID 5K 120 V BATERIA DE 48 V ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/c7915ece-70bc-4b66-9e70-04e6ea7a3b55.png"
+    },
+    {
+      "categoria": "Batería",
+      "descripcion": "BATERÍA DE LITIO PARA INSTALACIÓN SOLAR  FOTOVOLTAICA FELICITYSOLAR SERIE FLA DE 10 KWH  200A",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/cfc05012-7f5a-46d6-b262-4984730a8487.png"
+    },
+    {
+      "categoria": "Paneles",
+      "descripcion": "JA SOLAR MÓDULO FOTOVOLTAICO BIFACIAL TOPCON  NTYPE JAM72D40-590/MB 590WP MONOCRISTALINO  138 CELULAS 1500V",
+      "cantidad": 8,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/e4ca2c99-ae16-459f-ab8b-c73d9caed83c.png"
+    },
+    {
+      "categoria": "Estructura",
+      "descripcion": "ESTRUCTURA PARA MONTAJE DE MÓDULO  FOTOVOLTÁICO SUNFER FOTOTERMIA 09V4 CUBIERTA  PLANA 4 MÓDULOS 72 CÉLULAS 30º 33-50MM",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/fe8918b1-19b4-40d0-b190-b406a78761df.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE SOLAR H1Z2Z2-K 1X4MM NEGRO (B. CORTE)",
+      "cantidad": 50,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/9394cb95-94aa-4c6d-88c5-cc6962fd42e9.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE SOLAR H1Z2Z2-K 1X4MM ROJO (B. CORTE) ",
+      "cantidad": 50,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/1aa2c0bd-fe54-46e3-8cfb-19deda57c619.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 4MM AM/VERDE FLEX PM ",
+      "cantidad": 50,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/663fc527-08d7-4d32-bc45-f0811d696a4c.png"
+    },
+    {
+      "categoria": "Cableado AC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 6MM NEGRO FLEX PM",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/f032fc08-0142-4e39-92e6-4ae01be80c6c.png"
+    },
+    {
+      "categoria": "Cableado AC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 6MM AZUL FLEX PM",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/1068a36e-be31-4599-8259-5858c252a746.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "ML TUBO PVC M-25 GRIS ENCHUFABLE RIGIDO ",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/f7e6813b-b1ef-40b4-b29d-6a59a96d4f91.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "MANGUITO PVC M-25 ENCHUFABLE IP40 GRIS",
+      "cantidad": 6,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/9a2c1012-5b53-47e6-bfa4-5eaee74655ad.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "ML TUBO CORRUGADO LHA M-25 320 NW GRIS ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/3527f157-f2b3-4677-80fa-c49c5d5dcfab.png"
+    },
+    {
+      "categoria": "Pica Tierra",
+      "descripcion": "PICA T.T.PCT 2ML 100MICRAS COBREADA 14,2MM",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/4121043e-1eff-42ee-8f56-f6c1c147df51.png"
+    },
+    {
+      "categoria": "Pica Tierra",
+      "descripcion": "GRAPA CABLE/PICA 40  ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/7e03bcc4-3fea-4af4-9429-8a5df2b15b62.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "ADLER BASE PORTAFUSIBLE 10X38 1000VDC BH100-01",
+      "cantidad": 4,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/968f9a5b-4760-48cd-ab0f-6688a63dafef.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "FUSIBLE CILÍNDRICO 15A 10X38 MM 1000VDC GPV  (PROTECCIÓN FOTOVOLTAICA)",
+      "cantidad": 4,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/bff71f28-55ef-4e8f-bba6-e5e78b300c42.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "TRANSFERENCIAL AUTOMÁTICO DE 60 A ",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/0e1d8130-5c51-4037-91c8-1863d096dda4.png"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "68e811ad4921630dd53ace10"
+  },
+  "descripcion": "SISTEMA FOTOVOLTAICO FELICITY SOLAR DE 10 kW Salida 220 V con Batería de 5.12  kWh",
+  "descripcion_detallada": "SISTEMA FOTOVOLTAICO FELICITY SOLAR de 10 kW con batería de 5.12 kWh. Sistema fotovoltaico off-grid de 10 kW con salida a 220 V, formado por dos inversores FelicitySolar de 5 kW (48 V), una batería de litio FelicitySolar Serie FLA de 5.12 kWh (100 Ah) y 8 paneles JA Solar bifaciales TOPCon N-Type de 590 W (~4,7 kWp totales). Su diseño modular permite ampliaciones futuras tanto en capacidad de batería como en potencia. Caso de uso ideal: viviendas o locales con consumo moderado que requieren energía solar estable para iluminación, refrigeración, equipos electrónicos y ventiladores, con opción de respaldo básico de 4 a 6 horas según la carga. Es una solución económica de entrada al segmento de alta potencia fotovoltaica. Ventajas técnicas: Inversores off-grid de onda pura con salida combinada 220 V. Paneles bifaciales de alto rendimiento y estructura Sunfer de aluminio anodizado. Preparado para expansión del banco de baterías hasta 15 kWh o más. Incluye sistema de protección eléctrica (fusibles, portafusibles, puesta a tierra, canalización). Proyecto llave en mano: incluye instalación, configuración inicial y documentación completa. Servicio incluido: Instalación, puesta en marcha y formación básica. Incluye garantía de 1 año sobre instalación y equipos, ampliable a 3 años mediante mantenimiento anual. Ideal para clientes que buscan iniciarse en la independencia energética con una solución sólida, ampliable y de alta calidad.",
+  "precio": 6613.51,
+  "precio_cliente": null,
+  "imagen": "https://s3.suncarsrl.com:443/ofertas/32b5d193-abcf-4054-808f-027e669b87b9.png",
+  "moneda": "usd",
+  "financiamiento": false,
+  "descuentos": "Si realiza la reserva de su instalación recibe un porciento de descuento del \r\npresupuesto final. \r\n* Para reservar debe abonar el 10% del valor total del presupuesto \r\n* Los porcientos de descuentos para las reservas se describen a continuación: - Del 1 al 21 de octubre – Descuento del 5 % - Del 21 de octubre al 8 de noviembre – Descuento del 3 % \r\n* El presupuesto final puede variar en dependencia de la visita al cliente, en el caso \r\nde que haya que utilizarse mayor cantidad de materiales que lo que contempla la \r\noferta. \r\n* Fecha aproximada de disponibilidad: 15 de noviembre de 2025",
+  "garantias": [
+    "1 año sobre la instalación efectuada por nosotros y los equipos gratis.",
+    "Para ampliar la garantía por 2 años adicionales, se efectuará el pago de una  cuota anual que se calcula según los kW instalados y que se le dará a  conocer al cliente en caso de solicitar este servicio."
+  ],
+  "elementos": [
+    {
+      "categoria": "Inversor",
+      "descripcion": "INVERSOR OFF GRID 5K 120 V BATERIA DE 48 V",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/b862ec40-3694-4340-bb25-9a2acdc33fdb.png"
+    },
+    {
+      "categoria": "Batería",
+      "descripcion": "BATERÍA DE LITIO PARA INSTALACIÓN SOLAR  FOTOVOLTAICA FELICITYSOLAR SERIE FLA DE 5.12 KWH  100A",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/21675b57-b24e-434a-987c-db067ed62b70.png"
+    },
+    {
+      "categoria": "Paneles",
+      "descripcion": "JA SOLAR MÓDULO FOTOVOLTAICO BIFACIAL TOPCON  NTYPE JAM72D40-590/MB 590WP MONOCRISTALINO  138 CELULAS 1500V",
+      "cantidad": 8,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/0c838c84-3f33-406c-a8b5-fa9518fd06b0.png"
+    },
+    {
+      "categoria": "Estructura",
+      "descripcion": "ESTRUCTURA PARA MONTAJE DE MÓDULO  FOTOVOLTÁICO SUNFER FOTOTERMIA 09V4 CUBIERTA  PLANA 4 MÓDULOS 72 CÉLULAS 30º 33-50MM ",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/f886cddd-9181-449c-9347-3f0e885f01ab.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE SOLAR H1Z2Z2-K 1X4MM NEGRO (B. CORTE)",
+      "cantidad": 50,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/dbd7b829-9fb7-4b2b-856b-204187c13bb2.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE SOLAR H1Z2Z2-K 1X4MM ROJO (B. CORTE)",
+      "cantidad": 50,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/f05909fb-dbef-4ccf-9a1c-0a4729b55209.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 4MM AM/VERDE FLEX PM ",
+      "cantidad": 50,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/1cb11d45-4a4d-4ef9-b642-3859950e9e89.png"
+    },
+    {
+      "categoria": "Cableado AC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 6MM NEGRO FLEX PM",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/fc23ea42-6622-4dcd-b792-26b680e2e10c.png"
+    },
+    {
+      "categoria": "Cableado AC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 6MM AZUL FLEX PM",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/f59f597d-3da0-44bd-91bf-84e9c83453f5.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "ML TUBO PVC M-25 GRIS ENCHUFABLE RIGIDO",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/9560a7bc-fcf7-4b44-8bdd-16db023a2958.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "MANGUITO PVC M-25 ENCHUFABLE IP40 GRIS  ",
+      "cantidad": 6,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/34d7b4eb-d0f7-4451-8996-7f17a83adfc7.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "ML TUBO CORRUGADO LHA M-25 320 NW GRIS",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/90ab9ddd-60c3-4a68-bafd-4dbdc10b3e43.png"
+    },
+    {
+      "categoria": "Pica Tierra",
+      "descripcion": "PICA T.T.PCT 2ML 100MICRAS COBREADA 14,2MM",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/e1c3844d-deb7-455d-be1c-b7ef2b9ef4f7.png"
+    },
+    {
+      "categoria": "Pica Tierra",
+      "descripcion": "GRAPA CABLE/PICA 40  ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/49582cbd-706a-45bd-bd43-4808fd34be69.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "ADLER BASE PORTAFUSIBLE 10X38 1000VDC BH100-01",
+      "cantidad": 4,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/137e41ed-5bf6-4ae9-863f-551404964ca5.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "FUSIBLE CILÍNDRICO 15A 10X38 MM 1000VDC GPV  (PROTECCIÓN FOTOVOLTAICA)",
+      "cantidad": 4,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/8eb80af9-fc09-4cfc-82c4-90d7a7a372b9.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "TRANSFERENCIAL AUTOMÁTICO DE 60 A ",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/1fde504c-b6e1-4658-841d-e61dddb2603d.png"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "68e8142c4921630dd53ace11"
+  },
+  "descripcion": "SISTEMA FOTOVOLTAICO FELICITY SOLAR DE 3 kW Salida 120 V con Batería de 10 kWh",
+  "descripcion_detallada": "SISTEMA FOTOVOLTAICO FELICITY SOLAR de 3 kW con salida 120 V y batería de 10 kWh. Este sistema fotovoltaico autónomo incluye un inversor off grid de 3 kW (salida 120 V y batería de 48 V), una batería de litio FelicitySolar serie FLA de 10 kWh (200 A) y 5 paneles solares JA Solar de 590 W (potencia total de ~2.95 kWp). La estructura Sunfer para cubierta plana asegura una instalación robusta y duradera.\r\nEl sistema se entrega como proyecto llave en mano, incluyendo estudio previo, instalación completa, puesta en marcha y explicación inicial al cliente. Caso de uso ideal: Hogares con consumo medio o familias que necesitan respaldo confiable durante apagones. Con su batería de 10 kWh, puede mantener en funcionamiento refrigerador, iluminación, ventiladores, TV, laptop y otros pequeños electrodomésticos durante 10 a 14 horas con consumo moderado. También es una excelente opción para negocios pequeños, oficinas o fincas que buscan independencia parcial de la red. Características técnicas y ventajas: Inversor de 3 kW off grid con salida 120 V y carga a 48 V. Batería de litio FelicitySolar serie FLA de larga vida útil (más de 5000 ciclos). Paneles bifaciales JA Solar TOPCon N-Type de 590 W para máxima eficiencia. Sistema de protección eléctrica completo (fusibles, portafusibles y protección de línea). Incluye cableado AC/DC, canalización, pica a tierra y todos los accesorios de montaje. Instalación profesional certificada con garantía y puesta en marcha en menos de 60 días. Garantía: 1 año sobre la instalación y los equipos (extensible a 3 años con plan adicional). Ventajas adicionales: Proyecto llave en mano sin costos ocultos. Posibilidad de descuentos por reserva anticipada. Energía limpia, segura y silenciosa con autonomía diaria garantizada.",
+  "precio": 5044.25,
+  "precio_cliente": null,
+  "imagen": "https://s3.suncarsrl.com:443/ofertas/60cc8f8b-94bf-4c90-9142-376d964f7eb7.png",
+  "moneda": "usd",
+  "financiamiento": false,
+  "descuentos": "Si realiza la reserva de su instalación recibe un porciento de descuento del \r\npresupuesto final. \r\n* Para reservar debe abonar el 10% del valor total del presupuesto \r\n* Los porcientos de descuentos para las reservas se describen a continuación: - Del 1 al 21 de octubre – Descuento del 5 % - Del 21 de octubre al 8 de noviembre – Descuento del 3 % \r\n* El presupuesto final puede variar en dependencia de la visita al cliente, en el caso \r\nde que haya que utilizarse mayor cantidad de materiales que lo que contempla la \r\noferta. \r\n* Fecha aproximada de disponibilidad: 15 de noviembre de 2025",
+  "garantias": [
+    "1 año sobre la instalación efectuada por nosotros y los equipos gratis.",
+    "Para ampliar la garantía por 2 años adicionales, se efectuará el pago de una  cuota anual que se calcula según los kW instalados y que se le dará a  conocer al cliente en caso de solicitar este servicio."
+  ],
+  "elementos": [
+    {
+      "categoria": "Inversor",
+      "descripcion": "INVERSOR OFF GRID 3K SALIDA 120 V BATERÍA DE 48 V",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/f1a289be-3084-465c-b2f3-7fd77d3cd2df.png"
+    },
+    {
+      "categoria": "Batería",
+      "descripcion": "BATERÍA DE LITIO PARA INSTALACIÓN SOLAR  FOTOVOLTAICA FELICITYSOLAR SERIE FLA DE 10 KWH  200A",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/8af3ed65-e868-4cb3-97a9-97068fc15ca5.png"
+    },
+    {
+      "categoria": "Paneles",
+      "descripcion": "JA SOLAR MÓDULO FOTOVOLTAICO BIFACIAL TOPCON  NTYPE JAM72D40-590/MB 590WP MONOCRISTALINO  138 CELULAS 1500V",
+      "cantidad": 5,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/696bd124-95e6-4881-8f3f-1ced0cb62907.png"
+    },
+    {
+      "categoria": "Estructura",
+      "descripcion": "ESTRUCTURA PARA MONTAJE DE MÓDULO  FOTOVOLTÁICO SUNFER FOTOTERMIA 09V5 CUBIERTA  PLANA 5 MÓDULOS 72 CÉLULAS 30º 33-50MM",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/b1373e25-4d1f-4dcd-b8ab-22341b581981.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE SOLAR H1Z2Z2-K 1X4MM NEGRO (B. CORTE) ",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/2c69d60a-58be-4b7c-a2ab-1156dc41cc92.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE SOLAR H1Z2Z2-K 1X4MM ROJO (B. CORTE) ",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/604f28e8-32bb-44d7-bd6e-71c851066026.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 4MM AM/VERDE FLEX PM",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/de3a820f-cc1f-4c23-a0e1-fb81eaaef816.png"
+    },
+    {
+      "categoria": "Cableado AC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 6MM NEGRO FLEX PM ",
+      "cantidad": 20,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/e3e1225c-d4d4-4de4-9ddd-102925029cde.png"
+    },
+    {
+      "categoria": "Cableado AC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 6MM AZUL FLEX PM",
+      "cantidad": 20,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/3456fd50-b33b-42b2-8587-2060dc97a1fe.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "ML TUBO PVC M-25 GRIS ENCHUFABLE RIGIDO ",
+      "cantidad": 20,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/ac6abf53-5612-4b41-81e6-3ba6d5eb03a9.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "MANGUITO PVC M-25 ENCHUFABLE IP40 GRIS ",
+      "cantidad": 5,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/6073518c-16e2-4bc6-b2fd-db85e0ae6058.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "ML TUBO CORRUGADO LHA M-25 320 NW GRIS ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/9b6ca2a2-8584-485e-851e-5d234e857391.png"
+    },
+    {
+      "categoria": "Pica Tierra",
+      "descripcion": "PICA T.T.PCT 2ML 100MICRAS COBREADA 14,2MM",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/3d9b9a75-e16f-4146-bb63-4922d14e899c.png"
+    },
+    {
+      "categoria": "Pica Tierra",
+      "descripcion": "GRAPA CABLE/PICA 40   ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/02ff112b-aa87-48c2-9933-45d0a5dc2203.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "ADLER BASE PORTAFUSIBLE 10X38 1000VDC BH100-01",
+      "cantidad": 4,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/d31147a2-a966-4012-94a5-c8ace4c87be6.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "FUSIBLE CILÍNDRICO 15A 10X38 MM 1000VDC GPV  (PROTECCIÓN FOTOVOLTAICA)",
+      "cantidad": 4,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/9225fd43-d82c-442f-8acb-38438889e300.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "TRANSFERENCIAL AUTOMÁTICO DE 32-40 A ",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/37560e50-f0c0-47bb-9dd8-84be91be06f6.png"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "68e814fc4921630dd53ace12"
+  },
+  "descripcion": "SISTEMA FOTOVOLTAICO FELICITY SOLAR DE 2 kW Salida 120 V con Batería de 5 kWh",
+  "descripcion_detallada": "SISTEMA FOTOVOLTAICO FELICITY SOLAR de 2 kW Salida 120 V con Batería de 5 kWh. Este sistema compacto incluye un inversor off grid de 2 kW (salida 120 V, batería 24 V), una batería de litio FelicitySolar serie FLA de 5 kWh (200 A) y 2 paneles solares JA Solar TOPCon N-Type de 590 W (potencia total ~1.18 kWp). Es una solución llave en mano, lista para instalar, que combina eficiencia y autonomía básica en un formato accesible. Caso de uso ideal: Diseñado para hogares pequeños o rurales con consumos ligeros, que necesitan mantener encendidos ventiladores, iluminación, TV, laptop y refrigerador compacto durante 5 a 8 horas de apagón. Ideal como sistema inicial o de respaldo en zonas con cortes frecuentes. Características y ventajas técnicas: Inversor off grid de 2 kW con funcionamiento estable a 120 V. Batería de litio FelicitySolar FLA de larga duración (> 5000 ciclos). Paneles bifaciales JA Solar de alta eficiencia (TOPCon N-Type). Incluye estructura, cableado AC/DC, canalización, pica a tierra y protección eléctrica. Instalación profesional con estudio técnico, documentación y puesta en marcha. Garantía: 1 año sobre la instalación y equipos (ampliable a 3 años con plan adicional). Ventajas adicionales: Bajo mantenimiento y operación silenciosa. Sistema económico y funcional, perfecto para iniciar en energía solar. Opción de ampliación futura con más paneles o baterías.",
+  "precio": 2650.45,
+  "precio_cliente": null,
+  "imagen": "https://s3.suncarsrl.com:443/ofertas/755903dc-2e63-4e66-b65f-8f4755ff8c5c.png",
+  "moneda": "usd",
+  "financiamiento": false,
+  "descuentos": "Si realiza la reserva de su instalación recibe un porciento de descuento del \r\npresupuesto final. \r\n* Para reservar debe abonar el 10% del valor total del presupuesto \r\n* Los porcientos de descuentos para las reservas se describen a continuación: - Del 1 al 21 de octubre – Descuento del 5 % - Del 21 de octubre al 8 de noviembre – Descuento del 3 % \r\n* El presupuesto final puede variar en dependencia de la visita al cliente, en el caso \r\nde que haya que utilizarse mayor cantidad de materiales que lo que contempla la \r\noferta. \r\n* Fecha aproximada de disponibilidad: 15 de noviembre de 2025 ",
+  "garantias": [
+    "1 año sobre la instalación efectuada por nosotros y los equipos gratis.",
+    "Para ampliar la garantía por 2 años adicionales, se efectuará el pago de una  cuota anual que se calcula según los kW instalados y que se le dará a  conocer al cliente en caso de solicitar este servicio."
+  ],
+  "elementos": [
+    {
+      "categoria": "Inversor",
+      "descripcion": "INVERSOR OFF GRID 2K SALIDA 120 V BATERÍA DE 24 V",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/9903b320-2bb7-47f0-b868-07cbaf37f86d.png"
+    },
+    {
+      "categoria": "Batería",
+      "descripcion": "BATERÍA DE LITIO PARA INSTALACIÓN SOLAR  FOTOVOLTAICA FELICITYSOLAR SERIE FLA DE 5 KWH  200A",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/937cc568-47fb-4908-a4a2-3dd0f7e72994.png"
+    },
+    {
+      "categoria": "Paneles",
+      "descripcion": "JA SOLAR MÓDULO FOTOVOLTAICO BIFACIAL TOPCON  NTYPE JAM72D40-590/MB 590WP MONOCRISTALINO  138 CELULAS 1500V",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/9aad2dde-c2a9-4e06-962a-656d037fe156.png"
+    },
+    {
+      "categoria": "Estructura",
+      "descripcion": "BLTM P26 ESTRUCTURA 2 PANEL <1055MM 72CEL  INCLINAD 30º",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/6b25d928-bdbf-4ea9-876a-c938a8d1e4b5.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE SOLAR H1Z2Z2-K 1X4MM NEGRO (B. CORTE) ",
+      "cantidad": 20,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/4d3cbc3e-2cdc-42ff-875a-85630b8c4285.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE SOLAR H1Z2Z2-K 1X4MM ROJO (B. CORTE) ",
+      "cantidad": 20,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/f5222b9a-29e1-470b-9d7d-05d4c9cdde24.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 4MM AM/VERDE FLEX PM ",
+      "cantidad": 20,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/c59d40a4-2aed-4b88-a95c-e2744c08b483.png"
+    },
+    {
+      "categoria": "Cableado AC",
+      "descripcion": "CABLE LIBRE DE HALÓGENOS (LHA) H07Z1-K(AS),  4MM2 NEGRO, CLASE 5 FLEXIBLE",
+      "cantidad": 20,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/6e308bb3-6aa1-4d32-915b-7bccced5de43.png"
+    },
+    {
+      "categoria": "Cableado AC",
+      "descripcion": "CABLE LIBRE DE HALÓGENOS (LHA) H07Z1-K(AS),  4MM2 AZUL, CLASE 5 FLEXIBLE ",
+      "cantidad": 20,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/6825a57c-9c8f-4797-99aa-4c2b50bdca54.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "ML TUBO PVC M-25 GRIS ENCHUFABLE RIGIDO ",
+      "cantidad": 10,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/de9bb57d-882b-4a92-8748-921f2ffed613.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "MANGUITO PVC M-25 ENCHUFABLE IP40 GRIS ",
+      "cantidad": 3,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/3932919a-f78c-405a-95d0-551ee0f6a8ed.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "ML TUBO CORRUGADO LHA M-25 320 NW GRIS",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/260d7a7f-dc94-4746-a0c1-68300c4aef29.png"
+    },
+    {
+      "categoria": "Pica Tierra",
+      "descripcion": "PICA T.T.PCT 2ML 100MICRAS COBREADA 14,2MM",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/9bce203b-feb1-4261-86dd-d54d8dd268b1.png"
+    },
+    {
+      "categoria": "Pica Tierra",
+      "descripcion": "GRAPA CABLE/PICA 40  ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/38d653ed-1297-421b-be67-953bdad938d7.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "ADLER BASE PORTAFUSIBLE 10X38 1000VDC BH100-01",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/8ec30a06-7cb3-400a-afdc-320aa3378ec7.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "FUSIBLE CILÍNDRICO 15A 10X38 MM 1000VDC GPV  (PROTECCIÓN FOTOVOLTAICA) ",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/e77635cd-7be2-4b5c-82e4-65dac8523dc2.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "TRANSFERENCIAL AUTOMÁTICO DE 20 A  ",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/07e80ddf-5e06-442e-a646-6ce7cae91f3d.png"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "68e8159a4921630dd53ace13"
+  },
+  "descripcion": "SISTEMA FOTOVOLTAICO FELICITY SOLAR DE 3 kW Salida 120 V con Batería de 5 kWh ",
+  "descripcion_detallada": "SISTEMA FOTOVOLTAICO FELICITY SOLAR de 3 kW Salida 120 V con Batería de 5 kWh. Sistema off grid completo que integra un inversor FelicitySolar de 3 kW (48 V), una batería de litio de 5 kWh (100 A) y 5 paneles solares JA Solar de 590 W (~2.95 kWp). Se entrega como proyecto llave en mano, con estudio, instalación, puesta en marcha y asesoría técnica al usuario. Caso de uso ideal: Perfecto para hogares medianos o pequeños negocios que buscan independencia parcial de la red. Permite alimentar refrigerador, TV, ventiladores, computadoras, iluminación y pequeños electrodomésticos, con una autonomía estimada de 8 a 12 horas según el consumo. Características y ventajas técnicas: Inversor off grid de 3 kW con salida 120 V y carga a 48 V. Batería de litio FelicitySolar FLA (100 A) de alta eficiencia y larga vida útil. 5 paneles bifaciales JA Solar TOPCon N-Type (590 W) con rendimiento superior. Sistema de protección completa: fusibles, portafusibles, transferencia automática y puesta a tierra. Incluye estructura Sunfer, cableado AC/DC, canalización y materiales auxiliares. Instalación profesional certificada con garantía y soporte posventa. Garantía: 1 año sobre instalación y equipos (extensible hasta 3 años). Ventajas adicionales: Sistema equilibrado entre potencia, autonomía y precio. Ideal para climas cálidos donde se requiere energía confiable para ventiladores o refrigeración. Financiación y descuentos disponibles por reserva anticipada.",
+  "precio": 4384.25,
+  "precio_cliente": null,
+  "imagen": "https://s3.suncarsrl.com:443/ofertas/12e08972-60db-488b-bd9b-c907992229d3.png",
+  "moneda": "usd",
+  "financiamiento": false,
+  "descuentos": "Si realiza la reserva de su instalación recibe un porciento de descuento del \r\npresupuesto final. \r\n* Para reservar debe abonar el 10% del valor total del presupuesto \r\n* Los porcientos de descuentos para las reservas se describen a continuación: - Del 1 al 21 de octubre – Descuento del 5 % - Del 21 de octubre al 8 de noviembre – Descuento del 3 % \r\n* El presupuesto final puede variar en dependencia de la visita al cliente, en el caso \r\nde que haya que utilizarse mayor cantidad de materiales que lo que contempla la \r\noferta. \r\n* Fecha aproximada de disponibilidad: 15 de noviembre de 2025 ",
+  "garantias": [
+    "1 año sobre la instalación efectuada por nosotros y los equipos gratis.",
+    "Para ampliar la garantía por 2 años adicionales, se efectuará el pago de una  cuota anual que se calcula según los kW instalados y que se le dará a  conocer al cliente en caso de solicitar este servicio."
+  ],
+  "elementos": [
+    {
+      "categoria": "Inversor",
+      "descripcion": "INVERSOR OFF GRID 3K SALIDA 120 V BATERÍA DE 48 V",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/67094484-6d95-46a3-966a-39611b8185d9.png"
+    },
+    {
+      "categoria": "Batería",
+      "descripcion": "BATERÍA DE LITIO PARA INSTALACIÓN SOLAR  FOTOVOLTAICA FELICITYSOLAR SERIE FLA DE 5 KWH  100A",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/9533fcca-1059-4e69-b46e-4ce4b37f9440.png"
+    },
+    {
+      "categoria": "Paneles",
+      "descripcion": "JA SOLAR MÓDULO FOTOVOLTAICO BIFACIAL TOPCON  NTYPE JAM72D40-590/MB 590WP MONOCRISTALINO  138 CELULAS 1500V",
+      "cantidad": 5,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/7173d039-6f59-4b38-82fc-da59009f747a.png"
+    },
+    {
+      "categoria": "Estructura",
+      "descripcion": "ESTRUCTURA PARA MONTAJE DE MÓDULO  FOTOVOLTÁICO SUNFER FOTOTERMIA 09V5 CUBIERTA  PLANA 5 MÓDULOS 72 CÉLULAS 30º 33-50MM",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/d2649ece-3183-44d3-9c41-19b121684c33.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE SOLAR H1Z2Z2-K 1X4MM NEGRO (B. CORTE)",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/5f1f5426-8121-4ffb-8dca-a7972c5bcc00.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE SOLAR H1Z2Z2-K 1X4MM ROJO (B. CORTE)",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/d7e4fd20-1725-4913-b619-074d32c12af1.png"
+    },
+    {
+      "categoria": "Cableado DC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 4MM AM/VERDE FLEX PM",
+      "cantidad": 30,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/1d58454b-cd9a-48db-a383-3b0900514e05.png"
+    },
+    {
+      "categoria": "Cableado AC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 6MM NEGRO FLEX PM",
+      "cantidad": 20,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/d791d90e-b32a-418c-b7c4-4cdf64a4ad13.png"
+    },
+    {
+      "categoria": "Cableado AC",
+      "descripcion": "ML CABLE LHA H07Z1-K(AS) 6MM AZUL FLEX PM ",
+      "cantidad": 20,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/2e2921bb-dd8b-41d3-894e-ad71c70f4b40.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "ML TUBO PVC M-25 GRIS ENCHUFABLE RIGIDO",
+      "cantidad": 20,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/5e8ca810-c5f7-49d9-ba46-9853597b496f.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "MANGUITO PVC M-25 ENCHUFABLE IP40 GRIS ",
+      "cantidad": 5,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/2c5c6594-b7b9-4256-afb8-d948b4c8865c.png"
+    },
+    {
+      "categoria": "Canalización",
+      "descripcion": "ML TUBO CORRUGADO LHA M-25 320 NW GRIS",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/6599f6ce-70f3-42b0-85c7-31d2fd42911b.png"
+    },
+    {
+      "categoria": "Pica Tierra",
+      "descripcion": "PICA T.T.PCT 2ML 100MICRAS COBREADA 14,2MM ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/1ca6384c-f3a1-4f43-a3fa-2b2c6f02f8fc.png"
+    },
+    {
+      "categoria": "Pica Tierra",
+      "descripcion": "GRAPA CABLE/PICA 40   ",
+      "cantidad": 1,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/be28d66f-5c17-4026-a287-11b51b4d2074.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "ADLER BASE PORTAFUSIBLE 10X38 1000VDC BH100-01",
+      "cantidad": 4,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/16170719-507d-47b9-bad4-754558fc6948.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "FUSIBLE CILÍNDRICO 15A 10X38 MM 1000VDC GPV  (PROTECCIÓN FOTOVOLTAICA) ",
+      "cantidad": 4,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/8f521d4b-b869-476e-99f2-39220fafa061.png"
+    },
+    {
+      "categoria": "Tección Eléctrica",
+      "descripcion": "TRANSFERENCIAL AUTOMÁTICO DE 32-40 A  ",
+      "cantidad": 2,
+      "foto": "https://s3.suncarsrl.com:443/ofertas/d83fbbcc-8e03-46ea-8f03-8f5d28f92e78.png"
+    }
+  ]
+}]
