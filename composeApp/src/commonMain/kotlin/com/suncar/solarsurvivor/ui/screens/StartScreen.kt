@@ -9,7 +9,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
-import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -18,7 +17,6 @@ import androidx.compose.ui.draw.*
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.*
@@ -513,190 +511,42 @@ private fun AnimatedGameDescription(titleSize: TextUnit, subtitleSize: TextUnit,
 
 @Composable
 private fun EnhancedActionButtons(onStart: (String) -> Unit, buttonHeight: Dp, glowAlpha: Float, isMobile: Boolean, shimmerOffset: Float) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(16.dp)
-    ) {
-        // Explicación de modos de juego
-        Text(
-            text = "Elige tu experiencia:",
-            style = MaterialTheme.typography.titleMedium,
-            fontWeight = FontWeight.Bold,
-            color = Color(0xFFFFD700),
-            textAlign = TextAlign.Center
-        )
-        
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
-            verticalAlignment = Alignment.Top,
-            modifier = Modifier.fillMaxWidth()
+    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
+        Button(
+            onClick = { onStart("withSolar") },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(buttonHeight)
+                .clip(RoundedCornerShape(14.dp))
+                .drawWithContent {
+                    drawContent()
+                    drawRoundRect(
+                        brush = Brush.linearGradient(
+                            colors = listOf(
+                                Color.Transparent,
+                                Color(0xFF81C784).copy(alpha = 0.35f * glowAlpha),
+                                Color.Transparent
+                            ),
+                            start = Offset(shimmerOffset - 80f, 0f),
+                            end = Offset(shimmerOffset + 80f, 0f)
+                        ),
+                        cornerRadius = androidx.compose.ui.geometry.CornerRadius(14.dp.toPx()),
+                        alpha = 0.7f
+                    )
+                },
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFF2E7D32),
+                contentColor = Color.White
+            ),
+            shape = RoundedCornerShape(14.dp),
+            elevation = ButtonDefaults.buttonElevation(defaultElevation = 8.dp)
         ) {
-            // Modo Sin Solar - Dificultad Alta
-            Column(
-                modifier = Modifier.weight(1f),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                OutlinedButton(
-                    onClick = { onStart("withoutSolar") },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(buttonHeight)
-                        .drawWithContent {
-                            drawContent()
-                            // Add button glow effect
-                            drawRoundRect(
-                                brush = Brush.linearGradient(
-                                    colors = listOf(
-                                        Color.Transparent,
-                                        Color(0xFFE57373).copy(alpha = 0.2f * glowAlpha),
-                                        Color.Transparent
-                                    ),
-                                    start = Offset(shimmerOffset - 100f, 0f),
-                                    end = Offset(shimmerOffset + 100f, 0f)
-                                ),
-                                cornerRadius = androidx.compose.ui.geometry.CornerRadius(12.dp.toPx()),
-                                alpha = 0.6f
-                            )
-                        },
-                    colors = ButtonDefaults.outlinedButtonColors(
-                        contentColor = Color(0xFFE57373)
-                    ),
-                    shape = RoundedCornerShape(12.dp),
-                    border = BorderStroke(2.dp, Color(0xFFE57373).copy(alpha = glowAlpha))
-                ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Center
-                    ) {
-                        Icon(
-                            imageVector = Icons.Filled.Bolt,
-                            contentDescription = null,
-                            tint = Color(0xFFE57373),
-                            modifier = Modifier.size(18.dp)
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            text = if (isMobile) "SIN SOLAR" else "MODO DESAFÍO",
-                            fontSize = if (isMobile) 12.sp else 14.sp,
-                            fontWeight = FontWeight.Bold,
-                            letterSpacing = 0.5.sp
-                        )
-                    }
-                }
-                
-                Spacer(modifier = Modifier.height(8.dp))
-                
-                Text(
-                    text = "🔥 Solo red eléctrica",
-                    fontSize = 11.sp,
-                    color = Color(0xFFE57373),
-                    fontWeight = FontWeight.Medium,
-                    textAlign = TextAlign.Center
-                )
-                Text(
-                    text = "Apagones serán duros",
-                    fontSize = 10.sp,
-                    color = Color.White.copy(alpha = 0.7f),
-                    textAlign = TextAlign.Center
-                )
-            }
-
-            // Modo Con Solar - Experiencia Completa
-            Column(
-                modifier = Modifier.weight(1f),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Button(
-                    onClick = { onStart("withSolar") },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(buttonHeight)
-                        .drawWithContent {
-                            drawContent()
-                            // Enhanced button shimmer effect
-                            drawRoundRect(
-                                brush = Brush.linearGradient(
-                                    colors = listOf(
-                                        Color.Transparent,
-                                        Color.White.copy(alpha = 0.3f * glowAlpha),
-                                        Color.Transparent
-                                    ),
-                                    start = Offset(shimmerOffset - 100f, 0f),
-                                    end = Offset(shimmerOffset + 100f, 0f)
-                                ),
-                                cornerRadius = androidx.compose.ui.geometry.CornerRadius(12.dp.toPx()),
-                                alpha = 0.8f
-                            )
-                        },
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color(0xFF81C784),
-                        contentColor = Color.White
-                    ),
-                    shape = RoundedCornerShape(12.dp)
-                ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Center
-                    ) {
-                        Icon(
-                            imageVector = Icons.Filled.WbSunny,
-                            contentDescription = null,
-                            tint = Color.White,
-                            modifier = Modifier.size(18.dp)
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            text = if (isMobile) "CON SOLAR" else "MODO SOLAR",
-                            fontSize = if (isMobile) 12.sp else 14.sp,
-                            fontWeight = FontWeight.Bold,
-                            letterSpacing = 0.5.sp,
-                            color = Color.White
-                        )
-                    }
-                }
-                
-                Spacer(modifier = Modifier.height(8.dp))
-                
-                Text(
-                    text = "🌞 Energía renovable",
-                    fontSize = 11.sp,
-                    color = Color(0xFF81C784),
-                    fontWeight = FontWeight.Medium,
-                    textAlign = TextAlign.Center
-                )
-                Text(
-                    text = "Libertad energética",
-                    fontSize = 10.sp,
-                    color = Color.White.copy(alpha = 0.7f),
-                    textAlign = TextAlign.Center
-                )
-            }
-        }
-        
-        // Información adicional sobre el juego
-        Card(
-            colors = CardDefaults.cardColors(containerColor = Color(0x22FFD700)),
-            border = BorderStroke(1.dp, Color(0xFFFFD700).copy(alpha = 0.3f)),
-            shape = RoundedCornerShape(8.dp)
-        ) {
-            Column(
-                modifier = Modifier.padding(12.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(
-                    text = "🎯 Objetivo del Juego",
-                    fontSize = 13.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFFFFD700)
-                )
-                Spacer(modifier = Modifier.height(4.dp))
-                Text(
-                    text = "Gestiona tu hogar durante apagones cubanos y descubre los beneficios de la energía solar",
-                    fontSize = 11.sp,
-                    color = Color.White.copy(alpha = 0.9f),
-                    textAlign = TextAlign.Center
-                )
-            }
+            Text(
+                text = "JUGAR",
+                fontSize = if (isMobile) 16.sp else 18.sp,
+                fontWeight = FontWeight.ExtraBold,
+                letterSpacing = 1.sp
+            )
         }
     }
 }

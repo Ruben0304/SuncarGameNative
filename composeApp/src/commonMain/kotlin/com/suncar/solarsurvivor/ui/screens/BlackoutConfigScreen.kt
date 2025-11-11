@@ -229,7 +229,17 @@ fun BlackoutConfigScreen(day: Int, onConfirm: (List<BlackoutSchedule>) -> Unit) 
 
         Spacer(modifier = Modifier.height(if (isCompact) 24.dp else 32.dp))
 
-        // Schedules
+        // Schedules - Título de sección para móviles
+        if (isCompact) {
+            Text(
+                text = "Horarios de apagones",
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Bold,
+                color = Color.White,
+                modifier = Modifier.padding(bottom = 12.dp)
+            )
+        }
+
         Card(
             modifier = Modifier.fillMaxWidth(),
             colors = CardDefaults.cardColors(containerColor = Color(0xFF2A2A3E))
@@ -237,8 +247,8 @@ fun BlackoutConfigScreen(day: Int, onConfirm: (List<BlackoutSchedule>) -> Unit) 
             Column(
                 modifier =
                     Modifier.padding(
-                        horizontal = if (isCompact) 16.dp else 24.dp,
-                        vertical = if (isCompact) 20.dp else 24.dp
+                        horizontal = if (isCompact) 12.dp else 24.dp,
+                        vertical = if (isCompact) 16.dp else 24.dp
                     )
             ) {
                 schedules.forEachIndexed { index, schedule ->
@@ -279,12 +289,12 @@ fun BlackoutConfigScreen(day: Int, onConfirm: (List<BlackoutSchedule>) -> Unit) 
                             } else null
                     )
                     if (index < schedules.size - 1) {
-                        Spacer(modifier = Modifier.height(16.dp))
+                        Spacer(modifier = Modifier.height(if (isCompact) 20.dp else 16.dp))
                     }
                 }
 
                 if (schedules.size < 4) {
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(if (isCompact) 20.dp else 16.dp))
                     OutlinedButton(
                         onClick = {
                             val lastEnd =
@@ -302,18 +312,36 @@ fun BlackoutConfigScreen(day: Int, onConfirm: (List<BlackoutSchedule>) -> Unit) 
                                             )
                                         )
                         },
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(if (isCompact) 48.dp else 44.dp),
                         colors =
                             ButtonDefaults.outlinedButtonColors(
                                 contentColor = Color(0xFF4CAF50)
                             ),
                         border = BorderStroke(2.dp, Color(0xFF4CAF50))
-                    ) { Text("+ Agregar otro apagón") }
+                    ) {
+                        Text(
+                            text = "+ Agregar otro apagón",
+                            fontSize = if (isCompact) 16.sp else 14.sp
+                        )
+                    }
                 }
             }
         }
 
         Spacer(modifier = Modifier.height(if (isCompact) 24.dp else 32.dp))
+
+        // Impact preview - Título de sección para móviles
+        if (isCompact) {
+            Text(
+                text = "Impacto del día",
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Bold,
+                color = Color.White,
+                modifier = Modifier.padding(bottom = 12.dp)
+            )
+        }
 
         // Impact preview - Responsive grid
         val totalHours = schedules.sumOf { it.end - it.start }
@@ -322,17 +350,17 @@ fun BlackoutConfigScreen(day: Int, onConfirm: (List<BlackoutSchedule>) -> Unit) 
             screenWidth > 500.dp -> 2
             else -> 1
         }
-        
+
         LazyVerticalGrid(
             columns = GridCells.Fixed(gridColumns),
             modifier =
                 Modifier.fillMaxWidth()
                     .heightIn(
-                        min = if (gridColumns == 1) 240.dp else 160.dp,
-                        max = if (gridColumns == 1) 360.dp else 220.dp
+                        min = if (gridColumns == 1) 260.dp else 160.dp,
+                        max = if (gridColumns == 1) 380.dp else 220.dp
                     ),
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            horizontalArrangement = Arrangement.spacedBy(if (isCompact) 12.dp else 16.dp),
+            verticalArrangement = Arrangement.spacedBy(if (isCompact) 12.dp else 16.dp)
         ) {
             item {
                 ImpactStat(
@@ -383,22 +411,26 @@ fun BlackoutConfigScreen(day: Int, onConfirm: (List<BlackoutSchedule>) -> Unit) 
             ) {
                 Row(
                     modifier =
-                        Modifier.padding(
-                            horizontal = 16.dp,
-                            vertical = if (isCompact) 12.dp else 16.dp
-                        ),
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(
+                                horizontal = if (isCompact) 12.dp else 16.dp,
+                                vertical = if (isCompact) 12.dp else 16.dp
+                            ),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
                         Icons.Default.Info,
                         contentDescription = null,
-                        tint = Color(0xFFFF6B6B)
+                        tint = Color(0xFFFF6B6B),
+                        modifier = Modifier.size(if (isCompact) 20.dp else 24.dp)
                     )
-                    Spacer(modifier = Modifier.width(12.dp))
+                    Spacer(modifier = Modifier.width(if (isCompact) 8.dp else 12.dp))
                     Text(
                         text =
                             "Sin paneles solares, estos apagones afectarán severamente tu confort y productividad",
-                        color = Color.White
+                        color = Color.White,
+                        style = if (isCompact) MaterialTheme.typography.bodySmall else MaterialTheme.typography.bodyMedium
                     )
                 }
             }
@@ -409,19 +441,27 @@ fun BlackoutConfigScreen(day: Int, onConfirm: (List<BlackoutSchedule>) -> Unit) 
                 border = BorderStroke(1.dp, Color(0xFF4CAF50))
             ) {
                 Row(
-                    modifier = Modifier.padding(16.dp),
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(
+                                horizontal = if (isCompact) 12.dp else 16.dp,
+                                vertical = if (isCompact) 12.dp else 16.dp
+                            ),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
                         Icons.Default.Check,
                         contentDescription = null,
-                        tint = Color(0xFF4CAF50)
+                        tint = Color(0xFF4CAF50),
+                        modifier = Modifier.size(if (isCompact) 20.dp else 24.dp)
                     )
-                    Spacer(modifier = Modifier.width(12.dp))
+                    Spacer(modifier = Modifier.width(if (isCompact) 8.dp else 12.dp))
                     Text(
                         text =
                             "Con tu sistema solar instalado, estos apagones no te afectarán",
-                        color = Color.White
+                        color = Color.White,
+                        style = if (isCompact) MaterialTheme.typography.bodySmall else MaterialTheme.typography.bodyMedium
                     )
                 }
             }

@@ -1,9 +1,11 @@
 package com.suncar.solarsurvivor.ui.components
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
@@ -57,119 +59,267 @@ fun ScheduleRow(
         else -> 80.dp
     }
     
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(
-            text = "Apagón $index",
-            style = if (screenWidth > 600.dp) MaterialTheme.typography.bodyLarge else MaterialTheme.typography.bodyMedium,
-            fontWeight = FontWeight.Bold,
-            color = Color(0xFFFFD700),
-            modifier = Modifier.widthIn(min = titleWidth, max = titleWidth)
-        )
-
-        Text(
-            "Desde:", 
-            color = Color.White.copy(alpha = 0.8f),
-            style = if (screenWidth > 600.dp) MaterialTheme.typography.bodyMedium else MaterialTheme.typography.bodySmall
-        )
-        Spacer(modifier = Modifier.width(horizontalSpacing))
-
-        var startExpanded by remember { mutableStateOf(false) }
-        Box {
-            OutlinedButton(
-                onClick = { startExpanded = true },
-                colors =
-                    ButtonDefaults.outlinedButtonColors(
-                        contentColor = Color.White
-                    )
-            ) { Text("${schedule.start.toString().padStart(2, '0')}:00") }
-            DropdownMenu(
-                expanded = startExpanded,
-                onDismissRequest = { startExpanded = false }
+    val isCompact = screenWidth <= 600.dp
+    val labelStyle =
+        if (screenWidth > 600.dp) {
+            MaterialTheme.typography.bodyMedium
+        } else {
+            MaterialTheme.typography.bodySmall
+        }
+    val titleStyle =
+        if (screenWidth > 600.dp) {
+            MaterialTheme.typography.bodyLarge
+        } else {
+            MaterialTheme.typography.bodyMedium
+        }
+    val buttonHeight = if (isCompact) 40.dp else 44.dp
+    
+    if (isCompact) {
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.Start
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                (0..23).forEach { hour ->
-                    DropdownMenuItem(
-                        text = {
-                            Text(
-                                "${hour.toString().padStart(2, '0')}:00"
-                            )
-                        },
-                        onClick = {
-                            onStartChange(hour)
-                            startExpanded = false
-                        }
-                    )
+                Text(
+                    text = "Apagón $index",
+                    style = titleStyle,
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFFFFD700)
+                )
+                Spacer(modifier = Modifier.weight(1f))
+                onRemove?.let {
+                    IconButton(onClick = it) {
+                        Icon(
+                            Icons.Default.Close,
+                            contentDescription = "Remove",
+                            tint = Color(0xFFFF6B6B)
+                        )
+                    }
                 }
             }
-        }
 
-        Spacer(modifier = Modifier.width(horizontalSpacing))
-        Text(
-            "Hasta:", 
-            color = Color.White.copy(alpha = 0.8f),
-            style = if (screenWidth > 600.dp) MaterialTheme.typography.bodyMedium else MaterialTheme.typography.bodySmall
-        )
-        Spacer(modifier = Modifier.width(horizontalSpacing))
+            Spacer(modifier = Modifier.height(8.dp))
 
-        var endExpanded by remember { mutableStateOf(false) }
-        Box {
-            OutlinedButton(
-                onClick = { endExpanded = true },
-                colors =
-                    ButtonDefaults.outlinedButtonColors(
-                        contentColor = Color.White
-                    )
-            ) { Text("${schedule.end.toString().padStart(2, '0')}:00") }
-            DropdownMenu(
-                expanded = endExpanded,
-                onDismissRequest = { endExpanded = false }
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                (schedule.start + 1..23).forEach { hour ->
-                    DropdownMenuItem(
-                        text = {
-                            Text(
-                                "${hour.toString().padStart(2, '0')}:00"
+                Text("Desde:", color = Color.White.copy(alpha = 0.8f), style = labelStyle)
+                Spacer(modifier = Modifier.width(8.dp))
+                var startExpanded by remember { mutableStateOf(false) }
+                Box(
+                    modifier = Modifier.weight(1f)
+                ) {
+                    OutlinedButton(
+                        onClick = { startExpanded = true },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(buttonHeight),
+                        colors =
+                            ButtonDefaults.outlinedButtonColors(
+                                contentColor = Color.White
                             )
-                        },
-                        onClick = {
-                            onEndChange(hour)
-                            endExpanded = false
+                    ) { Text("${schedule.start.toString().padStart(2, '0')}:00") }
+                    DropdownMenu(
+                        expanded = startExpanded,
+                        onDismissRequest = { startExpanded = false }
+                    ) {
+                        (0..23).forEach { hour ->
+                            DropdownMenuItem(
+                                text = {
+                                    Text(
+                                        "${hour.toString().padStart(2, '0')}:00"
+                                    )
+                                },
+                                onClick = {
+                                    onStartChange(hour)
+                                    startExpanded = false
+                                }
+                            )
                         }
-                    )
+                    }
                 }
             }
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text("Hasta:", color = Color.White.copy(alpha = 0.8f), style = labelStyle)
+                Spacer(modifier = Modifier.width(8.dp))
+                var endExpanded by remember { mutableStateOf(false) }
+                Box(
+                    modifier = Modifier.weight(1f)
+                ) {
+                    OutlinedButton(
+                        onClick = { endExpanded = true },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(buttonHeight),
+                        colors =
+                            ButtonDefaults.outlinedButtonColors(
+                                contentColor = Color.White
+                            )
+                    ) { Text("${schedule.end.toString().padStart(2, '0')}:00") }
+                    DropdownMenu(
+                        expanded = endExpanded,
+                        onDismissRequest = { endExpanded = false }
+                    ) {
+                        (schedule.start + 1..23).forEach { hour ->
+                            DropdownMenuItem(
+                                text = {
+                                    Text(
+                                        "${hour.toString().padStart(2, '0')}:00"
+                                    )
+                                },
+                                onClick = {
+                                    onEndChange(hour)
+                                    endExpanded = false
+                                }
+                            )
+                        }
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.height(12.dp))
+
+            Surface(
+                modifier = Modifier.padding(top = 4.dp),
+                color = Color(0x33FFD700),
+                shape = RoundedCornerShape(4.dp)
+            ) {
+                Text(
+                    text = "${schedule.end - schedule.start}h",
+                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
+                    color = Color(0xFFFFD700),
+                    fontWeight = FontWeight.Bold,
+                    style = labelStyle
+                )
+            }
         }
-
-        Spacer(modifier = Modifier.width(horizontalSpacing))
-
-        // Duration badge
-        Surface(
-            color = Color(0x33FFD700), 
-            shape = RoundedCornerShape(4.dp)
+    } else {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "${schedule.end - schedule.start}h",
-                modifier = Modifier.padding(
-                    horizontal = if (screenWidth > 600.dp) 8.dp else 6.dp,
-                    vertical = if (screenWidth > 600.dp) 4.dp else 3.dp
-                ),
-                color = Color(0xFFFFD700),
+                text = "Apagón $index",
+                style = titleStyle,
                 fontWeight = FontWeight.Bold,
-                style = if (screenWidth > 600.dp) MaterialTheme.typography.bodyMedium else MaterialTheme.typography.bodySmall
+                color = Color(0xFFFFD700),
+                modifier = Modifier.widthIn(min = titleWidth, max = titleWidth)
             )
-        }
 
-        Spacer(modifier = Modifier.weight(1f))
+            Text(
+                "Desde:",
+                color = Color.White.copy(alpha = 0.8f),
+                style = labelStyle
+            )
+            Spacer(modifier = Modifier.width(horizontalSpacing))
 
-        onRemove?.let {
-            IconButton(onClick = it) {
-                Icon(
-                    Icons.Default.Close,
-                    contentDescription = "Remove",
-                    tint = Color(0xFFFF6B6B)
+            var startExpanded by remember { mutableStateOf(false) }
+            Box {
+                OutlinedButton(
+                    onClick = { startExpanded = true },
+                    modifier = Modifier.height(buttonHeight),
+                    colors =
+                        ButtonDefaults.outlinedButtonColors(
+                            contentColor = Color.White
+                        )
+                ) { Text("${schedule.start.toString().padStart(2, '0')}:00") }
+                DropdownMenu(
+                    expanded = startExpanded,
+                    onDismissRequest = { startExpanded = false }
+                ) {
+                    (0..23).forEach { hour ->
+                        DropdownMenuItem(
+                            text = {
+                                Text(
+                                    "${hour.toString().padStart(2, '0')}:00"
+                                )
+                            },
+                            onClick = {
+                                onStartChange(hour)
+                                startExpanded = false
+                            }
+                        )
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.width(horizontalSpacing))
+            Text(
+                "Hasta:",
+                color = Color.White.copy(alpha = 0.8f),
+                style = labelStyle
+            )
+            Spacer(modifier = Modifier.width(horizontalSpacing))
+
+            var endExpanded by remember { mutableStateOf(false) }
+            Box {
+                OutlinedButton(
+                    onClick = { endExpanded = true },
+                    modifier = Modifier.height(buttonHeight),
+                    colors =
+                        ButtonDefaults.outlinedButtonColors(
+                            contentColor = Color.White
+                        )
+                ) { Text("${schedule.end.toString().padStart(2, '0')}:00") }
+                DropdownMenu(
+                    expanded = endExpanded,
+                    onDismissRequest = { endExpanded = false }
+                ) {
+                    (schedule.start + 1..23).forEach { hour ->
+                        DropdownMenuItem(
+                            text = {
+                                Text(
+                                    "${hour.toString().padStart(2, '0')}:00"
+                                )
+                            },
+                            onClick = {
+                                onEndChange(hour)
+                                endExpanded = false
+                            }
+                        )
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.width(horizontalSpacing))
+
+            // Duration badge
+            Surface(
+                color = Color(0x33FFD700),
+                shape = RoundedCornerShape(4.dp)
+            ) {
+                Text(
+                    text = "${schedule.end - schedule.start}h",
+                    modifier = Modifier.padding(
+                        horizontal = if (screenWidth > 600.dp) 8.dp else 6.dp,
+                        vertical = if (screenWidth > 600.dp) 4.dp else 3.dp
+                    ),
+                    color = Color(0xFFFFD700),
+                    fontWeight = FontWeight.Bold,
+                    style = labelStyle
                 )
+            }
+
+            Spacer(modifier = Modifier.weight(1f))
+
+            onRemove?.let {
+                IconButton(onClick = it) {
+                    Icon(
+                        Icons.Default.Close,
+                        contentDescription = "Remove",
+                        tint = Color(0xFFFF6B6B)
+                    )
+                }
             }
         }
     }

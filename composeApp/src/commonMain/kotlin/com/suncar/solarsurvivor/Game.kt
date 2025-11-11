@@ -19,15 +19,30 @@ import com.suncar.solarsurvivor.ui.components.molecules.AchievementBadge
 import com.suncar.solarsurvivor.ui.components.organisms.NotificationCard
 import kotlin.random.Random
 import kotlinx.coroutines.delay
+import kotlinx.datetime.*
 
 @Composable
 fun SolarSurvivorGame() {
+        // Verificar si la fecha actual es posterior al 11 de noviembre de 2025
+        fun isUpdateRequired(): Boolean {
+            val now = Clock.System.now()
+            val timezone = TimeZone.currentSystemDefault()
+            val currentDate = now.toLocalDateTime(timezone).date
+            val updateDeadline = LocalDate(2025, 11, 11)
+            return currentDate > updateDeadline
+        }
+
         // Inicializar GameStatsCollector al comenzar
         LaunchedEffect(Unit) {
             GameStatsCollector.startNewSession()
         }
-        
-        var gameState by remember { mutableStateOf(GameState.START) }
+
+        var gameState by remember {
+            mutableStateOf(
+                if (isUpdateRequired()) GameState.UPDATE_REQUIRED
+                else GameState.START
+            )
+        }
         var currentDay by remember { mutableStateOf(1) }
         var timeOfDay by remember { mutableStateOf(6) }
         var isBlackout by remember { mutableStateOf(false) }
@@ -360,27 +375,12 @@ fun SolarSurvivorGame() {
                         Int.MAX_VALUE
                 }
 
-                if (!app.on && consumption + app.consumption > available) {
-                        val deficit = consumption + app.consumption - available
-                        addNotification(
-                                "❌ Energía insuficiente para ${app.name}",
-                                NotificationType.ERROR,
-                                if (solarPanels == 0)
-                                        "💡 Necesitas ${deficit}W más. Apaga otros dispositivos o considera instalar paneles solares"
-                                else
-                                        "⚡ Faltan ${deficit}W. Apaga otros electrodomésticos o espera más generación solar"
-                        )
-                        return
-                } else if (!app.on) {
-                        addNotification(
-                                "✅ ${app.name} encendido",
-                                NotificationType.SUCCESS,
-                                "🔋 Consumiendo ${app.consumption}W de energía"
-                        )
-                }
+        if (!app.on && consumption + app.consumption > available) {
+                return
+        }
 
-                appliances =
-                        appliances.toMutableMap().apply { this[appKey] = app.copy(on = !app.on) }
+        appliances =
+                appliances.toMutableMap().apply { this[appKey] = app.copy(on = !app.on) }
         }
 
         // Game Loop Effect
@@ -862,6 +862,14 @@ fun SolarSurvivorGame() {
                                                                 gameState = GameState.FINISHED
                                                         },
                                                         isFirstTime = currentDay == 1 && timeOfDay < 8
+                                                )
+                                        GameState.UPDATE_REQUIRED ->
+                                                UpdateRequiredScreen(
+                                                        onOpenWebsite = {
+                                                                // Aquí se abre la URL en el navegador
+                                                                // La implementación depende de la plataforma
+                                                                // Por ahora simplemente mostramos la pantalla
+                                                        }
                                                 )
                                         else -> {}
                                 }

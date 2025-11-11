@@ -60,7 +60,8 @@ enum class GameState {
     CONFIGURING,
     FINISHED,
     BLACKOUT_CONFIG,
-    SOLAR_STUDY
+    SOLAR_STUDY,
+    UPDATE_REQUIRED
 }
 
 enum class EnergySource {
