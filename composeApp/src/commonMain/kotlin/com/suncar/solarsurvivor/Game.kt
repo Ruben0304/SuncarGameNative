@@ -19,19 +19,9 @@ import com.suncar.solarsurvivor.ui.components.molecules.AchievementBadge
 import com.suncar.solarsurvivor.ui.components.organisms.NotificationCard
 import kotlin.random.Random
 import kotlinx.coroutines.delay
-import kotlinx.datetime.*
 
 @Composable
 fun SolarSurvivorGame() {
-        // Verificar si la fecha actual es posterior al 11 de noviembre de 2025
-        fun isUpdateRequired(): Boolean {
-            val now = Clock.System.now()
-            val timezone = TimeZone.currentSystemDefault()
-            val currentDate = now.toLocalDateTime(timezone).date
-            val updateDeadline = LocalDate(2025, 11, 11)
-            return currentDate > updateDeadline
-        }
-
         // Inicializar GameStatsCollector al comenzar
         LaunchedEffect(Unit) {
             GameStatsCollector.startNewSession()
@@ -39,8 +29,7 @@ fun SolarSurvivorGame() {
 
         var gameState by remember {
             mutableStateOf(
-                if (isUpdateRequired()) GameState.UPDATE_REQUIRED
-                else GameState.START
+                GameState.START
             )
         }
         var currentDay by remember { mutableStateOf(1) }
@@ -862,14 +851,6 @@ fun SolarSurvivorGame() {
                                                                 gameState = GameState.FINISHED
                                                         },
                                                         isFirstTime = currentDay == 1 && timeOfDay < 8
-                                                )
-                                        GameState.UPDATE_REQUIRED ->
-                                                UpdateRequiredScreen(
-                                                        onOpenWebsite = {
-                                                                // Aquí se abre la URL en el navegador
-                                                                // La implementación depende de la plataforma
-                                                                // Por ahora simplemente mostramos la pantalla
-                                                        }
                                                 )
                                         else -> {}
                                 }
