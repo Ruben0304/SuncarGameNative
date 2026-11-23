@@ -23,3 +23,8 @@ railway-deploy/*.css
 railway-deploy/*.js
 railway-deploy/*.wasm
 railway-deploy/composeResources/
+
+# Clave de subida a Google Play (nunca al repo)
+keystore.properties
+*.jks
+*.keystore

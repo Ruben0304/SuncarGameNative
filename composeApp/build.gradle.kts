@@ -2,6 +2,7 @@ import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
+import java.util.Properties
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -173,10 +174,32 @@ android {
         }
     }
 
+    // Clave de subida a Google Play: se lee de keystore.properties (raíz del repo, no se versiona).
+    // Sin ese archivo, el release se firma con la clave debug (solo para pruebas locales).
+    val keystorePropsFile = rootProject.file("keystore.properties")
+    val keystoreProps = Properties().apply {
+        if (keystorePropsFile.exists()) keystorePropsFile.inputStream().use { load(it) }
+    }
+
+    signingConfigs {
+        if (keystorePropsFile.exists()) {
+            create("upload") {
+                storeFile = file(keystoreProps.getProperty("storeFile"))
+                storePassword = keystoreProps.getProperty("storePassword")
+                keyAlias = keystoreProps.getProperty("keyAlias")
+                keyPassword = keystoreProps.getProperty("keyPassword")
+            }
+        }
+    }
+
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = if (keystorePropsFile.exists()) {
+                signingConfigs.getByName("upload")
+            } else {
+                signingConfigs.getByName("debug")
+            }
         }
     }
 
