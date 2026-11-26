@@ -164,7 +164,7 @@ android {
         applicationId = "com.suncar.solarsurvivor"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 2
+        versionCode = 10
         versionName = "1.1"
     }
 
